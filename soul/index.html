@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1410,78 +1411,97 @@ async function buildCardBlob(p) {
     try { await crewImg.decode(); crewReady = true; } catch (e) { crewReady = false; }
   }
 
-  // Crew artwork framed across the top (the hero of the card).
-  const ix = 44, iy = 44, iw = W - 88;
-  let imgBottom = iy;
-  if (crewReady && crewImg.naturalWidth) {
-    const ih = iw * (crewImg.naturalHeight / crewImg.naturalWidth);
-    ctx.save();
-    roundRectPath(ctx, ix, iy, iw, ih, 22);
-    ctx.clip();
-    ctx.drawImage(crewImg, ix, iy, iw, ih);
-    ctx.restore();
-    roundRectPath(ctx, ix, iy, iw, ih, 22);
-    ctx.strokeStyle = 'rgba(255,20,147,0.6)'; ctx.lineWidth = 4; ctx.stroke();
-    imgBottom = iy + ih;
-  } else {
-    drawSynthSun(ctx, W / 2, 300, 104);
-    imgBottom = 404;
-  }
+  ctx.textBaseline = 'top';
 
-  ctx.fillStyle = '#FF1493';
-  ctx.font = '900 30px "Oxanium", sans-serif';
-  ctx.fillText("I'M...", W / 2, imgBottom + 58);
+  // Footer sits at the very bottom.
+  const footerTop = H - 170;
 
-  let y = imgBottom + 138;
+  // Crew artwork sits just above the footer (full width, framed).
+  const ix = 44, iw = W - 88;
+  const ratio = (crewReady && crewImg.naturalWidth) ? (crewImg.naturalHeight / crewImg.naturalWidth) : 0.546;
+  const ih = iw * ratio;
+  const imgBottom = footerTop - 26;
+  const imgTop = imgBottom - ih;
+
+  // Measure the text block (goes above the image), tighter widths for clean margins.
+  const imFont = '900 28px "Oxanium", sans-serif';
+  const imLineH = 34;
 
   const arch = (p.archetype || 'THE ENIGMA').toUpperCase();
-  let aSize = 92;
-  let aLines = wrapLines(ctx, arch, 920, aSize + 'px "Archivo Black", sans-serif');
-  if (aLines.length > 1) { aSize = 64; aLines = wrapLines(ctx, arch, 940, aSize + 'px "Archivo Black", sans-serif'); }
-  const grad = ctx.createLinearGradient(80, 0, W - 80, 0);
+  let aSize = 84;
+  let aLines = wrapLines(ctx, arch, 860, aSize + 'px "Archivo Black", sans-serif');
+  if (aLines.length > 1) { aSize = 58; aLines = wrapLines(ctx, arch, 900, aSize + 'px "Archivo Black", sans-serif'); }
+  const aLineH = Math.round(aSize * 1.14);
+
+  const tFont = 'italic 30px "Space Mono", monospace';
+  const tLines = p.tagline ? wrapLines(ctx, '\u201C' + p.tagline + '\u201D', 820, tFont) : [];
+  const tLineH = 40;
+
+  const sFont = '700 33px "Oxanium", sans-serif';
+  const songLines = p.signature_song ? wrapLines(ctx, '\uD83C\uDFB5  ' + p.signature_song, 860, sFont) : [];
+  const movieLines = p.spirit_movie ? wrapLines(ctx, '\uD83C\uDFAC  ' + p.spirit_movie, 860, sFont) : [];
+  const sLineH = 44;
+
+  const GAP_IM = 8, GAP_TAG = 20, GAP_SB = 26, GAP_SM = 6;
+  let totalH = imLineH + GAP_IM + aLines.length * aLineH;
+  if (tLines.length) totalH += GAP_TAG + tLines.length * tLineH;
+  totalH += GAP_SB + songLines.length * sLineH;
+  if (songLines.length && movieLines.length) totalH += GAP_SM;
+  totalH += movieLines.length * sLineH;
+
+  const regionTop = 70;
+  const regionBottom = imgTop - 24;
+  let y = regionTop + Math.max(0, (regionBottom - regionTop - totalH) / 2);
+
+  // I'M...
+  ctx.fillStyle = '#FF1493'; ctx.font = imFont;
+  ctx.fillText("I'M...", W / 2, y); y += imLineH + GAP_IM;
+
+  // Archetype (gradient)
+  const grad = ctx.createLinearGradient(90, 0, W - 90, 0);
   grad.addColorStop(0, '#ffffff'); grad.addColorStop(0.45, '#FFD700');
   grad.addColorStop(0.8, '#FF1493'); grad.addColorStop(1, '#8B00FF');
-  ctx.fillStyle = grad;
-  ctx.font = aSize + 'px "Archivo Black", sans-serif';
-  for (const line of aLines) { ctx.fillText(line, W / 2, y); y += aSize * 1.05; }
-  y += 14;
+  ctx.fillStyle = grad; ctx.font = aSize + 'px "Archivo Black", sans-serif';
+  for (const line of aLines) { ctx.fillText(line, W / 2, y); y += aLineH; }
 
-  if (p.tagline) {
-    const tFont = 'italic 34px "Space Mono", monospace';
-    ctx.fillStyle = '#FFD700';
-    const tLines = wrapLines(ctx, '\u201C' + p.tagline + '\u201D', 860, tFont);
-    ctx.font = tFont;
-    for (const line of tLines) { ctx.fillText(line, W / 2, y); y += 48; }
-  }
-  y += 34;
-
-  ctx.strokeStyle = 'rgba(255,20,147,0.6)'; ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(W / 2 - 50, y); ctx.lineTo(W / 2 + 50, y); ctx.stroke();
-  y += 66;
-
-  ctx.fillStyle = '#ffffff';
-  const sFont = '700 36px "Oxanium", sans-serif';
-  if (p.signature_song) {
-    const s = wrapLines(ctx, '\uD83C\uDFB5  ' + p.signature_song, 900, sFont);
-    ctx.font = sFont;
-    for (const line of s) { ctx.fillText(line, W / 2, y); y += 52; }
-    y += 10;
-  }
-  if (p.spirit_movie) {
-    const m = wrapLines(ctx, '\uD83C\uDFAC  ' + p.spirit_movie, 900, sFont);
-    ctx.font = sFont;
-    for (const line of m) { ctx.fillText(line, W / 2, y); y += 52; }
+  // Tagline
+  if (tLines.length) {
+    y += GAP_TAG;
+    ctx.fillStyle = '#FFD700'; ctx.font = tFont;
+    for (const line of tLines) { ctx.fillText(line, W / 2, y); y += tLineH; }
   }
 
+  // Song + movie
+  y += GAP_SB;
+  ctx.fillStyle = '#ffffff'; ctx.font = sFont;
+  for (const line of songLines) { ctx.fillText(line, W / 2, y); y += sLineH; }
+  if (songLines.length && movieLines.length) y += GAP_SM;
+  for (const line of movieLines) { ctx.fillText(line, W / 2, y); y += sLineH; }
+
+  // Crew artwork (the lineup), drawn just above the challenge.
+  if (crewReady && crewImg.naturalWidth) {
+    ctx.save();
+    roundRectPath(ctx, ix, imgTop, iw, ih, 22);
+    ctx.clip();
+    ctx.drawImage(crewImg, ix, imgTop, iw, ih);
+    ctx.restore();
+    roundRectPath(ctx, ix, imgTop, iw, ih, 22);
+    ctx.strokeStyle = 'rgba(255,20,147,0.6)'; ctx.lineWidth = 4; ctx.stroke();
+  } else {
+    drawSynthSun(ctx, W / 2, imgTop + ih / 2, 104);
+  }
+
+  // Footer: the challenge points right at the lineup above it.
   ctx.fillStyle = '#FFD700';
   ctx.font = '900 40px "Oxanium", sans-serif';
-  ctx.fillText('WHICH ONE ARE YOU?', W / 2, H - 168);
+  ctx.fillText('WHICH ONE ARE YOU?', W / 2, footerTop);
   ctx.fillStyle = 'rgba(255,255,255,0.55)';
   ctx.font = '24px "Space Mono", monospace';
-  ctx.fillText('Find your 80s soul at', W / 2, H - 118);
+  ctx.fillText('Find your 80s soul at', W / 2, footerTop + 48);
   ctx.fillStyle = '#FF1493';
   ctx.font = '900 44px "Oxanium", sans-serif';
-  ctx.fillText(SHARE_URL, W / 2, H - 68);
+  ctx.fillText(SHARE_URL, W / 2, footerTop + 88);
+  ctx.textBaseline = 'alphabetic';
 
   return await new Promise((res) => c.toBlob(res, 'image/png'));
 }
