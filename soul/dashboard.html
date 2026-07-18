@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>80s Soul — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700;900&family=Archivo+Black&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{--purple:#8B00FF;--pink:#FF1493;--gold:#FFD700;--green:#28a745;--dark:#0a0a0f;--card:#13131f;--border:rgba(139,0,255,0.3);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--dark);color:#fff;font-family:'Space Mono',monospace;min-height:100vh;}
+  body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(139,0,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(139,0,255,.07) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:40px 16px 60px;}
+  .title{font-family:'Archivo Black',sans-serif;font-size:clamp(1.8em,6vw,2.8em);line-height:1;background:linear-gradient(135deg,#fff,var(--gold) 40%,var(--pink) 70%,var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;margin-bottom:6px;}
+  .subtitle{text-align:center;color:rgba(255,255,255,.45);font-size:.75em;letter-spacing:2px;margin-bottom:30px;}
+
+  /* gate */
+  .gate{max-width:400px;margin:60px auto;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 26px;}
+  .gate label{display:block;font-family:'Oxanium',sans-serif;font-size:.7em;letter-spacing:2px;color:var(--pink);text-transform:uppercase;margin-bottom:14px;}
+  .gate input{width:100%;padding:14px 16px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;color:#fff;font-family:'Space Mono',monospace;font-size:1em;margin-bottom:16px;text-align:center;}
+  .gate input:focus{outline:none;border-color:var(--pink);}
+  .btn{font-family:'Oxanium',sans-serif;font-weight:900;font-size:.9em;letter-spacing:2px;text-transform:uppercase;color:#fff;border:none;border-radius:12px;padding:15px 26px;cursor:pointer;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 0 22px rgba(255,20,147,.35);transition:transform .15s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:disabled{opacity:.6;cursor:wait;}
+  .err{color:#ff6b6b;font-size:.8em;margin-top:10px;min-height:1em;}
+
+  /* stats */
+  .stats{display:none;}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:12px;flex-wrap:wrap;}
+  .total{font-family:'Oxanium',sans-serif;}
+  .total b{font-size:2.2em;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .total span{display:block;font-size:.65em;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;}
+  .ghost{font-family:'Oxanium',sans-serif;font-weight:700;font-size:.72em;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:11px 16px;cursor:pointer;}
+  .ghost:hover{border-color:var(--pink);color:#fff;}
+
+  .section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px;margin-bottom:18px;}
+  .section h2{font-family:'Archivo Black',sans-serif;font-size:.95em;line-height:1.3;margin-bottom:16px;color:#fff;}
+  .bar-row{margin-bottom:12px;}
+  .bar-top{display:flex;justify-content:space-between;font-family:'Oxanium',sans-serif;font-size:.78em;margin-bottom:5px;gap:10px;}
+  .bar-label{color:#fff;font-weight:700;}
+  .bar-val{color:rgba(255,255,255,.6);white-space:nowrap;font-weight:700;}
+  .bar-track{height:10px;background:rgba(255,255,255,.08);border-radius:5px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:5px;width:0;transition:width .7s ease;background:linear-gradient(90deg,var(--purple),var(--pink));}
+  .bar-row.top .bar-fill{background:linear-gradient(90deg,var(--gold),var(--pink));}
+  .bar-row.top .bar-label{color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">80s Soul Dashboard</div>
+  <div class="subtitle">WHAT EVERYONE IS ANSWERING</div>
+
+  <div class="gate" id="gate">
+    <label>Enter dashboard passcode</label>
+    <input type="password" id="pass" placeholder="passcode" autocomplete="off">
+    <button class="btn" id="enterBtn">View Dashboard</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="toolbar">
+      <div class="total"><b id="totalNum">0</b><span>readings so far</span></div>
+      <button class="ghost" id="refreshBtn">↻ Refresh</button>
+    </div>
+    <div id="sections"></div>
+  </div>
+</div>
+
+<script>
+const ENDPOINT = 'https://owxtsagmzbwudxrnphmi.supabase.co/functions/v1/eighties-soul';
+let passcode = '';
+
+async function fetchStats(key){
+  const res = await fetch(ENDPOINT, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ stats:true, key })
+  });
+  if(res.status === 401) throw new Error('Wrong passcode');
+  if(!res.ok) throw new Error('Error ' + res.status);
+  return res.json();
+}
+
+function barRow(label, n, total, isTop){
+  const pct = total ? Math.round((n/total)*100) : 0;
+  const row = document.createElement('div');
+  row.className = 'bar-row' + (isTop ? ' top' : '');
+  row.innerHTML =
+    '<div class="bar-top"><span class="bar-label"></span><span class="bar-val">'+n+' · '+pct+'%</span></div>'+
+    '<div class="bar-track"><div class="bar-fill"></div></div>';
+  row.querySelector('.bar-label').textContent = label;
+  const fill = row.querySelector('.bar-fill');
+  requestAnimationFrame(()=>{ fill.style.width = pct + '%'; });
+  return row;
+}
+
+function section(titleText){
+  const s = document.createElement('div');
+  s.className = 'section';
+  const h = document.createElement('h2');
+  h.textContent = titleText;
+  s.appendChild(h);
+  return s;
+}
+
+function render(data){
+  document.getElementById('totalNum').textContent = (data.total||0).toLocaleString();
+  const wrap = document.getElementById('sections');
+  wrap.innerHTML = '';
+
+  // Archetype leaderboard
+  const arch = (data.archetypes||[]).slice().sort((a,b)=>b.n-a.n);
+  if(arch.length){
+    const archTotal = arch.reduce((s,x)=>s+Number(x.n),0);
+    const s = section('🏆 Archetype leaderboard');
+    arch.slice(0,15).forEach((x,i)=> s.appendChild(barRow(x.archetype, Number(x.n), archTotal, i===0)));
+    wrap.appendChild(s);
+  }
+
+  // Group answer rows by question
+  const byQ = {};
+  (data.rows||[]).forEach(r=>{
+    if(!byQ[r.q]) byQ[r.q] = [];
+    byQ[r.q].push({ a:r.a, n:Number(r.n) });
+  });
+  Object.keys(byQ).forEach(q=>{
+    const opts = byQ[q].sort((a,b)=>b.n-a.n);
+    const qTotal = opts.reduce((s,x)=>s+x.n,0);
+    const s = section(q);
+    opts.forEach((o,i)=> s.appendChild(barRow(o.a, o.n, qTotal, i===0)));
+    wrap.appendChild(s);
+  });
+
+  if(!arch.length && !Object.keys(byQ).length){
+    const s = section('No readings yet');
+    s.querySelector('h2').style.marginBottom = '0';
+    wrap.appendChild(s);
+  }
+}
+
+async function enter(){
+  const btn = document.getElementById('enterBtn');
+  const err = document.getElementById('err');
+  const key = document.getElementById('pass').value.trim();
+  if(!key){ err.textContent = 'Enter your passcode'; return; }
+  err.textContent = '';
+  btn.disabled = true; btn.textContent = 'Loading…';
+  try{
+    const data = await fetchStats(key);
+    passcode = key;
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('stats').style.display = 'block';
+    render(data);
+  }catch(e){
+    err.textContent = e.message || 'Could not load';
+  }finally{
+    btn.disabled = false; btn.textContent = 'View Dashboard';
+  }
+}
+
+async function refresh(){
+  const btn = document.getElementById('refreshBtn');
+  btn.disabled = true; const t = btn.textContent; btn.textContent = '↻ …';
+  try{ render(await fetchStats(passcode)); }
+  catch(e){ /* keep showing old data */ }
+  finally{ btn.disabled = false; btn.textContent = t; }
+}
+
+document.getElementById('enterBtn').addEventListener('click', enter);
+document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') enter(); });
+document.getElementById('refreshBtn').addEventListener('click', refresh);
+</script>
+</body>
+</html>
