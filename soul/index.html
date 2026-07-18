@@ -1259,18 +1259,13 @@ function shareProfile() {
   if (!lastProfile) return;
   const p = lastProfile;
   const text =
-`🔮 MY OFFICIAL 80s PERSONALITY PROFILE
+`🔮 I got: ${p.archetype}
+${p.tagline ? '"' + p.tagline + '"' : ''}
 
-${p.archetype}
-${p.tagline ? '"' + p.tagline + '"\n' : ''}
-${(p.reading || '').replace(/\n\n+/g, '\n\n')}
+🎵 ${p.signature_song || ''}
+🎬 ${p.spirit_movie || ''}
 
-🎵 Signature Song: ${p.signature_song || '—'}
-🎬 Spirit Movie: ${p.spirit_movie || '—'}
-
-${p.final_verdict || ''}
-
-🎸 Think you know the 80s? Get your own reading → ${SHARE_URL}`;
+Get your own detailed 80s soul reading → ${SHARE_URL}`;
   shareOrCopy(text, 'Copied — share your reading!', 'My 80s Personality Profile');
 }
 
