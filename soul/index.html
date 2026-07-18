@@ -1,1 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Len's 80sMusicGame.com — The Fun Surveys</title>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700;900&family=Archivo+Black&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #8B00FF;
+    --pink: #FF1493;
+    --gold: #FFD700;
+    --green: #28a745;
+    --orange: #fd7e14;
+    --red: #dc3545;
+    --dark: #0a0a0f;
+    --card: #13131f;
+    --border: rgba(139,0,255,0.3);
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--dark);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Animated grid background */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(139,0,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139,0,255,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 30px 0 30px;
+  }
+  .hero-art {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(0 0 18px rgba(255,20,147,0.28));
+  }
+  .hero-sun-glow { animation: sunPulse 5s ease-in-out infinite; transform-origin: center; }
+  @keyframes sunPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+
+  .header-eyebrow {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.7em;
+    letter-spacing: 6px;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    animation: flicker 4s infinite;
+  }
+
+  @keyframes flicker {
+    0%,95%,100% { opacity: 1; }
+    96% { opacity: 0.4; }
+    97% { opacity: 1; }
+    98% { opacity: 0.2; }
+    99% { opacity: 1; }
+  }
+
+  .header-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2em, 7vw, 3.5em);
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, var(--gold) 40%, var(--pink) 70%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px;
+  }
+
+  .header-sub {
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+    line-height: 1.6;
+  }
+
+  .header-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    margin: 20px auto;
+    border-radius: 2px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    top: 10px;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background: rgba(19,19,31,0.85);
+  }
+  .progress-label {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.7em;
+    color: var(--pink);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    border-radius: 3px;
+    transition: width 0.6s ease;
+    width: 0%;
+  }
+  .progress-count {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+  }
+
+  /* SURVEY CARD */
+  .survey-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .survey-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .survey-card.answered {
+    border-color: rgba(139,0,255,0.5);
+  }
+  .survey-card.answered::before { opacity: 1; }
+
+  .survey-num {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.65em;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 2px;
+  }
+
+  .survey-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(0.9em, 3vw, 1.1em);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    padding-right: 50px;
+    color: white;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option {
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.15s, filter 0.15s, box-shadow 0.15s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .option:hover {
+    transform: scale(1.02);
+    filter: brightness(1.15);
+  }
+
+  .option.voted { cursor: default; }
+  .option.voted:hover { transform: none; filter: none; }
+
+  .option-icon {
+    font-size: 1.4em;
+    min-width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+
+  .option-text { flex: 1; }
+  .option-label {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.78em;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: white;
+  }
+  .option-sub {
+    font-size: 0.68em;
+    opacity: 0.8;
+    margin-top: 2px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Bar reveal */
+  .option-bar-wrap {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    min-width: 52px;
+  }
+  .option-pct {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.85em;
+    font-weight: 900;
+    color: white;
+  }
+  .option-bar-track {
+    width: 52px;
+    height: 5px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .option-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.8s ease;
+  }
+
+  .option.selected {
+    box-shadow: 0 0 20px rgba(255,20,147,0.5), inset 0 0 12px rgba(255,255,255,0.05);
+  }
+  .option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px; right: 10px;
+    font-size: 0.85em;
+    color: white;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 900;
+  }
+
+  /* COMPLETION BADGE */
+  .completion-badge {
+    display: none;
+    text-align: center;
+    padding: 14px;
+    margin-top: 14px;
+    background: rgba(40,167,69,0.1);
+    border: 1px solid rgba(40,167,69,0.3);
+    border-radius: 10px;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.75em;
+    color: #28a745;
+    letter-spacing: 2px;
+  }
+
+  /* ALL DONE / PROFILE LAUNCHER */
+  .all-done {
+    display: none;
+    text-align: center;
+    padding: 44px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .all-done::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--pink), var(--purple));
+  }
+  .all-done-emoji { font-size: 3em; margin-bottom: 12px; }
+  .all-done-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.5em;
+    background: linear-gradient(135deg, var(--gold), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .all-done-sub {
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  /* Big neon button */
+  .neon-btn {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 900;
+    font-size: 0.95em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 28px;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    box-shadow: 0 0 24px rgba(255,20,147,0.35), 0 6px 20px rgba(0,0,0,0.4);
+    transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .neon-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 34px rgba(255,20,147,0.55), 0 8px 26px rgba(0,0,0,0.5); }
+  .neon-btn:active { transform: translateY(0) scale(0.99); }
+  .neon-btn:disabled { opacity: 0.6; cursor: wait; filter: grayscale(0.2); }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .ghost-btn {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 700;
+    font-size: 0.72em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ghost-btn:hover { border-color: var(--pink); color: white; background: rgba(255,20,147,0.08); }
+
+  /* PLAY QUIZ CTA */
+  .play-cta-wrap {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .play-cta-label {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.68em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+  }
+  a.neon-btn { text-decoration: none; }
+
+  /* LOADING */
+  .profile-loading {
+    display: none;
+    text-align: center;
+    padding: 40px 24px;
+    margin-top: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+  }
+  .cassette {
+    width: 64px; height: 64px;
+    margin: 0 auto 18px;
+    border: 3px solid var(--pink);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    color: var(--pink);
+    min-height: 1.2em;
+  }
+
+  /* PROFILE RESULT */
+  .profile-result {
+    display: none;
+    margin-top: 24px;
+    background: var(--card);
+    border: 1px solid rgba(255,20,147,0.4);
+    border-radius: 18px;
+    padding: 34px 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(139,0,255,0.15);
+    animation: cardIn 0.5s ease both;
+  }
+  .profile-result::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--pink), var(--purple), var(--gold));
+    background-size: 300% 100%;
+    animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer { to { background-position: 300% 0; } }
+
+  .profile-eyebrow {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.62em;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .profile-archetype {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(1.6em, 6vw, 2.4em);
+    line-height: 1.05;
+    text-align: center;
+    background: linear-gradient(135deg, #fff 0%, var(--gold) 45%, var(--pink) 80%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .profile-tagline {
+    text-align: center;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    padding: 0 4px;
+  }
+  .profile-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    margin: 0 auto 24px;
+    border-radius: 2px;
+  }
+  .profile-reading {
+    font-size: 0.86em;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 24px;
+  }
+  .profile-reading p { margin-bottom: 14px; }
+
+  .profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 460px) { .profile-stats { grid-template-columns: 1fr; } }
+  .stat {
+    background: rgba(139,0,255,0.08);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .stat-label {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .stat-value {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: white;
+    line-height: 1.35;
+  }
+
+  .profile-verdict {
+    text-align: center;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 900;
+    font-size: 0.82em;
+    letter-spacing: 1px;
+    color: var(--gold);
+    border: 1px dashed rgba(255,215,0,0.4);
+    border-radius: 12px;
+    padding: 16px;
+    background: rgba(255,215,0,0.05);
+    line-height: 1.5;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    color: white;
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 700;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    padding: 14px 22px;
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    z-index: 2000;
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    font-size: 0.65em;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 2px;
+    font-family: 'Oxanium', sans-serif;
+  }
+  .footer a { color: var(--pink); text-decoration: none; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .survey-card { animation: cardIn 0.4s ease both; }
+  .survey-card:nth-child(1)  { animation-delay: 0.05s; }
+  .survey-card:nth-child(2)  { animation-delay: 0.1s; }
+  .survey-card:nth-child(3)  { animation-delay: 0.15s; }
+  .survey-card:nth-child(4)  { animation-delay: 0.2s; }
+  .survey-card:nth-child(5)  { animation-delay: 0.25s; }
+  .survey-card:nth-child(6)  { animation-delay: 0.3s; }
+  .survey-card:nth-child(7)  { animation-delay: 0.35s; }
+  .survey-card:nth-child(8)  { animation-delay: 0.4s; }
+  .survey-card:nth-child(9)  { animation-delay: 0.45s; }
+  .survey-card:nth-child(10) { animation-delay: 0.5s; }
+  .survey-card:nth-child(11) { animation-delay: 0.55s; }
+  .survey-card:nth-child(12) { animation-delay: 0.6s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .cassette { animation: spin 0.9s linear infinite; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <svg class="hero-art" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="80s synthwave sunset">
+      <defs>
+        <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFD700"/>
+          <stop offset="45%" stop-color="#FF1493"/>
+          <stop offset="100%" stop-color="#8B00FF"/>
+        </linearGradient>
+        <clipPath id="sunClip"><circle cx="200" cy="84" r="50"/></clipPath>
+      </defs>
+
+      <!-- twinkle stars -->
+      <g fill="#ffffff">
+        <circle cx="58" cy="30" r="1.6" opacity="0.85"/>
+        <circle cx="112" cy="52" r="1" opacity="0.6"/>
+        <circle cx="300" cy="26" r="1.3" opacity="0.8"/>
+        <circle cx="345" cy="58" r="1" opacity="0.55"/>
+      </g>
+      <g stroke="#FFD700" stroke-width="1.4" opacity="0.9">
+        <path d="M336 34 l0 10 M331 39 l10 0"/>
+        <path d="M78 62 l0 8 M74 66 l8 0"/>
+      </g>
+
+      <!-- glow behind sun -->
+      <circle class="hero-sun-glow" cx="200" cy="84" r="62" fill="#FF1493" opacity="0.5"/>
+
+      <!-- the sun -->
+      <circle cx="200" cy="84" r="50" fill="url(#sunGrad)"/>
+      <!-- slats -->
+      <g clip-path="url(#sunClip)" fill="#0a0a0f">
+        <rect x="148" y="86"  width="104" height="2.4"/>
+        <rect x="148" y="92"  width="104" height="3"/>
+        <rect x="148" y="99"  width="104" height="3.6"/>
+        <rect x="148" y="107" width="104" height="4.4"/>
+        <rect x="148" y="117" width="104" height="5.4"/>
+        <rect x="148" y="128" width="104" height="7"/>
+      </g>
+
+      <!-- horizon + perspective grid -->
+      <g stroke="#FF1493" stroke-width="1" opacity="0.45">
+        <line x1="0" y1="120" x2="400" y2="120" stroke="#FFD700" stroke-width="1.6" opacity="0.8"/>
+        <line x1="200" y1="120" x2="-60"  y2="180"/>
+        <line x1="200" y1="120" x2="30"   y2="180"/>
+        <line x1="200" y1="120" x2="90"   y2="180"/>
+        <line x1="200" y1="120" x2="140"  y2="180"/>
+        <line x1="200" y1="120" x2="170"  y2="180"/>
+        <line x1="200" y1="120" x2="200"  y2="180"/>
+        <line x1="200" y1="120" x2="230"  y2="180"/>
+        <line x1="200" y1="120" x2="260"  y2="180"/>
+        <line x1="200" y1="120" x2="310"  y2="180"/>
+        <line x1="200" y1="120" x2="370"  y2="180"/>
+        <line x1="200" y1="120" x2="460"  y2="180"/>
+        <line x1="0" y1="128" x2="400" y2="128"/>
+        <line x1="0" y1="138" x2="400" y2="138"/>
+        <line x1="0" y1="151" x2="400" y2="151"/>
+        <line x1="0" y1="167" x2="400" y2="167"/>
+      </g>
+    </svg>
+    <div class="header-eyebrow">🎸 Len's 80sMusicGame.com</div>
+    <div class="header-title">The Fun Surveys</div>
+    <div class="header-divider"></div>
+    <div class="header-sub">12 questions about your 80s life<br>Answer them all, then let us read your soul</div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">ANSWERED</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-count" id="progressCount">0 / 12</div>
+  </div>
+
+  <div id="surveyList"></div>
+
+  <!-- LAUNCHER -->
+  <div class="all-done" id="allDone">
+    <div class="all-done-emoji">🔮</div>
+    <div class="all-done-title">All 12 answered. Now the fun part.</div>
+    <div class="all-done-sub">Step right up to the 80s reading booth.<br>We'll build your personality profile from your answers.</div>
+    <button class="neon-btn" id="generateBtn">🎛️ Read My 80s Soul</button>
+    <div class="btn-row">
+      <button class="ghost-btn" id="copyAnswersBtn">🚀 Share My Answers</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="profile-loading" id="profileLoading">
+    <div class="cassette"></div>
+    <div class="loading-text" id="loadingText">Rewinding the cassette…</div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="profile-result" id="profileResult">
+    <div class="profile-eyebrow">Your Official 80s Personality Profile</div>
+    <div class="profile-archetype" id="pArchetype"></div>
+    <div class="profile-tagline" id="pTagline"></div>
+    <div class="profile-divider"></div>
+    <div class="profile-reading" id="pReading"></div>
+    <div class="profile-stats">
+      <div class="stat">
+        <div class="stat-label">🎵 Signature Song</div>
+        <div class="stat-value" id="pSong"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">🎬 Spirit Movie</div>
+        <div class="stat-value" id="pMovie"></div>
+      </div>
+    </div>
+    <div class="profile-verdict" id="pVerdict"></div>
+    <div class="btn-row">
+      <button class="ghost-btn" id="copyProfileBtn">🚀 Share My Profile</button>
+      <button class="ghost-btn" id="regenBtn">🔁 Read Me Again</button>
+    </div>
+    <div class="play-cta-wrap">
+      <div class="play-cta-label">Now prove you actually lived it</div>
+      <a class="neon-btn" href="https://80smusicgame.com" target="_blank" rel="noopener">🎮 Play Today's 80s Quiz</a>
+    </div>
+  </div>
+
+  <div class="footer">© 2025–2026 Len's 80sMusicGame.com — All Rights Reserved &nbsp;·&nbsp; <a href="https://80smusicgame.com">Play the Daily Quiz →</a></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SURVEYS = [
+  {
+    id: 'tribe',
+    title: '🎶 WHAT TYPE OF 80s FAN ARE YOU?',
+    options: [
+      { value: 'New Wave',      icon: '🎹', label: 'NEW WAVE',         sub: 'Depeche Mode · The Cure · Tears for Fears',         color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 26 },
+      { value: 'Hair Metal',    icon: '🎸', label: 'HAIR METAL',        sub: 'Mötley Crüe · Def Leppard · Bon Jovi',              color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 15 },
+      { value: 'Pop Royalty',   icon: '👑', label: 'POP ROYALTY',       sub: 'Madonna · Michael Jackson · Prince',                color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 28 },
+      { value: 'Goth',          icon: '🪦', label: 'GOTH / DARK WAVE',  sub: 'Siouxsie · Bauhaus · The Smiths',                   color: '#888',    bg: 'linear-gradient(135deg,#1a1a1a,#333333)', border: '#666',    pct: 14 },
+      { value: 'Heartland Rock',icon: '🇺🇸', label: 'HEARTLAND ROCK',   sub: 'Springsteen · Petty · Mellencamp',                  color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 17 },
+    ]
+  },
+  {
+    id: 'prom',
+    title: '🎓 DID YOU GO TO YOUR PROM?',
+    options: [
+      { value: 'Married',    icon: '💍', label: 'YES — AND I LATER MARRIED MY PROM DATE', sub: '',                                   color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 8  },
+      { value: 'Blast',      icon: '🌠', label: 'YES — HAD AN ABSOLUTE BLAST',            sub: '',                                   color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 42 },
+      { value: 'Hated it',   icon: '😣', label: 'YES — HATED EVERY SECOND OF IT',        sub: '',                                   color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 19 },
+      { value: 'No',         icon: '🤫', label: "NO… AND THAT'S ALL I'M SAYING",          sub: '',                                   color: '#555',    bg: 'linear-gradient(135deg,#333,#555)',       border: '#777',    pct: 31 },
+    ]
+  },
+  {
+    id: 'mall',
+    title: '🛍️ WHAT WAS YOUR FAVORITE MALL STORE?',
+    options: [
+      { value: 'Esprit',       icon: '👔', label: 'ESPRIT',        sub: 'The colorblock queen of the mall',        color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 22 },
+      { value: 'The Limited',  icon: '🛒', label: 'THE LIMITED',   sub: 'Power suits and shoulder pads',           color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 31 },
+      { value: 'Benetton',     icon: '🌍', label: 'BENETTON',      sub: 'United Colors and bold statements',       color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 18 },
+      { value: 'Chess King',   icon: '♟️', label: 'CHESS KING',    sub: 'Where the cool guys shopped',             color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 14 },
+      { value: 'Sam Goody',    icon: '🎵', label: 'SAM GOODY',     sub: 'Your cassette tape headquarters',         color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 15 },
+    ]
+  },
+  {
+    id: 'sat',
+    title: '📝 WHAT DID YOU GET ON YOUR SATs?',
+    options: [
+      { value: 'Over 1400', icon: '🎓', label: 'OVER 1400 — CRUSHED IT',        sub: '',                                              color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 18 },
+      { value: '1000-1399', icon: '📚', label: '1000–1399 — SOLID',              sub: '',                                              color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 39 },
+      { value: '800-999',   icon: '😅', label: '800–999 — GOT IN ANYWAY',        sub: '',                                              color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 28 },
+      { value: 'Mr Hand',   icon: '🎬', label: 'ASK MR. HAND…',                  sub: 'Fast Times reference — you know who you are',   color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 15 },
+    ]
+  },
+  {
+    id: 'coffee',
+    title: '☕ COFFEE WITH ONE PERSON — WHO?',
+    options: [
+      { value: 'Prince',   icon: '🎉', label: 'PRINCE',   sub: "If he'd even show up",              color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 29 },
+      { value: 'Madonna',  icon: '💄', label: 'MADONNA',  sub: "She'd do all the talking",           color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 24 },
+      { value: 'Bono',     icon: '🌎', label: 'BONO',     sub: 'Bring earplugs',                     color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 13 },
+      { value: 'Sade',     icon: '🌹', label: 'SADÉ',     sub: 'The most mysterious conversation ever', color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 34 },
+    ]
+  },
+  {
+    id: 'generation',
+    title: '🎭 WHICH GENERATION CLAIMS YOU?',
+    options: [
+      { value: 'Boomer',    icon: '👴', label: 'BOOMER',     sub: "I was a grown-up when this played. Still love it!",       color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 18 },
+      { value: 'Gen X',     icon: '🎸', label: 'GEN X',      sub: 'THIS IS MY MUSIC. I lived every second of it.',           color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 41 },
+      { value: 'Millennial',icon: '💾', label: 'MILLENNIAL', sub: "I grew up on the tail end. Close enough!",                color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 28 },
+      { value: 'Gen Z',     icon: '📱', label: 'GEN Z',      sub: "I only know this from Stranger Things but I'm obsessed",  color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 13 },
+    ]
+  },
+  {
+    id: 'roadtest',
+    title: '🚗 DID YOU PASS YOUR ROAD TEST FIRST TRY?',
+    options: [
+      { value: 'First try',  icon: '🥇', label: 'DUDE, OF COURSE',          sub: 'Parallel parked like a legend too',       color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 34 },
+      { value: 'Two tries',  icon: '😅', label: 'TOOK ME TWO TRIES',         sub: 'The cones had it coming',                 color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 29 },
+      { value: 'Three+',     icon: '😬', label: 'THREE OR MORE TRIES',       sub: 'I prefer not to discuss it',              color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 14 },
+      { value: 'Dad taught', icon: '🚙', label: 'MY FATHER TAUGHT ME TO DRIVE', sub: "'Nuff said",                           color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 15 },
+      { value: 'Pat Benatar',icon: '🎤', label: 'I LOVE PAT BENATAR',        sub: "Not sure how that's relevant but same",   color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 8  },
+    ]
+  },
+  {
+    id: 'bedroom',
+    title: '🏠 WHAT WAS YOUR TEENAGE BEDROOM LIKE?',
+    options: [
+      { value: 'Spotless',         icon: '✨', label: 'SPOTLESS — MY MOM INSPECTED IT', sub: 'Hospital corners on the bed and everything',     color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 12 },
+      { value: 'Organized chaos',  icon: '📚', label: 'ORGANIZED CHAOS',                sub: 'I knew exactly where everything was',             color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 38 },
+      { value: 'Disaster zone',    icon: '💥', label: 'CERTIFIED DISASTER ZONE',        sub: 'The floor was just a second closet',              color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 31 },
+      { value: 'Posters',          icon: '🎭', label: 'WALL-TO-WALL POSTERS',           sub: "Couldn't see the paint. Duran Duran approved.",   color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 19 },
+    ]
+  },
+  {
+    id: 'mixtape',
+    title: '📼 WHAT WAS ON YOUR FIRST MIXTAPE?',
+    options: [
+      { value: 'Love songs',    icon: '❤️', label: 'PURE LOVE SONGS',       sub: 'Made for someone who never knew it existed',          color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 27 },
+      { value: 'Pump up',       icon: '💪', label: 'PUMP-UP JAMS ONLY',     sub: 'Side A: Rocky IV. Side B: more Rocky IV.',             color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 22 },
+      { value: 'Deep cuts',     icon: '🎙️', label: 'DEEP CUTS & B-SIDES',   sub: "Nobody else had heard these. That was the point.",     color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 19 },
+      { value: 'MTV',           icon: '📺', label: 'WHATEVER WAS ON MTV',   sub: 'Hold record and pray for no DJ chatter',               color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 32 },
+    ]
+  },
+  {
+    id: 'detention',
+    title: '✏️ DID YOU EVER GET DETENTION?',
+    options: [
+      { value: 'Never',          icon: '😇', label: "NEVER — I WAS AN ANGEL",   sub: "Teacher's pet and proud of it",                     color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 21 },
+      { value: 'Once or twice',  icon: '😂', label: 'ONCE OR TWICE',             sub: 'Totally worth it both times',                       color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 35 },
+      { value: 'Regular',        icon: '😎', label: 'REGULAR CUSTOMER',          sub: 'Had my own seat. Mr. Johnson knew my name.',         color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 28 },
+      { value: 'Breakfast Club', icon: '🎬', label: 'I BASICALLY LIVED THERE',   sub: 'The Breakfast Club was a documentary about me',     color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 16 },
+    ]
+  },
+  {
+    id: 'mtvshow',
+    title: '📺 WHAT WAS YOUR FAVORITE MTV SHOW?',
+    options: [
+      { value: 'Behind the Music', icon: '🎵', label: 'BEHIND THE MUSIC', sub: 'The rise, the fall, the comeback',          color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 31 },
+      { value: 'Yo! MTV Raps',     icon: '🎤', label: 'YO! MTV RAPS',     sub: 'Fab 5 Freddy changed everything',           color: '#dc2626', bg: 'linear-gradient(135deg,#b91c1c,#dc2626)', border: '#f87171', pct: 24 },
+      { value: 'Remote Control',   icon: '📺', label: 'REMOTE CONTROL',   sub: 'Ken Ober for president',                    color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 18 },
+      { value: '120 Minutes',      icon: '🕛', label: '120 MINUTES',      sub: 'Stayed up till 2am for this. Worth it.',    color: '#28a745', bg: 'linear-gradient(135deg,#155724,#28a745)', border: '#c3e6cb', pct: 19 },
+      { value: 'They had shows?',  icon: '🤔', label: 'THEY HAD SHOWS?',  sub: 'I thought it was just music videos',        color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 8  },
+    ]
+  },
+  {
+    id: 'briansong',
+    title: "😢 DID YOU CRY WHEN YOU SAW BRIAN'S SONG?",
+    options: [
+      { value: 'Nah',       icon: '😐', label: "NAH...",                         sub: 'Stone cold. Not a tear. Totally fine.',             color: '#555',    bg: 'linear-gradient(135deg,#333,#555)',       border: '#777',    pct: 11 },
+      { value: 'Balled',    icon: '😭', label: 'I BALLED LIKE A NEWBORN BABY',   sub: 'Ugly crying. Full body sobs. No regrets.',          color: '#9d4edd', bg: 'linear-gradient(135deg,#6a0dad,#9d4edd)', border: '#b388ff', pct: 38 },
+      { value: 'Old Yeller',icon: '🐕', label: 'YES AND EVEN MORE FOR OLD YELLER',sub: 'Animals hit different. I stand by this.',           color: '#d97706', bg: 'linear-gradient(135deg,#b45309,#d97706)', border: '#fbbf24', pct: 29 },
+      { value: 'Still cry', icon: '❤️', label: 'YES, STILL TEAR UP WHEN I SEE IT',sub: "Some things never get easier. This is one.",       color: '#FF1493', bg: 'linear-gradient(135deg,#FF1493,#ff69b4)', border: '#ffb6c1', pct: 22 },
+    ]
+  },
+];
+
+/* ---------------------------------------------------------------
+   STATE
+   In-memory object is the source of truth so this runs anywhere.
+   We ALSO try localStorage in a try/catch: it's a no-op in the
+   Claude preview, but on your live site it persists across reloads.
+--------------------------------------------------------------- */
+const STORAGE_KEY = '80sgrid_surveys_v2';
+let answers = {};
+let answered = 0;
+
+function loadSaved() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) answers = JSON.parse(raw) || {};
+  } catch (e) { /* preview / private mode: stay in memory */ }
+}
+function persist() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); } catch (e) {}
+}
+function saveAnswer(id, value) { answers[id] = value; persist(); }
+
+/* ---------------------------------------------------------------
+   HELPERS
+--------------------------------------------------------------- */
+function labelFor(surveyId, value) {
+  const s = SURVEYS.find(x => x.id === surveyId);
+  if (!s) return value;
+  const o = s.options.find(x => x.value === value);
+  return o ? o.label.replace(/\s+/g, ' ').trim() : value;
+}
+function cleanTitle(t) {
+  return t.replace(/^[^\w]+/, '').replace(/\s+/g, ' ').trim();
+}
+function answersReadable() {
+  return SURVEYS
+    .filter(s => answers[s.id])
+    .map(s => ({ q: cleanTitle(s.title), a: labelFor(s.id, answers[s.id]) }));
+}
+
+/* ---------------------------------------------------------------
+   PROGRESS + REVEAL (unchanged behavior)
+--------------------------------------------------------------- */
+function updateProgress() {
+  const pct = (answered / SURVEYS.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = answered + ' / ' + SURVEYS.length;
+  if (answered === SURVEYS.length) {
+    setTimeout(() => {
+      const done = document.getElementById('allDone');
+      done.style.display = 'block';
+      if (!done.dataset.scrolled) {
+        done.dataset.scrolled = '1';
+        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 600);
+  }
+}
+
+function revealResults(card, survey, chosen) {
+  card.classList.add('answered');
+  card.querySelectorAll('.option').forEach(opt => {
+    opt.classList.add('voted');
+    opt.style.cursor = 'default';
+    const val = opt.dataset.value;
+    const pct = parseInt(opt.dataset.pct);
+    const isChosen = val === chosen;
+    if (isChosen) opt.classList.add('selected');
+    else opt.style.opacity = '0.6';
+    const barWrap = opt.querySelector('.option-bar-wrap');
+    if (barWrap) {
+      barWrap.style.display = 'flex';
+      const fill = barWrap.querySelector('.option-bar-fill');
+      barWrap.querySelector('.option-pct').textContent = pct + '%';
+      setTimeout(() => { if(fill) fill.style.width = pct + '%'; }, 80);
+    }
+  });
+  const badge = card.querySelector('.completion-badge');
+  if (badge) badge.style.display = 'block';
+}
+
+function handleVote(card, survey, value) {
+  saveAnswer(survey.id, value);
+  answered++;
+  updateProgress();
+  revealResults(card, survey, value);
+}
+
+function buildCard(survey, savedAnswer) {
+  const card = document.createElement('div');
+  card.className = 'survey-card';
+  card.innerHTML = `
+    <div class="survey-num">${(SURVEYS.indexOf(survey)+1).toString().padStart(2,'0')} / ${SURVEYS.length}</div>
+    <div class="survey-title">${survey.title}</div>
+    <div class="options">
+      ${survey.options.map(opt => `
+        <div class="option" data-value="${opt.value}" data-pct="${opt.pct}"
+          style="background:${opt.bg}; border-color:${opt.border};">
+          <div class="option-icon">${opt.icon}</div>
+          <div class="option-text">
+            <div class="option-label">${opt.label}</div>
+            ${opt.sub ? `<div class="option-sub">${opt.sub}</div>` : ''}
+          </div>
+          <div class="option-bar-wrap">
+            <div class="option-pct">0%</div>
+            <div class="option-bar-track">
+              <div class="option-bar-fill" style="background:${opt.color};"></div>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="completion-badge">✓ ANSWERED — THANKS FOR PLAYING!</div>
+  `;
+
+  if (savedAnswer) {
+    answered++;
+    revealResults(card, survey, savedAnswer);
+  } else {
+    card.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (card.classList.contains('answered')) return;
+        handleVote(card, survey, opt.dataset.value);
+      });
+    });
+  }
+  return card;
+}
+
+/* ---------------------------------------------------------------
+   PROFILE GENERATION (Claude in Claude)
+   In the Claude preview the API key is handled automatically.
+   On your live site, route this fetch through a small proxy
+   (e.g. a Supabase Edge Function) so your key stays server-side.
+--------------------------------------------------------------- */
+const LOADING_LINES = [
+  'Rewinding the cassette…',
+  'Reading between the lines…',
+  'Adjusting the tracking on the VCR…',
+  'Profiling your inner teenager…',
+  'Sensing a contradiction or two…',
+  'Blowing dust off the crystal ball…',
+  'Getting a read on your whole deal…',
+];
+let loadingTimer = null;
+
+function cycleLoading() {
+  const el = document.getElementById('loadingText');
+  let i = 0;
+  el.textContent = LOADING_LINES[0];
+  loadingTimer = setInterval(() => {
+    i = (i + 1) % LOADING_LINES.length;
+    el.textContent = LOADING_LINES[i];
+  }, 1600);
+}
+function stopLoading() { if (loadingTimer) { clearInterval(loadingTimer); loadingTimer = null; } }
+
+function buildPrompt() {
+  const list = answersReadable().map(x => `- ${x.q} → ${x.a}`).join('\n');
+  return `You are a campy 1980s mall psychic who is secretly a frighteningly good judge of people. Someone just filled out a nostalgia quiz. You receive their answers as PRIVATE EVIDENCE only, clues to their inner wiring. Your job is to describe WHO THEY ARE, never what they picked. The magic is that you never show your work.
+
+Hard rules:
+- NEVER name, quote, restate, or hint at the quiz questions or their chosen options. Do not mention proms, mixtapes, malls, stores, tests, scores, bedrooms, detention, generations, crushes, driving, crying at movies, or any specific answer. If you notice yourself about to reference an answer, stop and translate it into a personality trait instead.
+- Read the PATTERN across everything: their emotional wiring, how they love and who they love loudly vs quietly, how they perform vs hide, their relationship to rules, order, and their own nostalgia, their soft spots and their bravado. Name one or two tensions or contradictions you "sense" in them.
+- Make it feel like an eerily accurate cold read that lands, the kind where they think "wait, how did you know that." Warm, funny, a little roasty, never mean. Full campy mystic voice.
+
+Their private evidence (do NOT repeat any of this back to them):
+${list}
+
+Return ONLY valid JSON. No markdown, no code fences, no preamble. Use exactly these keys:
+{
+  "archetype": "a punchy 2 to 4 word personality-type title in ALL CAPS, invented for them, about their character",
+  "tagline": "one witty sentence about who they are at their core, under 15 words",
+  "reading": "two short punchy paragraphs, about 100 words total, separated by \\n\\n. A read on their psyche, temperament, and how they move through the world. Absolutely no quiz answers named.",
+  "signature_song": "one real 80s song and artist whose emotional vibe matches their personality, format: Song Title — Artist",
+  "spirit_movie": "one real 80s movie whose energy matches who they are",
+  "final_verdict": "one campy stamp-of-approval sentence about their character"
+}`;
+}
+
+function safeParse(text) {
+  let t = (text || '').trim().replace(/^```(?:json)?/i, '').replace(/```$/,'').trim();
+  const start = t.indexOf('{');
+  const end = t.lastIndexOf('}');
+  if (start !== -1 && end !== -1) t = t.slice(start, end + 1);
+  return JSON.parse(t);
+}
+
+async function generateProfile() {
+  const btn = document.getElementById('generateBtn');
+  const regen = document.getElementById('regenBtn');
+  if (btn) btn.disabled = true;
+  if (regen) regen.disabled = true;
+
+  document.getElementById('allDone').style.display = 'none';
+  document.getElementById('profileResult').style.display = 'none';
+  const loadingEl = document.getElementById('profileLoading');
+  loadingEl.style.display = 'block';
+  loadingEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  cycleLoading();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: buildPrompt() }],
+      }),
+    });
+    const data = await res.json();
+    const text = (data.content || [])
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('\n');
+    const profile = safeParse(text);
+    renderProfile(profile);
+  } catch (err) {
+    console.error(err);
+    stopLoading();
+    loadingEl.style.display = 'none';
+    document.getElementById('allDone').style.display = 'block';
+    showToast('The crystal ball fogged up. Try again!');
+  } finally {
+    if (btn) btn.disabled = false;
+    if (regen) regen.disabled = false;
+  }
+}
+
+let lastProfile = null;
+function renderProfile(p) {
+  stopLoading();
+  lastProfile = p;
+  document.getElementById('profileLoading').style.display = 'none';
+
+  document.getElementById('pArchetype').textContent = p.archetype || 'THE ENIGMA';
+  document.getElementById('pTagline').textContent = p.tagline || '';
+  const readingEl = document.getElementById('pReading');
+  readingEl.innerHTML = '';
+  (p.reading || '').split(/\n\n+/).forEach(par => {
+    if (!par.trim()) return;
+    const el = document.createElement('p');
+    el.textContent = par.trim();
+    readingEl.appendChild(el);
+  });
+  document.getElementById('pSong').textContent = p.signature_song || '—';
+  document.getElementById('pMovie').textContent = p.spirit_movie || '—';
+  document.getElementById('pVerdict').textContent = p.final_verdict || '';
+
+  const result = document.getElementById('profileResult');
+  result.style.display = 'block';
+  result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ---------------------------------------------------------------
+   SHARE / COPY
+--------------------------------------------------------------- */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+async function copyText(text, okMsg) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast(okMsg);
+  } catch (e) {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast(okMsg); }
+    catch (_) { showToast('Copy failed — long-press to copy.'); }
+    document.body.removeChild(ta);
+  }
+}
+
+// Change this one line if you ever want a different link (e.g. /the-booth, /reading)
+const SHARE_URL = '80smusicgame.com/soul';
+
+// Native share sheet where available (phones can post straight to socials,
+// messages, etc.), clean clipboard fallback everywhere else.
+async function shareOrCopy(text, okMsg, title) {
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: title || '80sMusicGame.com', text });
+      return;
+    } catch (e) {
+      if (e && e.name === 'AbortError') return; // user dismissed the sheet
+    }
+  }
+  copyText(text, okMsg);
+}
+
+function shareAnswers() {
+  const lines = answersReadable().map(x => `${x.q}\n→ ${x.a}`).join('\n\n');
+  const text = `🎸 MY 80s SURVEY ANSWERS\n\n${lines}\n\n🔮 Get your own 80s personality reading → ${SHARE_URL}`;
+  shareOrCopy(text, 'Copied — go post it!', 'My 80s Survey Answers');
+}
+
+function shareProfile() {
+  if (!lastProfile) return;
+  const p = lastProfile;
+  const text =
+`🔮 MY OFFICIAL 80s PERSONALITY PROFILE
+
+${p.archetype}
+${p.tagline ? '"' + p.tagline + '"\n' : ''}
+${(p.reading || '').replace(/\n\n+/g, '\n\n')}
+
+🎵 Signature Song: ${p.signature_song || '—'}
+🎬 Spirit Movie: ${p.spirit_movie || '—'}
+
+${p.final_verdict || ''}
+
+🎸 Think you know the 80s? Get your own reading → ${SHARE_URL}`;
+  shareOrCopy(text, 'Copied — share your reading!', 'My 80s Personality Profile');
+}
+
+/* ---------------------------------------------------------------
+   INIT
+--------------------------------------------------------------- */
+function init() {
+  loadSaved();
+  const list = document.getElementById('surveyList');
+  SURVEYS.forEach(s => list.appendChild(buildCard(s, answers[s.id] || null)));
+  updateProgress();
+
+  document.getElementById('generateBtn').addEventListener('click', generateProfile);
+  document.getElementById('regenBtn').addEventListener('click', generateProfile);
+  document.getElementById('copyAnswersBtn').addEventListener('click', shareAnswers);
+  document.getElementById('copyProfileBtn').addEventListener('click', shareProfile);
+}
+
+init();
+</script>
+</body>
+</html>
