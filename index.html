@@ -591,7 +591,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   </div>
 <div class="nav-replay-note">&#10003; Completed quizzes can be replayed anytime &mdash; they won&rsquo;t use a play.</div>
   <div class="welcome-banner-body">
-    You're playing <strong>1 of 70 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
+    You're playing <strong>1 of 90 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
     <div class="welcome-banner-pills">
       <span class="welcome-pill">🎯 2 free plays per day</span>
       <span class="welcome-pill">🔓 Unlock more with a code or email</span>
@@ -1923,10 +1923,10 @@ document.getElementById('initial2').addEventListener('input',function(){if(this.
 document.getElementById('initial3').addEventListener('keypress',function(e){if(e.key==='Enter')saveHighScore();});
 
 /* ===== NAV ===== */
-const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'}];
-const NAV_GROUPS=[ALL_NAV_QUIZZES.slice(0,10),ALL_NAV_QUIZZES.slice(10,20),ALL_NAV_QUIZZES.slice(20,30),ALL_NAV_QUIZZES.slice(30,40),ALL_NAV_QUIZZES.slice(40,50),ALL_NAV_QUIZZES.slice(50,60),ALL_NAV_QUIZZES.slice(60)];
-const GROUP_LABELS=['1 – 10','11 – 20','21 – 30','31 – 40','41 – 50','51 – 60','61 – 70'];
-let navActiveGroup=QUIZ_NUM<=10?0:QUIZ_NUM<=20?1:QUIZ_NUM<=30?2:QUIZ_NUM<=40?3:QUIZ_NUM<=50?4:QUIZ_NUM<=60?5:6;
+const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'},{n:71,f:'index.html?id=71',c:'easy'},{n:72,f:'index.html?id=72',c:'medium'},{n:73,f:'index.html?id=73',c:'hard'},{n:74,f:'index.html?id=74',c:'easy'},{n:75,f:'index.html?id=75',c:'medium'},{n:76,f:'index.html?id=76',c:'hard'},{n:77,f:'index.html?id=77',c:'easy'},{n:78,f:'index.html?id=78',c:'medium'},{n:79,f:'index.html?id=79',c:'hard'},{n:80,f:'index.html?id=80',c:'easy'},{n:81,f:'index.html?id=81',c:'medium'},{n:82,f:'index.html?id=82',c:'hard'},{n:83,f:'index.html?id=83',c:'easy'},{n:84,f:'index.html?id=84',c:'medium'},{n:85,f:'index.html?id=85',c:'hard'},{n:86,f:'index.html?id=86',c:'easy'},{n:87,f:'index.html?id=87',c:'medium'},{n:88,f:'index.html?id=88',c:'hard'},{n:89,f:'index.html?id=89',c:'easy'},{n:90,f:'index.html?id=90',c:'medium'}];
+const NAV_GROUPS=[];for(let _gi=0;_gi<ALL_NAV_QUIZZES.length;_gi+=10)NAV_GROUPS.push(ALL_NAV_QUIZZES.slice(_gi,_gi+10));
+const GROUP_LABELS=NAV_GROUPS.map(g=>g[0].n+' – '+g[g.length-1].n);
+let navActiveGroup=Math.min(Math.floor((QUIZ_NUM-1)/10),NAV_GROUPS.length-1);
 function hasPlayedQuiz(n){const key=n===1?'quiz1Score':'quiz'+n+'Score';return parseInt(localStorage.getItem(key)||'0')>0;}
 function showNavGroup(idx){navActiveGroup=idx;document.querySelectorAll('.group-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);});renderNavGrid();}
 function renderNavGrid(){
@@ -2183,12 +2183,22 @@ const QUIZ_NAMES = {
   62:'Pop, R&B & Hip-Hop Royalty',63:'Imagine The Hair Spray These Bands used!',
   64:'Three Continents, One Era',65:'Songs With a Color in the Title',
   66:'Three people would never have coffee together',67:'MTV Video of the Year Winners',
-  68:'Born and Raised in New York',69:'Born in LA',70:'80s Legends Who Never Quit'
+  68:'Born and Raised in New York',69:'Born in LA',70:'80s Legends Who Never Quit',
+  71:'Massive 80s Rock Frontmen',72:'Transatlantic Chart-Toppers',
+  73:'College Radio Legends',74:'New Wave & Synth-Pop Icons',
+  75:'Pioneers of Alternative Rock',76:'Sophisticated New Wave',
+  77:'NYC Icons & British Royalty',78:'Post-Punk Masters of Rhythm',
+  79:'Left of the Dial Indie',80:'Alt-Rock and New Wave Giants',
+  81:'New Wave and Alternative Duos',82:'Alternative Divas & Crooners',
+  83:'Icons of the MTV Screen',84:'Political Edge and Power Pop',
+  85:'Indie Rock Legends',86:'Electronic Beats and Bars',
+  87:'Gothic Romance and Pop Soul',88:'Legends of the Left Dial',
+  89:'High Art and Street Beats',90:'Alternative British Landscapes'
 };
 function getQuizUrl(n){ return 'index.html?id='+n; }
 function initMcq(){
   var completed=[];
-  for(var i=1;i<=70;i++){
+  for(var i=1;i<=90;i++){
     var score=parseInt(localStorage.getItem('quiz'+i+'Score')||'0');
     if(score>0) completed.push({num:i,score:score});
   }
@@ -2311,16 +2321,19 @@ function getLocalDateStr(d){
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 function getDailyQuizId(){
-  // Soft launch starts March 30 2026 = Quiz 1, rolls forward daily at local midnight
-  // Use local date strings to avoid UTC/timezone offset issues (EST vs EDT, etc.)
-  var launchStr='2026-03-30';
+  // Rotation anchor: on 2026-07-26 the daily quiz is #71 (first of the new 71–90 batch).
+  // From there it rolls forward one quiz per day and wraps through all 90 continuously
+  // (…90 → 1 → 2…). Local date strings avoid UTC/timezone offset issues (EST vs EDT, etc.)
+  var anchorStr='2026-07-26';
+  var anchorQuiz=71;
+  var totalQuizzes=90;
   var now=new Date();
   var todayStr=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var launch=new Date(launchStr+'T00:00:00');
+  var anchor=new Date(anchorStr+'T00:00:00');
   var today=new Date(todayStr+'T00:00:00');
-  var daysSince=Math.round((today-launch)/86400000);
-  if(daysSince<0) daysSince=0;
-  return (daysSince % 70)+1;
+  var daysSince=Math.round((today-anchor)/86400000);
+  var idx=(((anchorQuiz-1+daysSince)%totalQuizzes)+totalQuizzes)%totalQuizzes;
+  return idx+1;
 }
 function quizInit(){
   const params=new URLSearchParams(window.location.search);
