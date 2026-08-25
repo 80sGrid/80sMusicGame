@@ -1,3 +1,6 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Murray Hill Collective</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -310,6 +313,28 @@
   .reveal { opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* ============ SMALL SCREENS ============ */
+  @media (max-width: 640px){
+    .wrap { width: min(1120px, 90vw); }
+    body { font-size: 16px; }
+    .topbar .wrap { height: 56px; }
+    .brandmark b { font-size: 1rem; }
+    .brandmark .tag { display: none; }
+    .hero-cta { width: 100%; }
+    .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+    .hero-meta { gap: 1.5rem 2rem; }
+    .hero-meta .k { font-size: 2rem; }
+    .btn { padding: .8rem 1.2rem; }
+    .slot { flex-wrap: wrap; }
+    .tier { padding: 1.6rem; }
+    .tier .flag { right: 1rem; }
+    .apply { padding: 1.6rem; }
+    .foot { flex-direction: column; }
+  }
+  @media (max-width: 400px){
+    .hero-meta { flex-direction: column; gap: 1.4rem; }
+  }
 </style>
 
 <div class="topbar">
