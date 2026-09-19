@@ -515,7 +515,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div class="stats-sub">PLAYER PROFILE</div>
 <div class="stat-row"><span class="stat-label">QUIZZES TODAY</span><span class="stat-value" id="statToday">0</span></div>
 <div class="stat-row"><span class="stat-label">TOTAL PLAYED</span><span class="stat-value" id="statTotal">0</span></div>
-<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0/810</span></div>
+<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0/855</span></div>
 <div class="stat-row"><span class="stat-label">BEST QUIZ SCORE</span><span class="stat-value" id="statBest">0/9</span></div>
 <div class="stat-row"><span class="stat-label">&#128293; DAY STREAK</span><span class="stat-value" id="statStreak">0</span></div>
 <button class="stats-close" onclick="toggleStats()">CLOSE</button>
@@ -596,7 +596,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   </div>
 <div class="nav-replay-note">&#10003; Completed quizzes can be replayed anytime &mdash; they won&rsquo;t use a play.</div>
   <div class="welcome-banner-body">
-    You're playing <strong>1 of 90 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
+    You're playing <strong>1 of 95 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
     <div class="welcome-banner-pills">
       <span class="welcome-pill">🎯 2 free plays per day</span>
       <span class="welcome-pill">🔓 Unlock more with a code or email</span>
@@ -1051,12 +1051,12 @@ function hasNewPlaysLeft(){return getUnlockType()==='unlimited'||getQuizzesPlaye
 function loadStats(){
   const today=getQuizzesPlayedToday();const limit=getEffectiveDailyLimit();
   const total=parseInt(localStorage.getItem('totalQuizzesPlayed')||'0');
-  let cum=0;for(let i=1;i<=90;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
+  let cum=0;for(let i=1;i<=95;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
   const best=parseInt(localStorage.getItem('bestQuizScore')||'0');
   const streak=parseInt(localStorage.getItem('playStreak')||'0');
   document.getElementById('statToday').textContent=today+' / '+(limit>900?'∞':limit);
   document.getElementById('statTotal').textContent=total;
-  document.getElementById('statCumulative').textContent=cum+'/810';
+  document.getElementById('statCumulative').textContent=cum+'/855';
   document.getElementById('statBest').textContent=best+'/9';
   document.getElementById('statStreak').textContent=streak+' days';
 }
@@ -1986,7 +1986,7 @@ document.getElementById('initial2').addEventListener('input',function(){if(this.
 document.getElementById('initial3').addEventListener('keypress',function(e){if(e.key==='Enter')saveHighScore();});
 
 /* ===== NAV ===== */
-const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'},{n:71,f:'index.html?id=71',c:'easy'},{n:72,f:'index.html?id=72',c:'medium'},{n:73,f:'index.html?id=73',c:'hard'},{n:74,f:'index.html?id=74',c:'easy'},{n:75,f:'index.html?id=75',c:'medium'},{n:76,f:'index.html?id=76',c:'hard'},{n:77,f:'index.html?id=77',c:'easy'},{n:78,f:'index.html?id=78',c:'medium'},{n:79,f:'index.html?id=79',c:'hard'},{n:80,f:'index.html?id=80',c:'easy'},{n:81,f:'index.html?id=81',c:'medium'},{n:82,f:'index.html?id=82',c:'hard'},{n:83,f:'index.html?id=83',c:'easy'},{n:84,f:'index.html?id=84',c:'medium'},{n:85,f:'index.html?id=85',c:'hard'},{n:86,f:'index.html?id=86',c:'easy'},{n:87,f:'index.html?id=87',c:'medium'},{n:88,f:'index.html?id=88',c:'hard'},{n:89,f:'index.html?id=89',c:'easy'},{n:90,f:'index.html?id=90',c:'medium'}];
+const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'},{n:71,f:'index.html?id=71',c:'easy'},{n:72,f:'index.html?id=72',c:'medium'},{n:73,f:'index.html?id=73',c:'hard'},{n:74,f:'index.html?id=74',c:'easy'},{n:75,f:'index.html?id=75',c:'medium'},{n:76,f:'index.html?id=76',c:'hard'},{n:77,f:'index.html?id=77',c:'easy'},{n:78,f:'index.html?id=78',c:'medium'},{n:79,f:'index.html?id=79',c:'hard'},{n:80,f:'index.html?id=80',c:'easy'},{n:81,f:'index.html?id=81',c:'medium'},{n:82,f:'index.html?id=82',c:'hard'},{n:83,f:'index.html?id=83',c:'easy'},{n:84,f:'index.html?id=84',c:'medium'},{n:85,f:'index.html?id=85',c:'hard'},{n:86,f:'index.html?id=86',c:'easy'},{n:87,f:'index.html?id=87',c:'medium'},{n:88,f:'index.html?id=88',c:'hard'},{n:89,f:'index.html?id=89',c:'easy'},{n:90,f:'index.html?id=90',c:'medium'},{n:91,f:'index.html?id=91',c:'medium'},{n:92,f:'index.html?id=92',c:'medium'},{n:93,f:'index.html?id=93',c:'easy'},{n:94,f:'index.html?id=94',c:'medium'},{n:95,f:'index.html?id=95',c:'medium'}];
 const NAV_GROUPS=[];for(let _gi=0;_gi<ALL_NAV_QUIZZES.length;_gi+=10)NAV_GROUPS.push(ALL_NAV_QUIZZES.slice(_gi,_gi+10));
 const GROUP_LABELS=NAV_GROUPS.map(g=>g[0].n+' – '+g[g.length-1].n);
 let navActiveGroup=Math.min(Math.floor((QUIZ_NUM-1)/10),NAV_GROUPS.length-1);
@@ -2256,12 +2256,13 @@ const QUIZ_NAMES = {
   83:'Icons of the MTV Screen',84:'Political Edge and Power Pop',
   85:'Indie Rock Legends',86:'Electronic Beats and Bars',
   87:'Gothic Romance and Pop Soul',88:'Legends of the Left Dial',
-  89:'High Art and Street Beats',90:'Alternative British Landscapes'
+  89:'High Art and Street Beats',90:'Alternative British Landscapes',
+  91:'Liverpool Calling',92:'Jangle and Gloom',93:'Synth Pop Sunrise',94:'Ants, Bows and Haircuts',95:'The British Wit Parade'
 };
 function getQuizUrl(n){ return 'index.html?id='+n; }
 function initMcq(){
   var completed=[];
-  for(var i=1;i<=90;i++){
+  for(var i=1;i<=95;i++){
     var score=parseInt(localStorage.getItem('quiz'+i+'Score')||'0');
     if(score>0) completed.push({num:i,score:score});
   }
@@ -2396,7 +2397,10 @@ function getDailyQuizId(){
   var today=new Date(todayStr+'T00:00:00');
   var daysSince=Math.round((today-anchor)/86400000);
   var idx=(((anchorQuiz-1+daysSince)%totalQuizzes)+totalQuizzes)%totalQuizzes;
-  return idx+1;
+  var n=idx+1;
+  // Quizzes 41-44 and 46 were exact copies of 35-38 and 40, so those days serve fresh quizzes 91-95 instead.
+  var swap={41:91,42:92,43:93,44:94,46:95};
+  return swap[n]||n;
 }
 function quizInit(){
   const params=new URLSearchParams(window.location.search);
