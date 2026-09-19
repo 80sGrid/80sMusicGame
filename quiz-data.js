@@ -632,6 +632,7 @@ window.QUIZ_DATA = [
     r: ["Year It Premiered", "Host's Name", "Famous Guest Before They Were Famous"],
     d: "medium",
     yn: [],
+    ch: {"0-0": ["1987", "1989", "1992"], "0-1": ["1985", "1988", "1991"], "0-2": ["1981", "1984", "1987"]},
     notes: ["MTV didn't just play music videos — it launched original shows that became cultural landmarks of the decade.", "Each show in this grid had a very different audience and a very different vibe — but all three defined what MTV meant to an entire generation.", "Think you remember when they aired, who hosted, and what made each one iconic?"],
     ans: {
       "0-0": ["1987"],
@@ -645,9 +646,9 @@ window.QUIZ_DATA = [
       "2-2": ["nirvana", "kurt cobain"]
     },
     mc: {
-      "0-0": ["1987", "1986", "1989"],
-      "0-1": ["1988", "1987", "1990"],
-      "0-2": ["1987", "1986", "1988"],
+      "0-0": ["1987", "1989", "1992"],
+      "0-1": ["1988", "1985", "1991"],
+      "0-2": ["1987", "1981", "1984"],
       "1-0": ["Ken Ober", "Colin Quinn", "Dave Coulier"],
       "1-1": ["Fab 5 Freddy", "Ed Lover", "Doctor Dre"],
       "1-2": ["Riki Rachtman", "Dee Snider", "Lemmy Kilmister"],
@@ -1694,6 +1695,7 @@ window.QUIZ_DATA = [
     r: ["Biggest Hit Song", "Home Country", "Year of Biggest Hit"],
     d: "easy",
     yn: [],
+    ch: {"2-0": ["1987", "1989", "1992"], "2-1": ["1985", "1988", "1991"], "2-2": ["1976", "1979", "1982"]},
     notes: ["Rick Astley had a debut single that hit #1 in 25 countries in 1987. He was 21 years old. The song later became the basis of the internet phenomenon \"Rickrolling.\"", "Debbie Gibson wrote, produced, and performed a debut single in 1988 — making her the youngest artist ever (at 18) to write, produce, and perform a Billboard #1 hit solo.", "ABC formed in the early 80s. Their debut album The Lexicon of Love (1982) is one of the most perfectly produced pop records of the decade — all string arrangements and sharp suits.", "All three acts were known for immaculate, radio-friendly pop production — though ABC's was far more lush and orchestrated than the Stock Aitken Waterman machine behind Rick Astley."],
     ans: {
       "0-0": ["never gonna give you up", "together forever", "she wants to dance with me"],
@@ -1703,7 +1705,7 @@ window.QUIZ_DATA = [
       "1-1": ["usa", "united states", "america", "new york", "long island"],
       "1-2": ["england", "uk", "united kingdom", "sheffield"],
       "2-0": ["1987"],
-      "2-1": ["1988", "1987"],
+      "2-1": ["1988"],
       "2-2": ["1982"]
     },
     mc: {
@@ -1713,9 +1715,9 @@ window.QUIZ_DATA = [
       "1-0": ["England", "USA", "Australia"],
       "1-1": ["USA", "England", "Canada"],
       "1-2": ["England", "USA", "Ireland"],
-      "2-0": ["1987", "1985", "1989"],
-      "2-1": ["1988", "1986", "1990"],
-      "2-2": ["1982", "1984", "1986"]
+      "2-0": ["1987", "1989", "1992"],
+      "2-1": ["1988", "1985", "1991"],
+      "2-2": ["1982", "1976", "1979"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 51", desc: "Can you match Rick Astley, Debbie Gibson & ABC to their songs, hits, and chart history? Play Quiz 51 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz51.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Pure Pop Perfection on 80sMusicGame.com! Rick Astley, Debbie Gibson & ABC — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 51 • Pure Pop Perfection\nRick Astley, Debbie Gibson & ABC\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Rick Astley, Debbie Gibson & ABC — do you know ALL their hits? Quiz 51 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Pure Pop Perfection on 80sMusicGame.com 🎸 Rick Astley, Debbie Gibson & ABC. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz51.html" }
@@ -1802,6 +1804,7 @@ window.QUIZ_DATA = [
     r: ["Biggest Hit Song", "Home City", "Year of Biggest Hit"],
     d: "medium",
     yn: [],
+    ch: {"2-0": ["1984", "1987", "1990"], "2-1": ["1979", "1982", "1985"], "2-2": ["1976", "1979", "1982"]},
     notes: ["Dominatrix was a New York electro-dance duo. their debut single became an unlikely underground club hit and influenced countless electronic producers. It sampled \"The Lion Sleeps Tonight\" in the most unexpected way.", "Romeo Void formed in 1978's post-punk scene. a track that got heavy MTV rotation featured a lyric that made it one of the more provocative radio hits of the era.", "Modern Englishhad a track that was initially a modest hit but became a genuine classic through its placement in the film Valley Girl — proof that the right movie can make a song immortal.", "All three acts are cult favorites with songs that outlived their chart positions by decades."],
     ans: {
       "0-0": ["the dominatrix sleeps tonight", "dominatrix sleeps tonight"],
@@ -1811,7 +1814,7 @@ window.QUIZ_DATA = [
       "1-1": ["san francisco", "sf", "california", "usa"],
       "1-2": ["colchester", "england", "uk"],
       "2-0": ["1984"],
-      "2-1": ["1984", "1982"],
+      "2-1": ["1982"],
       "2-2": ["1982"]
     },
     mc: {
@@ -1821,9 +1824,9 @@ window.QUIZ_DATA = [
       "1-0": ["New York", "Los Angeles", "Chicago"],
       "1-1": ["San Francisco", "New York", "Los Angeles"],
       "1-2": ["Colchester", "London", "Manchester"],
-      "2-0": ["1984", "1981", "1987"],
-      "2-1": ["1984", "1983", "1986"],
-      "2-2": ["1982", "1985", "1988"]
+      "2-0": ["1984", "1987", "1990"],
+      "2-1": ["1982", "1979", "1985"],
+      "2-2": ["1982", "1976", "1979"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 54", desc: "Can you match Dominatrix, Romeo Void & Modern English to their songs, hits, and chart history? Play Quiz 54 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz54.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Cult Classics You Won't Admit You Know on 80sMusicGame.com! Dominatrix, Romeo Void & Modern English — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 54 • Cult Classics You Won't Admit You Know\nDominatrix, Romeo Void & Modern English\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Dominatrix, Romeo Void & Modern English — do you know ALL their hits? Quiz 54 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Cult Classics You Won't Admit You Know on 80sMusicGame.com 🎸 Dominatrix, Romeo Void & Modern English. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz54.html" }
@@ -1835,9 +1838,10 @@ window.QUIZ_DATA = [
     t: "All-British AOR",
     sub: "Steve Winwood, Asia & Supertramp",
     a: ["Steve Winwood", "Asia", "Supertramp"],
-    r: ["Biggest Hit Song", "Home Country", "Year of Biggest 80s Hit"],
+    r: ["Biggest Hit Song", "Home Country", "Year of Their Biggest Hit"],
     d: "medium",
     yn: [],
+    ch: {"2-0": ["1986", "1989", "1992"], "2-1": ["1979", "1982", "1985"], "2-2": ["1979", "1981", "1984"]},
     notes: ["Steve Winwood started his career as a teenager in the Spencer Davis Group in the mid-60s, then Traffic, then Blind Faith, before finally hitting his commercial peak with one of their a 1986 single that hit #1 and won the Grammy for Record of the Year.", "Asia were a supergroup formed in 1981 from members of Yes, King Crimson, Emerson Lake & Palmer, and The Buggles. Their debut single one of their signature songs — it #1 in the US in 1982.", "Supertramp in 1969 and reached their commercial peak with Breakfast in America (1979). one of their a signature riff remains one of the most recognizable in rock history.", "All three acts started in prog or folk-rock and evolved into polished arena-ready AOR — a quintessentially British journey."],
     ans: {
       "0-0": ["higher love", "back in the high life again", "valerie", "while you see a chance"],
@@ -1848,7 +1852,7 @@ window.QUIZ_DATA = [
       "1-2": ["england", "uk", "united kingdom"],
       "2-0": ["1986"],
       "2-1": ["1982"],
-      "2-2": ["1979", "1985"]
+      "2-2": ["1979"]
     },
     mc: {
       "0-0": ["Higher Love", "Don't Stop Believin'", "Jump"],
@@ -1857,9 +1861,9 @@ window.QUIZ_DATA = [
       "1-0": ["England", "USA", "Ireland"],
       "1-1": ["England", "USA", "Australia"],
       "1-2": ["England", "USA", "Canada"],
-      "2-0": ["1986", "1981", "1988"],
-      "2-1": ["1982", "1984", "1986"],
-      "2-2": ["1979", "1982", "1988"]
+      "2-0": ["1986", "1989", "1992"],
+      "2-1": ["1982", "1979", "1985"],
+      "2-2": ["1979", "1981", "1984"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 55", desc: "Can you match Steve Winwood, Asia & Supertramp to their songs, hits, and chart history? Play Quiz 55 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz55.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played All-British AOR on 80sMusicGame.com! Steve Winwood, Asia & Supertramp — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 55 • All-British AOR\nSteve Winwood, Asia & Supertramp\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Steve Winwood, Asia & Supertramp — do you know ALL their hits? Quiz 55 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played All-British AOR on 80sMusicGame.com 🎸 Steve Winwood, Asia & Supertramp. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz55.html" }
@@ -1946,6 +1950,7 @@ window.QUIZ_DATA = [
     r: ["Song with a Country in the Title", "Where the Band is From", "Year of That Song"],
     d: "easy",
     yn: [],
+    ch: {"2-0": ["1982", "1985", "1988"], "2-1": ["1978", "1981", "1984"], "2-2": ["1977", "1980", "1983"]},
     notes: ["Toto had a signature track that became one of the most enduring songs of the decade — it never really left the cultural conversation. The band were LA session musicians who formed their own group in 1977.", "Kim Wilde had a knack for geographic song titles — two of her signature tracks both charted strongly in the UK. She is the daughter of 50s rocker Marty Wilde.", "Big Country were from Dunfermline, Scotland. one of their a signature track used guitar effects to mimic the sound of bagpipes — one of the most distinctive sonic signatures of the era. Lead singer Stuart Adamson co-created the technique.", "Bonus trivia: all three of these songs have been used in TV shows or films in the decades since their release — none of them have aged a day."],
     ans: {
       "0-0": ["africa"],
@@ -1965,9 +1970,9 @@ window.QUIZ_DATA = [
       "1-0": ["USA", "England", "Australia"],
       "1-1": ["England", "USA", "Sweden"],
       "1-2": ["Scotland", "England", "Ireland"],
-      "2-0": ["1982", "1984", "1980"],
-      "2-1": ["1981", "1983", "1985"],
-      "2-2": ["1983", "1981", "1985"]
+      "2-0": ["1982", "1985", "1988"],
+      "2-1": ["1981", "1978", "1984"],
+      "2-2": ["1983", "1977", "1980"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 58", desc: "Can you match Toto, Kim Wilde & Big Country to their songs, hits, and chart history? Play Quiz 58 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz58.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Wow, What a Trio We Have Here on 80sMusicGame.com! Toto, Kim Wilde & Big Country — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 58 • Wow, What a Trio We Have Here\nToto, Kim Wilde & Big Country\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Toto, Kim Wilde & Big Country — do you know ALL their hits? Quiz 58 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Wow, What a Trio We Have Here on 80sMusicGame.com 🎸 Toto, Kim Wilde & Big Country. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz58.html" }
@@ -2051,9 +2056,10 @@ window.QUIZ_DATA = [
     t: "Eclectic Trio of New Romanticism",
     sub: "Paul Weller, Paul Young & Elvis Costello",
     a: ["Paul Weller", "Paul Young", "Elvis Costello"],
-    r: ["Biggest Hit Song", "Home Country", "Year of Biggest 80s Hit"],
+    r: ["Biggest Hit Song", "Home Country", "Year of Their Biggest Hit"],
     d: "medium",
     yn: [],
+    ch: {"2-0": ["1980", "1983", "1986"], "2-1": ["1982", "1985", "1988"], "2-2": ["1979", "1982", "1985"]},
     notes: ["Paul Weller fronted The Jam (one of the greatest punk/mod bands ever), then The Style Council, then went solo — each phase distinct and critically respected. a classic British singles of the decade.", "Paul Young had one of the finest blue-eyed soul voices of the 80s. He covered a well-known song that hit #1 in the US in 1985. His real name is actually Paul Young — no stage name needed.", "Elvis Costello was born Declan Patrick MacManus. His prolific output spans new wave, country, classical, and jazz. \"Oliver's Army\" (1979) is one of the most-played songs in BBC radio history, despite its dark lyrical content.", "Fun fact: Paul Weller was known as \"The Modfather\" for his influence on British fashion and music — a title that says a lot about how seriously the British take their style."],
     ans: {
       "0-0": ["going underground", "town called malice", "walls come tumbling down", "shout to the top", "the eton rifles"],
@@ -2062,9 +2068,9 @@ window.QUIZ_DATA = [
       "1-0": ["england", "uk"],
       "1-1": ["england", "uk"],
       "1-2": ["england", "uk"],
-      "2-0": ["1982", "1980"],
+      "2-0": ["1980"],
       "2-1": ["1985"],
-      "2-2": ["1979", "1983"]
+      "2-2": ["1979"]
     },
     mc: {
       "0-0": ["Going Underground", "Don't Stop Believin'", "Jump"],
@@ -2073,9 +2079,9 @@ window.QUIZ_DATA = [
       "1-0": ["England", "USA", "Ireland"],
       "1-1": ["England", "USA", "Ireland"],
       "1-2": ["England", "USA", "Ireland"],
-      "2-0": ["1982", "1979", "1985"],
-      "2-1": ["1985", "1983", "1987"],
-      "2-2": ["1979", "1977", "1975"]
+      "2-0": ["1980", "1983", "1986"],
+      "2-1": ["1985", "1982", "1988"],
+      "2-2": ["1979", "1982", "1985"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 61", desc: "Can you match Paul Weller, Paul Young & Elvis Costello to their songs, hits, and chart history? Play Quiz 61 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz61.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Eclectic Trio of New Romanticism on 80sMusicGame.com! Paul Weller, Paul Young & Elvis Costello — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 61 • Eclectic Trio of New Romanticism\nPaul Weller, Paul Young & Elvis Costello\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Paul Weller, Paul Young & Elvis Costello — do you know ALL their hits? Quiz 61 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Eclectic Trio of New Romanticism on 80sMusicGame.com 🎸 Paul Weller, Paul Young & Elvis Costello. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz61.html" }
@@ -2090,6 +2096,7 @@ window.QUIZ_DATA = [
     r: ["Biggest Hit Song", "Home Country", "Year of Biggest Hit"],
     d: "easy",
     yn: [],
+    ch: {"2-0": ["1984", "1986", "1989"], "2-1": ["1982", "1986", "1988"], "2-2": ["1984", "1987", "1990"]},
     notes: ["George Michael was born Georgios Kyriacos Panayiotou. one of their signature songs(1984, credited to Wham! featuring George Michael) was written when he was 17. His album Faith (1987) sold over 25 million copies worldwide.", "Janet Jackson is from Gary, Indiana — the same city that produced her brother Michael. Her Control album (1986) is one of the defining R&B records of the decade, produced entirely by Jimmy Jam and Terry Lewis.", "MC Hammer (Stanley Kirk Burrell) was , California. \"U Can't Touch This\" (1990) sampled Rick James's \"Super Freak\" and became one of the best-selling singles of the year. His parachute pants became as famous as the song.", "All three of these artists were known as much for their dancing as their music — a new standard that MTV helped establish."],
     ans: {
       "0-0": ["careless whisper", "faith", "father figure", "wake me up before you go go", "one more try"],
@@ -2098,8 +2105,8 @@ window.QUIZ_DATA = [
       "1-0": ["england", "uk", "united kingdom"],
       "1-1": ["usa", "united states", "indiana", "gary"],
       "1-2": ["usa", "united states", "california", "oakland"],
-      "2-0": ["1984", "1987"],
-      "2-1": ["1986", "1989"],
+      "2-0": ["1984"],
+      "2-1": ["1986"],
       "2-2": ["1990"]
     },
     mc: {
@@ -2109,9 +2116,9 @@ window.QUIZ_DATA = [
       "1-0": ["England", "USA", "Australia"],
       "1-1": ["USA", "England", "Canada"],
       "1-2": ["USA", "England", "Jamaica"],
-      "2-0": ["1984", "1988", "1991"],
-      "2-1": ["1986", "1991", "1993"],
-      "2-2": ["1990", "1988", "1992"]
+      "2-0": ["1984", "1986", "1989"],
+      "2-1": ["1986", "1982", "1988"],
+      "2-2": ["1990", "1984", "1987"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 62", desc: "Can you match George Michael, Janet Jackson & MC Hammer to their songs, hits, and chart history? Play Quiz 62 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz62.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Pop, R&B & Hip-Hop Royalty on 80sMusicGame.com! George Michael, Janet Jackson & MC Hammer — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 62 • Pop, R&B & Hip-Hop Royalty\nGeorge Michael, Janet Jackson & MC Hammer\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "George Michael, Janet Jackson & MC Hammer — do you know ALL their hits? Quiz 62 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Pop, R&B & Hip-Hop Royalty on 80sMusicGame.com 🎸 George Michael, Janet Jackson & MC Hammer. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz62.html" }
@@ -2198,6 +2205,7 @@ window.QUIZ_DATA = [
     r: ["Song with a Color in the Title", "Home Country", "Year of That Song"],
     d: "medium",
     yn: [],
+    ch: {"2-0": ["1983", "1986", "1989"], "2-1": ["1978", "1981", "1984"], "2-2": ["1980", "1983", "1986"]},
     notes: ["New Order released what became the best-selling 12-inch single of all time. It was famously released in a sleeve that cost more to manufacture than the retail price — meaning Factory Records lost money on every copy sold.", "The Psychedelic Furs had a track that inspired a famous 1986 John Hughes film. The band re-recorded the song for the soundtrack — a rare case of a song inspiring a film that then inspired a new version of the song.", "Chris de Burgh is Irish-Argentine (born to Irish parents) and is most associated with Ireland. one of their signature tracks hit #1 in the UK and became one of the most-played wedding songs of the decade.", "Three different shades — blue, pink, and red — one great quiz theme."],
     ans: {
       "0-0": ["blue monday", "true faith", "bizarre love triangle"],
@@ -2207,7 +2215,7 @@ window.QUIZ_DATA = [
       "1-1": ["england", "uk"],
       "1-2": ["ireland", "irish", "republic of ireland"],
       "2-0": ["1983"],
-      "2-1": ["1981", "1984"],
+      "2-1": ["1981"],
       "2-2": ["1986"]
     },
     mc: {
@@ -2217,9 +2225,9 @@ window.QUIZ_DATA = [
       "1-0": ["England", "USA", "Ireland"],
       "1-1": ["England", "USA", "Australia"],
       "1-2": ["Ireland", "England", "USA"],
-      "2-0": ["1983", "1985", "1987"],
-      "2-1": ["1981", "1969", "1999"],
-      "2-2": ["1986", "1983", "1989"]
+      "2-0": ["1983", "1986", "1989"],
+      "2-1": ["1981", "1978", "1984"],
+      "2-2": ["1986", "1980", "1983"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 65", desc: "Can you match New Order, Psychedelic Furs & Chris de Burgh to their songs, hits, and chart history? Play Quiz 65 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz65.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Songs With a Color in the Title on 80sMusicGame.com! New Order, Psychedelic Furs & Chris de Burgh — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 65 • Songs With a Color in the Title\nNew Order, Psychedelic Furs & Chris de Burgh\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "New Order, Psychedelic Furs & Chris de Burgh — do you know ALL their hits? Quiz 65 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Songs With a Color in the Title on 80sMusicGame.com 🎸 New Order, Psychedelic Furs & Chris de Burgh. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz65.html" }
@@ -2265,17 +2273,18 @@ window.QUIZ_DATA = [
   {
     n: 67, f: "index.html?id=67",
     t: "MTV Video of the Year Winners",
-    sub: "A-ha, Peter Gabriel & INXS",
-    a: ["A-ha", "Peter Gabriel", "INXS"],
+    sub: "Dire Straits, Peter Gabriel & INXS",
+    a: ["Dire Straits", "Peter Gabriel", "INXS"],
     r: ["Song that Won MTV Video of the Year", "Home Country", "Year They Won"],
     d: "medium",
     yn: [],
-    notes: ["A-ha won Video of the Year at the 1986 VMAs. The rotoscope animation video — where a comic book character reaches through the page into real life — is one of the most expensive and celebrated music videos ever made. Director Steve Barron spent months on it.", "Peter Gabriel won at the 1987 VMAs with what remains the most-played video in MTV history. The stop-motion clay animation was created by Aardman Animations — the same studio behind Wallace & Gromit.", "INXS won at the 1988 VMAs. The video's fast-cutting style influenced an entire generation of music video directors. Michael Hutchence's charisma on screen was unlike anyone else of the era.", "Norway, England, Australia — three consecutive years, three different continents. The VMAs in their golden era were genuinely global."],
+    ch: {"2-0": ["1986", "1989", "1992"], "2-1": ["1984", "1987", "1990"], "2-2": ["1982", "1985", "1988"]},
+    notes: ["Dire Straits won Video of the Year at the 1986 VMAs for Money for Nothing, one of the first music videos built on computer animation. Sting sings the famous I Want My MTV line.", "Peter Gabriel won at the 1987 VMAs with what remains the most-played video in MTV history. The stop-motion clay animation was created by Aardman Animations — the same studio behind Wallace & Gromit.", "INXS won at the 1988 VMAs. The video's fast-cutting style influenced an entire generation of music video directors. Michael Hutchence's charisma on screen was unlike anyone else of the era.", "Dire Straits, Peter Gabriel and INXS took Video of the Year three years running, from 1986 to 1988. A-ha's Take On Me won six awards in 1986 including Viewer's Choice, but not the top prize."],
     ans: {
-      "0-0": ["take on me"],
+      "0-0": ["money for nothing"],
       "0-1": ["sledgehammer"],
       "0-2": ["need you tonight", "need you tonight mediate"],
-      "1-0": ["norway", "norwegian"],
+      "1-0": ["england", "uk", "united kingdom", "britain", "great britain"],
       "1-1": ["england", "uk", "united kingdom"],
       "1-2": ["australia", "australian"],
       "2-0": ["1986"],
@@ -2283,18 +2292,18 @@ window.QUIZ_DATA = [
       "2-2": ["1988"]
     },
     mc: {
-      "0-0": ["Take On Me", "The Sun Always Shines on TV", "Hunting High and Low"],
+      "0-0": ["Money for Nothing", "Take On Me", "Addicted to Love"],
       "0-1": ["Sledgehammer", "Big Time", "In Your Eyes"],
       "0-2": ["Need You Tonight", "Never Tear Us Apart", "Devil Inside"],
-      "1-0": ["Norway", "Sweden", "Denmark"],
+      "1-0": ["England", "Scotland", "Ireland"],
       "1-1": ["England", "USA", "Australia"],
       "1-2": ["Australia", "New Zealand", "England"],
-      "2-0": ["1986", "1985", "1987"],
-      "2-1": ["1987", "1986", "1988"],
-      "2-2": ["1988", "1987", "1989"]
+      "2-0": ["1986", "1989", "1992"],
+      "2-1": ["1987", "1984", "1990"],
+      "2-2": ["1988", "1982", "1985"]
     },
-    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 67", desc: "Can you match A-ha, Peter Gabriel & INXS to their songs, hits, and chart history? Play Quiz 67 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz67.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
-    social: { fb: "I just played MTV Video of the Year Winners on 80sMusicGame.com! A-ha, Peter Gabriel & INXS — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 67 • MTV Video of the Year Winners\nA-ha, Peter Gabriel & INXS\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "A-ha, Peter Gabriel & INXS — do you know ALL their hits? Quiz 67 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played MTV Video of the Year Winners on 80sMusicGame.com 🎸 A-ha, Peter Gabriel & INXS. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz67.html" }
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 67", desc: "Can you match Dire Straits, Peter Gabriel & INXS to their songs, hits, and chart history? Play Quiz 67 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz67.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played MTV Video of the Year Winners on 80sMusicGame.com! Dire Straits, Peter Gabriel & INXS — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 67 • MTV Video of the Year Winners\nDire Straits, Peter Gabriel & INXS\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Dire Straits, Peter Gabriel & INXS — do you know ALL their hits? Quiz 67 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played MTV Video of the Year Winners on 80sMusicGame.com 🎸 Dire Straits, Peter Gabriel & INXS. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz67.html" }
   },
 
   /* ─── Quiz 68: Born and Raised in New York ─── */
@@ -2303,9 +2312,10 @@ window.QUIZ_DATA = [
     t: "Born and Raised in New York",
     sub: "Blondie, Cyndi Lauper & Billy Joel",
     a: ["Blondie", "Cyndi Lauper", "Billy Joel"],
-    r: ["Biggest Hit Song", "NYC Borough or Area", "Year of Biggest 80s Hit"],
+    r: ["Biggest Hit Song", "NYC Borough or Area", "Year of Their Biggest Hit"],
     d: "easy",
     yn: [],
+    ch: {"2-0": ["1980", "1983", "1986"], "2-1": ["1980", "1983", "1987"], "2-2": ["1973", "1976", "1979"]},
     notes: ["Blondie emerged from the CBGB scene in Lower Manhattan in the mid-70s. Debbie Harry and Chris Stein built the band from the punk underground up — a debut hit reached #1 in the US and stayed there for six weeks, becoming the biggest single of that year.", "Cyndi Lauper grew up in Queens. her debut single became an anthem for a generation. She was 30 years old when it was released — proof that it's never too late.", "Billy Joel grew up in Hicksville, Long Island. He is one of the best-selling artists of all time, and his songs are rooted in the working-class New York experience — from his early work to \"We Didn't Start the Fire.\"", "Manhattan, Queens, and Long Island — New York City and its orbit produced three of the most iconic artists of the decade."],
     ans: {
       "0-0": ["call me", "heart of glass", "rapture", "one way or another"],
@@ -2314,9 +2324,9 @@ window.QUIZ_DATA = [
       "1-0": ["manhattan", "lower east side", "new york", "nyc"],
       "1-1": ["queens", "new york", "nyc"],
       "1-2": ["long island", "hicksville", "new york", "nyc"],
-      "2-0": ["1980", "1981"],
-      "2-1": ["1983", "1986"],
-      "2-2": ["1980", "1983", "1989"]
+      "2-0": ["1980"],
+      "2-1": ["1983"],
+      "2-2": ["1973"]
     },
     mc: {
       "0-0": ["Call Me", "Don't Stop Believin'", "Jump"],
@@ -2325,9 +2335,9 @@ window.QUIZ_DATA = [
       "1-0": ["Manhattan", "Queens", "Brooklyn"],
       "1-1": ["Queens", "Manhattan", "Brooklyn"],
       "1-2": ["Long Island", "Brooklyn", "Manhattan"],
-      "2-0": ["1980", "1978", "1982"],
-      "2-1": ["1983", "1981", "1979"],
-      "2-2": ["1980", "1969", "1999"]
+      "2-0": ["1980", "1983", "1986"],
+      "2-1": ["1983", "1980", "1987"],
+      "2-2": ["1973", "1976", "1979"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 68", desc: "Can you match Blondie, Cyndi Lauper & Billy Joel to their songs, hits, and chart history? Play Quiz 68 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz68.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Born and Raised in New York on 80sMusicGame.com! Blondie, Cyndi Lauper & Billy Joel — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 68 • Born and Raised in New York\nBlondie, Cyndi Lauper & Billy Joel\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Blondie, Cyndi Lauper & Billy Joel — do you know ALL their hits? Quiz 68 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Born and Raised in New York on 80sMusicGame.com 🎸 Blondie, Cyndi Lauper & Billy Joel. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/quiz68.html" }
@@ -3123,6 +3133,1087 @@ window.QUIZ_DATA = [
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 90", desc: "Can you match The Cure, The Police & Morrissey to their songs and chart history? Play Quiz 90 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=90", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
     social: { fb: "I just played Alternative British Landscapes on 80sMusicGame.com! The Cure, The Police & Morrissey — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 90 • Alternative British Landscapes\nThe Cure, The Police & Morrissey\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Cure, The Police & Morrissey — do you know ALL their hits? Quiz 90 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Alternative British Landscapes on 80sMusicGame.com 🎸 The Cure, The Police & Morrissey. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=90" }
+  },
+
+  /* ─── Quiz 91: Liverpool Calling (MEDIUM) ─── */
+  {
+    n: 91, f: "index.html?id=91",
+    t: "Liverpool Calling",
+    sub: "Echo & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive",
+    a: ["Echo & the Bunnymen", "Frankie Goes to Hollywood", "Dead or Alive"],
+    r: ["Lead Singer", "Song with a Number in the Title", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["Liverpool gave the world The Beatles, and in the early 80s it produced a second wave of chart-topping bands.", "Frankie Goes to Hollywood's Relax was banned by BBC Radio 1 and still went to number one in the UK.", "Dead or Alive's You Spin Me Round (Like a Record) was produced by the hit factory Stock Aitken Waterman."],
+    ans: {
+      "0-0": ["ian mcculloch"],
+      "0-1": ["holly johnson"],
+      "0-2": ["pete burns"],
+      "1-0": ["seven seas"],
+      "1-1": ["two tribes"],
+      "1-2": ["turn around and count 2 ten", "turn around and count two ten"],
+      "2-0": ["the killing moon", "lips like sugar", "the cutter", "bring on the dancing horses", "never stop"],
+      "2-1": ["relax", "two tribes", "the power of love"],
+      "2-2": ["you spin me round", "you spin me round like a record", "brand new lover"]
+    },
+    mc: {
+      "0-0": ["Ian McCulloch", "Ian Curtis", "Ian Broudie"],
+      "0-1": ["Holly Johnson", "Boy George", "Marc Almond"],
+      "0-2": ["Pete Burns", "Pete Wylie", "Pete Shelley"],
+      "1-0": ["Seven Seas", "The Cutter", "Never Stop"],
+      "1-1": ["Two Tribes", "Relax", "The Power of Love"],
+      "1-2": ["Turn Around and Count 2 Ten", "You Spin Me Round", "Brand New Lover"],
+      "2-0": ["The Killing Moon", "Enjoy the Silence", "Karma Chameleon"],
+      "2-1": ["Relax", "Girls on Film", "Say Hello, Wave Goodbye"],
+      "2-2": ["You Spin Me Round", "Roxanne", "Smalltown Boy"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 91", desc: "Can you match Echo & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive to their songs and chart history? Play Quiz 91 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=91", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Liverpool Calling on 80sMusicGame.com! Echo & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 91 • Liverpool Calling\nEcho & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Echo & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive — do you know ALL their hits? Quiz 91 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Liverpool Calling on 80sMusicGame.com 🎸 Echo & the Bunnymen, Frankie Goes to Hollywood & Dead or Alive. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=91" }
+  },
+
+  /* ─── Quiz 92: Jangle and Gloom (MEDIUM) ─── */
+  {
+    n: 92, f: "index.html?id=92",
+    t: "Jangle and Gloom",
+    sub: "The Smiths, The Housemartins & Aztec Camera",
+    a: ["The Smiths", "The Housemartins", "Aztec Camera"],
+    r: ["Lead Singer", "Home Nation of the U.K.", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["The Housemartins' bass player Norman Cook later became the superstar DJ Fatboy Slim.", "Aztec Camera's Roddy Frame was still a teenager when the debut album High Land, Hard Rain came out in 1983.", "The Smiths released four studio albums between 1984 and 1987 before splitting up."],
+    ans: {
+      "0-0": ["morrissey"],
+      "0-1": ["paul heaton"],
+      "0-2": ["roddy frame"],
+      "1-0": ["england", "english"],
+      "1-1": ["england", "english"],
+      "1-2": ["scotland", "scottish"],
+      "2-0": ["how soon is now", "this charming man", "there is a light that never goes out", "bigmouth strikes again", "panic", "girlfriend in a coma", "heaven knows im miserable now", "hand in glove", "what difference does it make", "the boy with the thorn in his side", "william it was really nothing", "shoplifters of the world unite", "sheila take a bow"],
+      "2-1": ["happy hour", "caravan of love", "think for a minute", "me and the farmer", "build"],
+      "2-2": ["oblivious", "somewhere in my heart", "walk out to winter", "good morning britain", "killermont street"]
+    },
+    mc: {
+      "0-0": ["Morrissey", "Robert Smith", "Ian McCulloch"],
+      "0-1": ["Paul Heaton", "Paul Weller", "Paul Young"],
+      "0-2": ["Roddy Frame", "Edwyn Collins", "Neil Finn"],
+      "1-0": ["England", "Scotland", "Ireland"],
+      "1-1": ["England", "Wales", "Scotland"],
+      "1-2": ["Scotland", "England", "Ireland"],
+      "2-0": ["How Soon Is Now?", "Message in a Bottle", "Don't You Want Me"],
+      "2-1": ["Happy Hour", "Perfect", "China Girl"],
+      "2-2": ["Oblivious", "Love My Way", "Perfect"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 92", desc: "Can you match The Smiths, The Housemartins & Aztec Camera to their songs and chart history? Play Quiz 92 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=92", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Jangle and Gloom on 80sMusicGame.com! The Smiths, The Housemartins & Aztec Camera — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 92 • Jangle and Gloom\nThe Smiths, The Housemartins & Aztec Camera\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Smiths, The Housemartins & Aztec Camera — do you know ALL their hits? Quiz 92 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Jangle and Gloom on 80sMusicGame.com 🎸 The Smiths, The Housemartins & Aztec Camera. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=92" }
+  },
+
+  /* ─── Quiz 93: Synth Pop Sunrise (EASY) ─── */
+  {
+    n: 93, f: "index.html?id=93",
+    t: "Synth Pop Sunrise",
+    sub: "Thompson Twins, Howard Jones & Nik Kershaw",
+    a: ["Thompson Twins", "Howard Jones", "Nik Kershaw"],
+    r: ["Signature Song", "1984 Album", "U.S. Top 10 Hit (Yes or No)"],
+    d: "easy",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Thompson Twins took their name from the bumbling detectives Thomson and Thompson in the Tintin comics.", "Nik Kershaw wrote The One and Only, the 1991 hit for Chesney Hawkes.", "Howard Jones's early live shows famously featured a mime artist on stage."],
+    ans: {
+      "0-0": ["hold me now", "doctor doctor", "lies", "love on your side", "sister of mercy", "king for a day", "lay your hands on me", "dont mess with doctor dream", "get that love"],
+      "0-1": ["things can only get better", "what is love", "new song", "hide and seek", "pearl in the shell", "like to get to know you well", "no one is to blame", "life in one day"],
+      "0-2": ["wouldnt it be good", "the riddle", "i wont let the sun go down on me", "dancing girls", "wide boy", "when a heart beats", "don quixote"],
+      "1-0": ["into the gap"],
+      "1-1": ["humans lib", "human lib"],
+      "1-2": ["human racing", "the riddle"],
+      "2-0": ["yes"],
+      "2-1": ["yes"],
+      "2-2": ["no"]
+    },
+    mc: {
+      "0-0": ["Hold Me Now", "Photograph", "Take My Breath Away"],
+      "0-1": ["Things Can Only Get Better", "Livin' on a Prayer", "Video Killed the Radio Star"],
+      "0-2": ["Wouldn't It Be Good", "Once in a Lifetime", "Relax"],
+      "1-0": ["Into the Gap", "Quick Step and Side Kick", "Here's to Future Days"],
+      "1-1": ["Human's Lib", "Dream into Action", "One to One"],
+      "1-2": ["Human Racing", "Radio Musicola", "Sports"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 93", desc: "Can you match Thompson Twins, Howard Jones & Nik Kershaw to their songs and chart history? Play Quiz 93 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=93", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Synth Pop Sunrise on 80sMusicGame.com! Thompson Twins, Howard Jones & Nik Kershaw — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 93 • Synth Pop Sunrise\nThompson Twins, Howard Jones & Nik Kershaw\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Thompson Twins, Howard Jones & Nik Kershaw — do you know ALL their hits? Quiz 93 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Synth Pop Sunrise on 80sMusicGame.com 🎸 Thompson Twins, Howard Jones & Nik Kershaw. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=93" }
+  },
+
+  /* ─── Quiz 94: Ants, Bows and Haircuts (MEDIUM) ─── */
+  {
+    n: 94, f: "index.html?id=94",
+    t: "Ants, Bows and Haircuts",
+    sub: "Adam Ant, Bow Wow Wow & Haircut One Hundred",
+    a: ["Adam Ant", "Bow Wow Wow", "Haircut One Hundred"],
+    r: ["Lead Singer", "Signature Song", "Managed by Malcolm McLaren at One Point (Yes or No)"],
+    d: "medium",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Adam Ant's real name is Stuart Goddard.", "Bow Wow Wow's I Want Candy is a cover of a 1965 hit by The Strangeloves.", "Haircut One Hundred's Nick Heyward left the band in 1983 to go solo."],
+    ans: {
+      "0-0": ["adam ant", "stuart goddard"],
+      "0-1": ["annabella lwin"],
+      "0-2": ["nick heyward"],
+      "1-0": ["goody two shoes", "stand and deliver", "prince charming", "ant rap", "kings of the wild frontier", "friend or foe", "puss n boots", "apollo 9", "vive le rock"],
+      "1-1": ["i want candy", "go wild in the country", "c30 c60 c90 go", "do you wanna hold me", "chihuahua", "louis quatorze"],
+      "1-2": ["love plus one", "favourite shirts", "favourite shirts boy meets girl", "fantastic day", "nobodys fool", "snow girl"],
+      "2-0": ["yes"],
+      "2-1": ["yes"],
+      "2-2": ["no"]
+    },
+    mc: {
+      "0-0": ["Adam Ant", "Steve Strange", "Boy George"],
+      "0-1": ["Annabella Lwin", "Toyah Willcox", "Siouxsie Sioux"],
+      "0-2": ["Nick Heyward", "Nick Rhodes", "Nik Kershaw"],
+      "1-0": ["Goody Two Shoes", "Poison Arrow", "Love Action"],
+      "1-1": ["I Want Candy", "Whip It", "Jump"],
+      "1-2": ["Love Plus One", "Love Action", "Our Lips Are Sealed"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 94", desc: "Can you match Adam Ant, Bow Wow Wow & Haircut One Hundred to their songs and chart history? Play Quiz 94 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=94", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Ants, Bows and Haircuts on 80sMusicGame.com! Adam Ant, Bow Wow Wow & Haircut One Hundred — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 94 • Ants, Bows and Haircuts\nAdam Ant, Bow Wow Wow & Haircut One Hundred\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Adam Ant, Bow Wow Wow & Haircut One Hundred — do you know ALL their hits? Quiz 94 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Ants, Bows and Haircuts on 80sMusicGame.com 🎸 Adam Ant, Bow Wow Wow & Haircut One Hundred. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=94" }
+  },
+
+  /* ─── Quiz 95: The British Wit Parade (MEDIUM) ─── */
+  {
+    n: 95, f: "index.html?id=95",
+    t: "The British Wit Parade",
+    sub: "XTC, Squeeze & Madness",
+    a: ["XTC", "Squeeze", "Madness"],
+    r: ["Lead Singer", "Home City", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["On Squeeze's Tempted the lead vocal is sung by keyboardist Paul Carrack, not by Glenn Tilbrook.", "Madness took their name from a song by ska legend Prince Buster.", "XTC's Dear God was left off the original release of Skylarking, then added after radio DJs started playing it."],
+    ans: {
+      "0-0": ["andy partridge"],
+      "0-1": ["glenn tilbrook", "chris difford"],
+      "0-2": ["suggs", "graham mcpherson"],
+      "1-0": ["swindon"],
+      "1-1": ["london", "deptford"],
+      "1-2": ["london", "camden", "camden town"],
+      "2-0": ["making plans for nigel", "senses working overtime", "dear god", "generals and majors", "life begins at the hop", "love on a farmboys wages", "mayor of simpleton", "sgt rock"],
+      "2-1": ["tempted", "black coffee in bed", "pulling mussels from the shell", "up the junction", "cool for cats", "labelled with love", "hourglass", "another nail in my heart", "is that love"],
+      "2-2": ["our house", "baggy trousers", "it must be love", "house of fun", "one step beyond", "night boat to cairo", "my girl", "driving in my car", "wings of a dove", "michael caine", "the prince", "embarrassment"]
+    },
+    mc: {
+      "0-0": ["Andy Partridge", "Andy Summers", "Andy Fletcher"],
+      "0-1": ["Glenn Tilbrook", "Nick Lowe", "Elvis Costello"],
+      "0-2": ["Suggs", "Sting", "Joe Strummer"],
+      "1-0": ["Swindon", "Reading", "Slough"],
+      "1-1": ["London", "Manchester", "Sheffield"],
+      "1-2": ["London", "Liverpool", "Leeds"],
+      "2-0": ["Making Plans for Nigel", "Shout", "Don't Stop Believin'"],
+      "2-1": ["Tempted", "Should I Stay or Should I Go", "Let's Dance"],
+      "2-2": ["Our House", "Don't Dream It's Over", "Pretty in Pink"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 95", desc: "Can you match XTC, Squeeze & Madness to their songs and chart history? Play Quiz 95 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=95", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played The British Wit Parade on 80sMusicGame.com! XTC, Squeeze & Madness — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 95 • The British Wit Parade\nXTC, Squeeze & Madness\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "XTC, Squeeze & Madness — do you know ALL their hits? Quiz 95 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played The British Wit Parade on 80sMusicGame.com 🎸 XTC, Squeeze & Madness. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=95" }
+  },
+
+  /* ─── Quiz 96: Art Pop Queens (HARD) ─── */
+  {
+    n: 96, f: "index.html?id=96",
+    t: "Art Pop Queens",
+    sub: "Kate Bush, Siouxsie and the Banshees & Sinead O'Connor",
+    a: ["Kate Bush", "Siouxsie and the Banshees", "Sinead O'Connor"],
+    r: ["Home Country", "Signature Song", "1980s Album"],
+    d: "hard",
+    yn: [],
+    notes: ["Kate Bush was the first woman to reach number one in the UK with a song she wrote herself.", "Sinead O'Connor's Nothing Compares 2 U was written by Prince.", "Siouxsie and the Banshees took their cover of The Beatles' Dear Prudence into the UK top three in 1983."],
+    ans: {
+      "0-0": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british"],
+      "0-1": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british"],
+      "0-2": ["ireland", "irish", "republic of ireland"],
+      "1-0": ["running up that hill", "babooshka", "cloudbusting", "wuthering heights", "wow", "army dreamers", "sat in your lap", "this womans work", "the sensual world", "hounds of love", "breathing", "experiment iv", "the big sky"],
+      "1-1": ["hong kong garden", "spellbound", "dear prudence", "peek a boo", "kiss them for me", "cities in dust", "happy house", "israel", "christine", "arabian knights", "fireworks", "dazzle", "this wheels on fire"],
+      "1-2": ["nothing compares 2 u", "nothing compares to you", "mandinka", "the emperors new clothes", "troy", "jump in the river", "three babies", "i am stretched on your grave"],
+      "2-0": ["hounds of love", "the dreaming", "the sensual world", "never for ever", "the whole story"],
+      "2-1": ["juju", "kaleidoscope", "a kiss in the dreamhouse", "hyaena", "tinderbox", "peepshow", "once upon a time"],
+      "2-2": ["the lion and the cobra", "i do not want what i havent got"]
+    },
+    mc: {
+      "0-0": ["England", "Ireland", "Scotland"],
+      "0-1": ["England", "Scotland", "Wales"],
+      "0-2": ["Ireland", "England", "Scotland"],
+      "1-0": ["Running Up That Hill", "Whip It", "Space Age Love Song"],
+      "1-1": ["Hong Kong Garden", "Bette Davis Eyes", "Love Will Tear Us Apart"],
+      "1-2": ["Nothing Compares 2 U", "When Doves Cry", "Authority Song"],
+      "2-0": ["Hounds of Love", "Dirty Mind", "Songs from the Big Chair"],
+      "2-1": ["Juju", "Brothers in Arms", "Violator"],
+      "2-2": ["The Lion and the Cobra", "Sign o' the Times", "Hounds of Love"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 96", desc: "Can you match Kate Bush, Siouxsie and the Banshees & Sinead O'Connor to their songs and chart history? Play Quiz 96 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=96", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Art Pop Queens on 80sMusicGame.com! Kate Bush, Siouxsie and the Banshees & Sinead O'Connor — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 96 • Art Pop Queens\nKate Bush, Siouxsie and the Banshees & Sinead O'Connor\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Kate Bush, Siouxsie and the Banshees & Sinead O'Connor — do you know ALL their hits? Quiz 96 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Art Pop Queens on 80sMusicGame.com 🎸 Kate Bush, Siouxsie and the Banshees & Sinead O'Connor. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=96" }
+  },
+
+  /* ─── Quiz 97: Synth Duos Only (MEDIUM) ─── */
+  {
+    n: 97, f: "index.html?id=97",
+    t: "Synth Duos Only",
+    sub: "Soft Cell, Blancmange & Naked Eyes",
+    a: ["Soft Cell", "Blancmange", "Naked Eyes"],
+    r: ["Lead Singer", "Signature Song", "The Other Half of the Duo"],
+    d: "medium",
+    yn: [],
+    notes: ["Soft Cell's Tainted Love spent a then-record 43 weeks on the U.S. Hot 100 and peaked at number 8.", "Naked Eyes had their biggest hit with a cover of a Burt Bacharach and Hal David song.", "Blancmange is named after a British dessert."],
+    ans: {
+      "0-0": ["marc almond"],
+      "0-1": ["neil arthur"],
+      "0-2": ["pete byrne", "peter byrne"],
+      "1-0": ["tainted love", "say hello wave goodbye", "bedsitter", "torch", "what", "where the heart is", "memorabilia"],
+      "1-1": ["living on the ceiling", "waves", "blind vision", "dont tell me"],
+      "1-2": ["always something there to remind me", "promises promises", "what in the name of love", "in the name of love", "when the lights go out"],
+      "2-0": ["dave ball", "david ball"],
+      "2-1": ["stephen luscombe", "steve luscombe"],
+      "2-2": ["rob fisher", "robert fisher"]
+    },
+    mc: {
+      "0-0": ["Marc Almond", "Marc Bolan", "Marc Cohn"],
+      "0-1": ["Neil Arthur", "Neil Tennant", "Neil Finn"],
+      "0-2": ["Pete Byrne", "Pete Burns", "Pete Shelley"],
+      "1-0": ["Tainted Love", "Pump It Up", "Friday I'm in Love"],
+      "1-1": ["Living on the Ceiling", "Enola Gay", "Fade to Grey"],
+      "1-2": ["Always Something There to Remind Me", "Ordinary World", "Golden Brown"],
+      "2-0": ["Dave Ball", "Dave Gahan", "Dave Stewart"],
+      "2-1": ["Stephen Luscombe", "Stephen Duffy", "Stephen Jones"],
+      "2-2": ["Rob Fisher", "Rob Halford", "Rob Base"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 97", desc: "Can you match Soft Cell, Blancmange & Naked Eyes to their songs and chart history? Play Quiz 97 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=97", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Synth Duos Only on 80sMusicGame.com! Soft Cell, Blancmange & Naked Eyes — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 97 • Synth Duos Only\nSoft Cell, Blancmange & Naked Eyes\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Soft Cell, Blancmange & Naked Eyes — do you know ALL their hits? Quiz 97 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Synth Duos Only on 80sMusicGame.com 🎸 Soft Cell, Blancmange & Naked Eyes. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=97" }
+  },
+
+  /* ─── Quiz 98: Synth Royalty (EASY) ─── */
+  {
+    n: 98, f: "index.html?id=98",
+    t: "Synth Royalty",
+    sub: "Depeche Mode, Erasure & OMD",
+    a: ["Depeche Mode", "Erasure", "OMD"],
+    r: ["Lead Singer", "Signature Song", "1980s Album"],
+    d: "easy",
+    yn: [],
+    notes: ["Depeche Mode formed in Basildon, Essex, in 1980.", "Vince Clarke, who co-founded Depeche Mode, later formed Yazoo and then Erasure.", "OMD's Enola Gay is named after the plane that dropped the atomic bomb on Hiroshima."],
+    ans: {
+      "0-0": ["dave gahan"],
+      "0-1": ["andy bell"],
+      "0-2": ["andy mccluskey", "paul humphreys"],
+      "1-0": ["just cant get enough", "people are people", "personal jesus", "enjoy the silence", "everything counts", "master and servant", "strangelove", "never let me down again", "policy of truth", "shake the disease", "stripped", "a question of time", "blasphemous rumours"],
+      "1-1": ["a little respect", "sometimes", "oh lamour", "chains of love", "ship of fools", "victim of love", "stop", "drama", "blue savannah", "star"],
+      "1-2": ["enola gay", "if you leave", "souvenir", "joan of arc", "maid of orleans", "electricity", "locomotion", "tesla girls", "so in love", "forever live and die", "dreaming"],
+      "2-0": ["violator", "music for the masses", "black celebration", "some great reward", "construction time again", "a broken frame", "speak and spell", "speak spell", "101"],
+      "2-1": ["wonderland", "the circus", "the innocents", "wild", "chorus"],
+      "2-2": ["organisation", "architecture and morality", "dazzle ships", "junk culture", "crush", "the pacific age"]
+    },
+    mc: {
+      "0-0": ["Dave Gahan", "Dave Stewart", "Dave Ball"],
+      "0-1": ["Andy Bell", "Andy Fletcher", "Andy Warhol"],
+      "0-2": ["Andy McCluskey", "Andy Taylor", "Andy Kim"],
+      "1-0": ["Just Can't Get Enough", "Take On Me", "Cars"],
+      "1-1": ["A Little Respect", "Rock the Casbah", "Mr. Roboto"],
+      "1-2": ["If You Leave", "Dont You Want Me", "Every Little Thing She Does Is Magic"],
+      "2-0": ["Violator", "True Blue", "Slippery When Wet"],
+      "2-1": ["The Innocents", "Kick", "Let's Dance"],
+      "2-2": ["Architecture & Morality", "Purple Rain", "Faith"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 98", desc: "Can you match Depeche Mode, Erasure & OMD to their songs and chart history? Play Quiz 98 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=98", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Synth Royalty on 80sMusicGame.com! Depeche Mode, Erasure & OMD — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 98 • Synth Royalty\nDepeche Mode, Erasure & OMD\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Depeche Mode, Erasure & OMD — do you know ALL their hits? Quiz 98 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Synth Royalty on 80sMusicGame.com 🎸 Depeche Mode, Erasure & OMD. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=98" }
+  },
+
+  /* ─── Quiz 99: Anthems with a Conscience (MEDIUM) ─── */
+  {
+    n: 99, f: "index.html?id=99",
+    t: "Anthems with a Conscience",
+    sub: "The Alarm, Midnight Oil & Simple Minds",
+    a: ["The Alarm", "Midnight Oil", "Simple Minds"],
+    r: ["Lead Singer", "Home Country", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["Simple Minds at first turned down Don't You (Forget About Me), a song written for The Breakfast Club, before making it their biggest hit.", "Midnight Oil's Peter Garrett later became a government minister in Australia.", "The Alarm formed in Rhyl, North Wales."],
+    ans: {
+      "0-0": ["mike peters"],
+      "0-1": ["peter garrett"],
+      "0-2": ["jim kerr"],
+      "1-0": ["wales", "welsh"],
+      "1-1": ["australia", "australian"],
+      "1-2": ["scotland", "scottish"],
+      "2-0": ["68 guns", "spirit of 76", "strength", "rain in the summertime", "sold me down the river", "absolute reality"],
+      "2-1": ["beds are burning", "the power and the passion", "best of both worlds", "the dead heart", "blue sky mining", "forgotten years", "put down that weapon", "read about it"],
+      "2-2": ["dont you forget about me", "alive and kicking", "belfast child", "promised you a miracle", "waterfront", "sanctify yourself", "all the things she said", "glittering prize", "mandela day", "up on the catwalk", "speed your love to me"]
+    },
+    mc: {
+      "0-0": ["Mike Peters", "Mike Score", "Mike Rutherford"],
+      "0-1": ["Peter Garrett", "Peter Gabriel", "Peter Murphy"],
+      "0-2": ["Jim Kerr", "Jim Morrison", "Jim Reid"],
+      "1-0": ["Wales", "England", "Ireland"],
+      "1-1": ["Australia", "New Zealand", "Canada"],
+      "1-2": ["Scotland", "England", "Ireland"],
+      "2-0": ["68 Guns", "Centerfold", "Everybody Wants to Rule the World"],
+      "2-1": ["Beds Are Burning", "Waiting for a Girl Like You", "Girls Just Want to Have Fun"],
+      "2-2": ["Don't You (Forget About Me)", "Situation", "Jessie's Girl"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 99", desc: "Can you match The Alarm, Midnight Oil & Simple Minds to their songs and chart history? Play Quiz 99 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=99", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Anthems with a Conscience on 80sMusicGame.com! The Alarm, Midnight Oil & Simple Minds — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 99 • Anthems with a Conscience\nThe Alarm, Midnight Oil & Simple Minds\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Alarm, Midnight Oil & Simple Minds — do you know ALL their hits? Quiz 99 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Anthems with a Conscience on 80sMusicGame.com 🎸 The Alarm, Midnight Oil & Simple Minds. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=99" }
+  },
+
+  /* ─── Quiz 100: Frontwomen Around the World (MEDIUM) ─── */
+  {
+    n: 100, f: "index.html?id=100",
+    t: "Frontwomen Around the World",
+    sub: "The Pretenders, Divinyls & The Sugarcubes",
+    a: ["The Pretenders", "Divinyls", "The Sugarcubes"],
+    r: ["Lead Singer", "Lead Singer's Home Country", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["Chrissie Hynde was born in Akron, Ohio, but formed The Pretenders in London.", "Bjork fronted The Sugarcubes before launching her solo career.", "Divinyls' I Touch Myself reached the U.S. top five in 1991."],
+    ans: {
+      "0-0": ["chrissie hynde"],
+      "0-1": ["chrissy amphlett", "chrissie amphlett"],
+      "0-2": ["bjork", "björk"],
+      "1-0": ["usa", "united states", "united states of america", "america", "us", "american", "ohio", "akron"],
+      "1-1": ["australia", "australian"],
+      "1-2": ["iceland", "icelandic", "reykjavik"],
+      "2-0": ["brass in pocket", "back on the chain gang", "dont get me wrong", "middle of the road", "talk of the town", "my baby", "stop your sobbing", "kid", "message of love", "i go to sleep", "thin line between love and hate"],
+      "2-1": ["i touch myself", "pleasure and pain", "boys in town", "science fiction"],
+      "2-2": ["birthday", "cold sweat", "motorcrash", "deus", "regina", "hit"]
+    },
+    mc: {
+      "0-0": ["Chrissie Hynde", "Debbie Harry", "Pat Benatar"],
+      "0-1": ["Chrissy Amphlett", "Toni Childs", "Kim Wilde"],
+      "0-2": ["Björk", "Sinead O'Connor", "Enya"],
+      "1-0": ["USA", "England", "Canada"],
+      "1-1": ["Australia", "New Zealand", "England"],
+      "1-2": ["Iceland", "Norway", "Sweden"],
+      "2-0": ["Brass in Pocket", "Bette Davis Eyes", "Total Eclipse of the Heart"],
+      "2-1": ["I Touch Myself", "Physical", "Who Can It Be Now?"],
+      "2-2": ["Birthday", "Hurts So Good", "Hip to Be Square"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 100", desc: "Can you match The Pretenders, Divinyls & The Sugarcubes to their songs and chart history? Play Quiz 100 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=100", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Frontwomen Around the World on 80sMusicGame.com! The Pretenders, Divinyls & The Sugarcubes — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 100 • Frontwomen Around the World\nThe Pretenders, Divinyls & The Sugarcubes\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Pretenders, Divinyls & The Sugarcubes — do you know ALL their hits? Quiz 100 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Frontwomen Around the World on 80sMusicGame.com 🎸 The Pretenders, Divinyls & The Sugarcubes. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=100" }
+  },
+
+  /* ─── Quiz 101: Global Novelty Hits (EASY) ─── */
+  {
+    n: 101, f: "index.html?id=101",
+    t: "Global Novelty Hits",
+    sub: "Falco, Men Without Hats & Los Lobos",
+    a: ["Falco", "Men Without Hats", "Los Lobos"],
+    r: ["Signature Song", "Home Country", "U.S. #1 Hit (Yes or No)"],
+    d: "easy",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Falco's Rock Me Amadeus was the first German-language song to top the U.S. Hot 100.", "Ritchie Valens first recorded La Bamba in 1958, and Los Lobos took it to number one in 1987.", "Men Without Hats' The Safety Dance climbed to number three on the U.S. Hot 100."],
+    ans: {
+      "0-0": ["rock me amadeus", "der kommissar", "jeanny", "vienna calling", "amadeus"],
+      "0-1": ["the safety dance", "safety dance", "pop goes the world"],
+      "0-2": ["la bamba", "come on lets go", "will the wolf survive"],
+      "1-0": ["austria", "austrian", "vienna"],
+      "1-1": ["canada", "canadian", "montreal"],
+      "1-2": ["usa", "united states", "united states of america", "america", "us", "american", "los angeles", "east los angeles", "california"],
+      "2-0": ["yes"],
+      "2-1": ["no"],
+      "2-2": ["yes"]
+    },
+    mc: {
+      "0-0": ["Rock Me Amadeus", "99 Luftballons", "Major Tom"],
+      "0-1": ["The Safety Dance", "Africa", "Time After Time"],
+      "0-2": ["La Bamba", "Suavecito", "Oye Como Va"],
+      "1-0": ["Austria", "Germany", "Switzerland"],
+      "1-1": ["Canada", "USA", "England"],
+      "1-2": ["USA", "Mexico", "Spain"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 101", desc: "Can you match Falco, Men Without Hats & Los Lobos to their songs and chart history? Play Quiz 101 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=101", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Global Novelty Hits on 80sMusicGame.com! Falco, Men Without Hats & Los Lobos — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 101 • Global Novelty Hits\nFalco, Men Without Hats & Los Lobos\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Falco, Men Without Hats & Los Lobos — do you know ALL their hits? Quiz 101 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Global Novelty Hits on 80sMusicGame.com 🎸 Falco, Men Without Hats & Los Lobos. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=101" }
+  },
+
+  /* ─── Quiz 102: Wacky Wizards of New Wave (HARD) ─── */
+  {
+    n: 102, f: "index.html?id=102",
+    t: "Wacky Wizards of New Wave",
+    sub: "Oingo Boingo, Thomas Dolby & Joe Jackson",
+    a: ["Oingo Boingo", "Thomas Dolby", "Joe Jackson"],
+    r: ["Lead Singer", "Signature Song", "1980s Album"],
+    d: "hard",
+    yn: [],
+    notes: ["Danny Elfman, Oingo Boingo's frontman, wrote the main theme for The Simpsons.", "Thomas Dolby's She Blinded Me with Science features spoken lines from British scientist Magnus Pyke.", "Joe Jackson's album Night and Day borrows its title from a Cole Porter standard."],
+    ans: {
+      "0-0": ["danny elfman"],
+      "0-1": ["thomas dolby", "thomas robertson"],
+      "0-2": ["joe jackson", "david jackson"],
+      "1-0": ["weird science", "dead mans party", "just another day", "only a lad", "stay"],
+      "1-1": ["she blinded me with science", "hyperactive", "airhead", "europa and the pirate twins"],
+      "1-2": ["is she really going out with him", "steppin out", "breaking us in two", "real men", "you cant get what you want"],
+      "2-0": ["only a lad", "nothing to fear", "good for your soul", "dead mans party", "boi ngo", "dark at the end of the tunnel"],
+      "2-1": ["the golden age of wireless", "the flat earth", "aliens ate my buick"],
+      "2-2": ["beat crazy", "night and day", "body and soul", "blaze of glory", "look sharp"]
+    },
+    mc: {
+      "0-0": ["Danny Elfman", "Danny DeVito", "Danny Kaye"],
+      "0-1": ["Thomas Dolby", "Thomas Newman", "Thomas Bailey"],
+      "0-2": ["Joe Jackson", "Michael Jackson", "Joe Walsh"],
+      "1-0": ["Weird Science", "Whip It", "Down Under"],
+      "1-1": ["She Blinded Me with Science", "Jack & Diane", "Pour Some Sugar on Me"],
+      "1-2": ["Is She Really Going Out with Him?", "Sledgehammer", "Burning Down the House"],
+      "2-0": ["Only a Lad", "Born in the U.S.A.", "Rattle and Hum"],
+      "2-1": ["The Golden Age of Wireless", "The Dreaming", "Speaking in Tongues"],
+      "2-2": ["Night and Day", "Synchronicity", "Kick"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 102", desc: "Can you match Oingo Boingo, Thomas Dolby & Joe Jackson to their songs and chart history? Play Quiz 102 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=102", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Wacky Wizards of New Wave on 80sMusicGame.com! Oingo Boingo, Thomas Dolby & Joe Jackson — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 102 • Wacky Wizards of New Wave\nOingo Boingo, Thomas Dolby & Joe Jackson\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Oingo Boingo, Thomas Dolby & Joe Jackson — do you know ALL their hits? Quiz 102 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Wacky Wizards of New Wave on 80sMusicGame.com 🎸 Oingo Boingo, Thomas Dolby & Joe Jackson. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=102" }
+  },
+
+  /* ─── Quiz 103: Working Class Heroes (MEDIUM) ─── */
+  {
+    n: 103, f: "index.html?id=103",
+    t: "Working Class Heroes",
+    sub: "The Jam, Dexys Midnight Runners & The Stranglers",
+    a: ["The Jam", "Dexys Midnight Runners", "The Stranglers"],
+    r: ["Lead Singer", "Signature Song", "Home Town"],
+    d: "medium",
+    yn: [],
+    notes: ["The Jam split in 1982 at the height of their fame, and Paul Weller went on to form The Style Council.", "Dexys Midnight Runners' Come On Eileen went to number one in both the UK and the U.S.", "The Stranglers' Golden Brown is famous for its unusual time signature."],
+    ans: {
+      "0-0": ["paul weller"],
+      "0-1": ["kevin rowland"],
+      "0-2": ["hugh cornwell"],
+      "1-0": ["town called malice", "going underground", "start", "thats entertainment", "the eton rifles", "beat surrender", "absolute beginners", "down in the tube station at midnight"],
+      "1-1": ["come on eileen", "geno", "jackie wilson said", "there there my dear", "because of you"],
+      "1-2": ["golden brown", "always the sun", "skin deep", "strange little girl", "no more heroes", "peaches", "european female", "duchess", "nice n sleazy"],
+      "2-0": ["woking", "surrey"],
+      "2-1": ["birmingham"],
+      "2-2": ["guildford", "surrey"]
+    },
+    mc: {
+      "0-0": ["Paul Weller", "Paul Young", "Paul McCartney"],
+      "0-1": ["Kevin Rowland", "Kevin Bacon", "Kevin Cronin"],
+      "0-2": ["Hugh Cornwell", "Hugh Grant", "Hugh Laurie"],
+      "1-0": ["A Town Called Malice", "Blue Monday", "Hungry Like the Wolf"],
+      "1-1": ["Come On Eileen", "Mickey", "I Ran (So Far Away)"],
+      "1-2": ["Golden Brown", "Under Pressure", "Oliver's Army"],
+      "2-0": ["Woking", "Reading", "Watford"],
+      "2-1": ["Birmingham", "Leeds", "Liverpool"],
+      "2-2": ["Guildford", "Bristol", "Brighton"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 103", desc: "Can you match The Jam, Dexys Midnight Runners & The Stranglers to their songs and chart history? Play Quiz 103 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=103", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Working Class Heroes on 80sMusicGame.com! The Jam, Dexys Midnight Runners & The Stranglers — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 103 • Working Class Heroes\nThe Jam, Dexys Midnight Runners & The Stranglers\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Jam, Dexys Midnight Runners & The Stranglers — do you know ALL their hits? Quiz 103 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Working Class Heroes on 80sMusicGame.com 🎸 The Jam, Dexys Midnight Runners & The Stranglers. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=103" }
+  },
+
+  /* ─── Quiz 104: College Radio Kings (MEDIUM) ─── */
+  {
+    n: 104, f: "index.html?id=104",
+    t: "College Radio Kings",
+    sub: "The Replacements, Violent Femmes & Jane's Addiction",
+    a: ["The Replacements", "Violent Femmes", "Jane's Addiction"],
+    r: ["Lead Singer", "Home City", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["Jane's Addiction frontman Perry Farrell founded the Lollapalooza festival in 1991.", "The Replacements' song Alex Chilton is a tribute to the Big Star singer.", "Violent Femmes were discovered when Chrissie Hynde of The Pretenders spotted them busking outside a Milwaukee theater."],
+    ans: {
+      "0-0": ["paul westerberg"],
+      "0-1": ["gordon gano"],
+      "0-2": ["perry farrell"],
+      "1-0": ["minneapolis", "minnesota"],
+      "1-1": ["milwaukee", "wisconsin"],
+      "1-2": ["los angeles", "la", "hollywood", "california"],
+      "2-0": ["bastards of young", "alex chilton", "left of the dial", "kiss me on the bus", "cant hardly wait", "androgynous", "ill be you", "color me impressed"],
+      "2-1": ["blister in the sun", "kiss off", "add it up", "gone daddy gone", "american music", "country death song"],
+      "2-2": ["jane says", "been caught stealing", "mountain song", "stop", "ocean size"]
+    },
+    mc: {
+      "0-0": ["Paul Westerberg", "Paul Weller", "Paul Simon"],
+      "0-1": ["Gordon Gano", "Gordon Sumner", "Gordon Lightfoot"],
+      "0-2": ["Perry Farrell", "Perry Como", "Perry Ellis"],
+      "1-0": ["Minneapolis", "Chicago", "Detroit"],
+      "1-1": ["Milwaukee", "Madison", "Chicago"],
+      "1-2": ["Los Angeles", "San Francisco", "San Diego"],
+      "2-0": ["Bastards of Young", "Blister in the Sun", "Just Like Heaven"],
+      "2-1": ["Blister in the Sun", "Bastards of Young", "Girls on Film"],
+      "2-2": ["Been Caught Stealing", "Roxanne", "Message in a Bottle"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 104", desc: "Can you match The Replacements, Violent Femmes & Jane's Addiction to their songs and chart history? Play Quiz 104 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=104", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played College Radio Kings on 80sMusicGame.com! The Replacements, Violent Femmes & Jane's Addiction — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 104 • College Radio Kings\nThe Replacements, Violent Femmes & Jane's Addiction\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Replacements, Violent Femmes & Jane's Addiction — do you know ALL their hits? Quiz 104 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played College Radio Kings on 80sMusicGame.com 🎸 The Replacements, Violent Femmes & Jane's Addiction. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=104" }
+  },
+
+  /* ─── Quiz 105: Alt Rock Crossovers (MEDIUM) ─── */
+  {
+    n: 105, f: "index.html?id=105",
+    t: "Alt Rock Crossovers",
+    sub: "Love and Rockets, The Fixx & Red Hot Chili Peppers",
+    a: ["Love and Rockets", "The Fixx", "Red Hot Chili Peppers"],
+    r: ["Lead Singer", "Country of Origin", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["Love and Rockets was formed by three former members of the goth band Bauhaus.", "Love and Rockets' So Alive reached number three on the U.S. Hot 100 in 1989.", "Red Hot Chili Peppers covered Stevie Wonder's Higher Ground on their 1989 album Mother's Milk."],
+    ans: {
+      "0-0": ["daniel ash", "david j"],
+      "0-1": ["cy curnin"],
+      "0-2": ["anthony kiedis"],
+      "1-0": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british"],
+      "1-1": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british"],
+      "1-2": ["usa", "united states", "united states of america", "america", "us", "american", "los angeles", "california"],
+      "2-0": ["so alive", "no new tale to tell", "ball of confusion", "mirror people", "kundalini express"],
+      "2-1": ["one thing leads to another", "saved by zero", "red skies", "stand or fall", "are we ourselves", "secret separation"],
+      "2-2": ["higher ground", "knock me down", "fight like a brave", "behind the sun", "give it away", "under the bridge"]
+    },
+    mc: {
+      "0-0": ["Daniel Ash", "Daniel Johns", "Daniel Lanois"],
+      "0-1": ["Cy Curnin", "Cy Young", "Cy Coleman"],
+      "0-2": ["Anthony Kiedis", "Anthony Perkins", "Anthony Hopkins"],
+      "1-0": ["England", "USA", "Canada"],
+      "1-1": ["England", "USA", "Australia"],
+      "1-2": ["USA", "England", "Canada"],
+      "2-0": ["So Alive", "Don't You Want Me", "China Girl"],
+      "2-1": ["One Thing Leads to Another", "Love My Way", "Photograph"],
+      "2-2": ["Higher Ground", "Take My Breath Away", "Livin' on a Prayer"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 105", desc: "Can you match Love and Rockets, The Fixx & Red Hot Chili Peppers to their songs and chart history? Play Quiz 105 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=105", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Alt Rock Crossovers on 80sMusicGame.com! Love and Rockets, The Fixx & Red Hot Chili Peppers — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 105 • Alt Rock Crossovers\nLove and Rockets, The Fixx & Red Hot Chili Peppers\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Love and Rockets, The Fixx & Red Hot Chili Peppers — do you know ALL their hits? Quiz 105 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Alt Rock Crossovers on 80sMusicGame.com 🎸 Love and Rockets, The Fixx & Red Hot Chili Peppers. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=105" }
+  },
+
+  /* ─── Quiz 106: Classic Rockers Survive the 80s (EASY) ─── */
+  {
+    n: 106, f: "index.html?id=106",
+    t: "Classic Rockers Survive the 80s",
+    sub: "The Rolling Stones, The Who & The Kinks",
+    a: ["The Rolling Stones", "The Who", "The Kinks"],
+    r: ["Lead Singer", "1980s Hit Song", "Lead Guitarist"],
+    d: "easy",
+    yn: [],
+    notes: ["Ray Davies and Dave Davies of The Kinks are brothers.", "Charlie Watts was The Rolling Stones' drummer from 1963 until his death in 2021.", "The Who's drummer Keith Moon died in 1978, and Kenney Jones took over."],
+    ans: {
+      "0-0": ["mick jagger"],
+      "0-1": ["roger daltrey"],
+      "0-2": ["ray davies"],
+      "1-0": ["start me up", "waiting on a friend", "emotional rescue", "undercover of the night", "harlem shuffle", "mixed emotions", "hang fire", "she was hot"],
+      "1-1": ["you better you bet", "eminence front", "athena"],
+      "1-2": ["come dancing", "destroyer", "do it again", "better things", "state of confusion", "give the people what they want"],
+      "2-0": ["keith richards", "ronnie wood", "ron wood"],
+      "2-1": ["pete townshend", "pete townsend"],
+      "2-2": ["dave davies"]
+    },
+    mc: {
+      "0-0": ["Mick Jagger", "Mick Fleetwood", "Mick Hucknall"],
+      "0-1": ["Roger Daltrey", "Roger Waters", "Roger Taylor"],
+      "0-2": ["Ray Davies", "Ray Parker Jr.", "Ray Charles"],
+      "1-0": ["Start Me Up", "Video Killed the Radio Star", "Once in a Lifetime"],
+      "1-1": ["You Better You Bet", "Jump", "Shout"],
+      "1-2": ["Come Dancing", "Don't Stop Believin'", "Should I Stay or Should I Go"],
+      "2-0": ["Keith Richards", "Keith Moon", "Keith Emerson"],
+      "2-1": ["Pete Townshend", "Pete Best", "Pete Burns"],
+      "2-2": ["Dave Davies", "Dave Grohl", "Dave Navarro"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 106", desc: "Can you match The Rolling Stones, The Who & The Kinks to their songs and chart history? Play Quiz 106 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=106", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Classic Rockers Survive the 80s on 80sMusicGame.com! The Rolling Stones, The Who & The Kinks — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 106 • Classic Rockers Survive the 80s\nThe Rolling Stones, The Who & The Kinks\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Rolling Stones, The Who & The Kinks — do you know ALL their hits? Quiz 106 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Classic Rockers Survive the 80s on 80sMusicGame.com 🎸 The Rolling Stones, The Who & The Kinks. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=106" }
+  },
+
+  /* ─── Quiz 107: Small Town America (MEDIUM) ─── */
+  {
+    n: 107, f: "index.html?id=107",
+    t: "Small Town America",
+    sub: "The B-52's, 10,000 Maniacs & The Romantics",
+    a: ["The B-52's", "10,000 Maniacs", "The Romantics"],
+    r: ["Home Town", "Lead Singer", "Signature Song"],
+    d: "medium",
+    yn: [],
+    notes: ["The B-52's are named after a towering beehive hairstyle nicknamed a B-52.", "10,000 Maniacs took their name from the 1964 horror film Two Thousand Maniacs!", "The Romantics famously performed in matching red leather suits."],
+    ans: {
+      "0-0": ["athens", "georgia", "athens georgia"],
+      "0-1": ["jamestown", "new york"],
+      "0-2": ["detroit", "michigan"],
+      "1-0": ["fred schneider", "kate pierson", "cindy wilson"],
+      "1-1": ["natalie merchant"],
+      "1-2": ["wally palmar", "jimmy marinos"],
+      "2-0": ["love shack", "roam", "rock lobster", "private idaho", "planet claire", "deadbeat club", "legal tender", "party out of bounds", "good stuff", "channel z"],
+      "2-1": ["like the weather", "whats the matter here", "trouble me", "these are days", "candy everybody wants", "because the night", "eat for two"],
+      "2-2": ["what i like about you", "talking in your sleep", "one in a million", "tell it to walter", "rock you up", "when i look in your eyes"]
+    },
+    mc: {
+      "0-0": ["Athens", "Atlanta", "Nashville"],
+      "0-1": ["Jamestown", "Buffalo", "Albany"],
+      "0-2": ["Detroit", "Chicago", "Cleveland"],
+      "1-0": ["Fred Schneider", "Fred Durst", "Fred Astaire"],
+      "1-1": ["Natalie Merchant", "Natalie Cole", "Natalie Imbruglia"],
+      "1-2": ["Wally Palmar", "Wally Cleaver", "Wally Pipp"],
+      "2-0": ["Love Shack", "Let's Dance", "Don't Dream It's Over"],
+      "2-1": ["Like the Weather", "Pretty in Pink", "Whip It"],
+      "2-2": ["Talking in Your Sleep", "Space Age Love Song", "Authority Song"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 107", desc: "Can you match The B-52's, 10,000 Maniacs & The Romantics to their songs and chart history? Play Quiz 107 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=107", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Small Town America on 80sMusicGame.com! The B-52's, 10,000 Maniacs & The Romantics — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 107 • Small Town America\nThe B-52's, 10,000 Maniacs & The Romantics\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The B-52's, 10,000 Maniacs & The Romantics — do you know ALL their hits? Quiz 107 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Small Town America on 80sMusicGame.com 🎸 The B-52's, 10,000 Maniacs & The Romantics. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=107" }
+  },
+
+  /* ─── Quiz 108: Surprise Number Ones (EASY) ─── */
+  {
+    n: 108, f: "index.html?id=108",
+    t: "Surprise Number Ones",
+    sub: "Robert Palmer, Steve Miller Band & Kim Wilde",
+    a: ["Robert Palmer", "Steve Miller Band", "Kim Wilde"],
+    r: ["U.S. #1 Hit of the 1980s", "Home Country", "Hit Was a Cover Song (Yes or No)"],
+    d: "easy",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Robert Palmer's Addicted to Love video featured a band of expressionless, identically styled models.", "Kim Wilde's You Keep Me Hangin' On is a cover of a 1966 hit by The Supremes.", "Steve Miller's Abracadabra topped the U.S. chart in 1982."],
+    ans: {
+      "0-0": ["addicted to love"],
+      "0-1": ["abracadabra"],
+      "0-2": ["you keep me hangin on", "you keep me hanging on"],
+      "1-0": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british", "yorkshire"],
+      "1-1": ["usa", "united states", "united states of america", "america", "us", "american", "wisconsin", "milwaukee", "san francisco"],
+      "1-2": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british", "london"],
+      "2-0": ["no"],
+      "2-1": ["no"],
+      "2-2": ["yes"]
+    },
+    mc: {
+      "0-0": ["Addicted to Love", "Simply Irresistible", "Bad Case of Loving You"],
+      "0-1": ["Abracadabra", "Take the Money and Run", "Jet Airliner"],
+      "0-2": ["You Keep Me Hangin' On", "Pump It Up", "You Came"],
+      "1-0": ["England", "USA", "Ireland"],
+      "1-1": ["USA", "England", "Canada"],
+      "1-2": ["England", "USA", "Australia"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 108", desc: "Can you match Robert Palmer, Steve Miller Band & Kim Wilde to their songs and chart history? Play Quiz 108 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=108", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Surprise Number Ones on 80sMusicGame.com! Robert Palmer, Steve Miller Band & Kim Wilde — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 108 • Surprise Number Ones\nRobert Palmer, Steve Miller Band & Kim Wilde\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Robert Palmer, Steve Miller Band & Kim Wilde — do you know ALL their hits? Quiz 108 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Surprise Number Ones on 80sMusicGame.com 🎸 Robert Palmer, Steve Miller Band & Kim Wilde. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=108" }
+  },
+
+  /* ─── Quiz 109: Voices That Stick (MEDIUM) ─── */
+  {
+    n: 109, f: "index.html?id=109",
+    t: "Voices That Stick",
+    sub: "Bronski Beat, Fairground Attraction & Kirsty MacColl",
+    a: ["Bronski Beat", "Fairground Attraction", "Kirsty MacColl"],
+    r: ["Lead Singer's Home Nation", "Signature Song", "UK #1 Hit (Yes or No)"],
+    d: "medium",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Bronski Beat's Jimmy Somerville later fronted The Communards, who hit number one in the UK with Don't Leave Me This Way.", "Fairground Attraction's Perfect reached number one in the UK in 1988.", "Kirsty MacColl was the daughter of folk singer Ewan MacColl."],
+    ans: {
+      "0-0": ["scotland", "scottish"],
+      "0-1": ["scotland", "scottish"],
+      "0-2": ["england", "english"],
+      "1-0": ["smalltown boy", "why", "hit that perfect beat", "i feel love"],
+      "1-1": ["perfect", "find my love", "a smile in a whisper"],
+      "1-2": ["fairytale of new york", "a new england", "days", "theres a guy works down the chip shop swears hes elvis", "walking down madison", "they dont know"],
+      "2-0": ["no"],
+      "2-1": ["yes"],
+      "2-2": ["no"]
+    },
+    mc: {
+      "0-0": ["Scotland", "England", "Wales"],
+      "0-1": ["Scotland", "England", "Ireland"],
+      "0-2": ["England", "Scotland", "Wales"],
+      "1-0": ["Smalltown Boy", "Relax", "Friday I'm in Love"],
+      "1-1": ["Perfect", "Wishing Well", "Roam"],
+      "1-2": ["Fairytale of New York", "Take On Me", "Cars"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 109", desc: "Can you match Bronski Beat, Fairground Attraction & Kirsty MacColl to their songs and chart history? Play Quiz 109 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=109", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Voices That Stick on 80sMusicGame.com! Bronski Beat, Fairground Attraction & Kirsty MacColl — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 109 • Voices That Stick\nBronski Beat, Fairground Attraction & Kirsty MacColl\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Bronski Beat, Fairground Attraction & Kirsty MacColl — do you know ALL their hits? Quiz 109 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Voices That Stick on 80sMusicGame.com 🎸 Bronski Beat, Fairground Attraction & Kirsty MacColl. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=109" }
+  },
+
+  /* ─── Quiz 110: One Song Wonders (EASY) ─── */
+  {
+    n: 110, f: "index.html?id=110",
+    t: "One Song Wonders",
+    sub: "Rockwell, Bobby McFerrin & The Escape Club",
+    a: ["Rockwell", "Bobby McFerrin", "The Escape Club"],
+    r: ["Signature Song", "U.S. #1 Hit (Yes or No)", "Home Country"],
+    d: "easy",
+    yn: ["1-0", "1-1", "1-2"],
+    notes: ["Michael Jackson sang the chorus on Rockwell's Somebody's Watching Me.", "The Escape Club's Wild, Wild West hit number one in the U.S. in 1988 even though the video was banned from British television.", "Bobby McFerrin's father was an opera singer at the Metropolitan Opera."],
+    ans: {
+      "0-0": ["somebodys watching me", "obscene phone caller"],
+      "0-1": ["dont worry be happy"],
+      "0-2": ["wild wild west", "ill be there"],
+      "1-0": ["no"],
+      "1-1": ["yes"],
+      "1-2": ["yes"],
+      "2-0": ["usa", "united states", "united states of america", "america", "us", "american", "detroit", "michigan"],
+      "2-1": ["usa", "united states", "united states of america", "america", "us", "american", "new york"],
+      "2-2": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british", "london"]
+    },
+    mc: {
+      "0-0": ["Somebody's Watching Me", "Rock the Casbah", "Private Eyes"],
+      "0-1": ["Don't Worry, Be Happy", "Don't Stop Believin'", "Walking on Sunshine"],
+      "0-2": ["Wild, Wild West", "Mr. Roboto", "Every Little Thing She Does Is Magic"],
+      "1-0": ["Yes", "No"],
+      "1-1": ["Yes", "No"],
+      "1-2": ["Yes", "No"],
+      "2-0": ["USA", "England", "Canada"],
+      "2-1": ["USA", "Jamaica", "Canada"],
+      "2-2": ["England", "USA", "Australia"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 110", desc: "Can you match Rockwell, Bobby McFerrin & The Escape Club to their songs and chart history? Play Quiz 110 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=110", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played One Song Wonders on 80sMusicGame.com! Rockwell, Bobby McFerrin & The Escape Club — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 110 • One Song Wonders\nRockwell, Bobby McFerrin & The Escape Club\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Rockwell, Bobby McFerrin & The Escape Club — do you know ALL their hits? Quiz 110 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played One Song Wonders on 80sMusicGame.com 🎸 Rockwell, Bobby McFerrin & The Escape Club. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=110" }
+  },
+
+  /* ─── Quiz 111: The Decade's Last Gasp (MEDIUM) ─── */
+  {
+    n: 111, f: "index.html?id=111",
+    t: "The Decade's Last Gasp",
+    sub: "Happy Mondays, Jesus Jones & EMF",
+    a: ["Happy Mondays", "Jesus Jones", "EMF"],
+    r: ["Lead Singer", "Signature Song", "U.S. Top 10 Hit (Yes or No)"],
+    d: "medium",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Jesus Jones' Right Here, Right Now was inspired by the fall of communism in Eastern Europe.", "EMF's Unbelievable hit number one in the U.S. in 1991.", "Happy Mondays came from Salford, part of Greater Manchester."],
+    ans: {
+      "0-0": ["shaun ryder"],
+      "0-1": ["mike edwards"],
+      "0-2": ["james atkin"],
+      "1-0": ["step on", "kinky afro", "hallelujah", "wrote for luck", "24 hour party people", "loose fit", "lazyitis"],
+      "1-1": ["right here right now", "international bright young thing", "real real real", "info freako", "who where why"],
+      "1-2": ["unbelievable", "lies", "i believe", "children", "theyre here"],
+      "2-0": ["no"],
+      "2-1": ["yes"],
+      "2-2": ["yes"]
+    },
+    mc: {
+      "0-0": ["Shaun Ryder", "Shaun Cassidy", "Shaun Williamson"],
+      "0-1": ["Mike Edwards", "Mike Score", "Mike Peters"],
+      "0-2": ["James Atkin", "James Hetfield", "James Brown"],
+      "1-0": ["Step On", "Centerfold", "Everybody Wants to Rule the World"],
+      "1-1": ["Right Here, Right Now", "Girls Just Want to Have Fun", "Situation"],
+      "1-2": ["Unbelievable", "Jessie's Girl", "Total Eclipse of the Heart"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 111", desc: "Can you match Happy Mondays, Jesus Jones & EMF to their songs and chart history? Play Quiz 111 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=111", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played The Decade's Last Gasp on 80sMusicGame.com! Happy Mondays, Jesus Jones & EMF — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 111 • The Decade's Last Gasp\nHappy Mondays, Jesus Jones & EMF\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Happy Mondays, Jesus Jones & EMF — do you know ALL their hits? Quiz 111 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played The Decade's Last Gasp on 80sMusicGame.com 🎸 Happy Mondays, Jesus Jones & EMF. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=111" }
+  },
+
+  /* ─── Quiz 112: New York State of Mind (MEDIUM) ─── */
+  {
+    n: 112, f: "index.html?id=112",
+    t: "New York State of Mind",
+    sub: "Ramones, Stray Cats & Lou Reed",
+    a: ["Ramones", "Stray Cats", "Lou Reed"],
+    r: ["Where They Grew Up", "Signature Song", "1980s Album"],
+    d: "medium",
+    yn: [],
+    notes: ["The Ramones formed in Forest Hills, Queens.", "The Stray Cats came out of Massapequa on Long Island but became stars in England first.", "Lou Reed grew up in Freeport, on Long Island."],
+    ans: {
+      "0-0": ["queens", "forest hills", "new york", "new york city"],
+      "0-1": ["long island", "massapequa", "new york"],
+      "0-2": ["long island", "freeport", "brooklyn", "new york"],
+      "1-0": ["i wanna be sedated", "blitzkrieg bop", "sheena is a punk rocker", "rock n roll high school", "baby i love you", "pet sematary", "howling at the moon", "bonzo goes to bitburg", "do you remember rock n roll radio"],
+      "1-1": ["stray cat strut", "rock this town", "shes sexy and 17", "sexy and 17", "sexy 17", "runaway boys", "i wont stand in your way", "look at that cadillac", "rumble in brighton"],
+      "1-2": ["walk on the wild side", "perfect day", "dirty boulevard", "romeo had juliette", "satellite of love", "i love you suzanne"],
+      "2-0": ["end of the century", "pleasant dreams", "subterranean jungle", "too tough to die", "animal boy", "halfway to sanity", "brain drain"],
+      "2-1": ["built for speed", "rant n rave with the stray cats", "gonna ball", "rock therapy", "blast off"],
+      "2-2": ["new york", "the blue mask", "legendary hearts", "new sensations", "mistrial", "growing up in public"]
+    },
+    mc: {
+      "0-0": ["Queens", "The Bronx", "Staten Island"],
+      "0-1": ["Long Island", "New Jersey", "Connecticut"],
+      "0-2": ["Long Island", "Philadelphia", "Boston"],
+      "1-0": ["I Wanna Be Sedated", "Rock Lobster", "Should I Stay or Should I Go"],
+      "1-1": ["Stray Cat Strut", "Jump", "Who Can It Be Now?"],
+      "1-2": ["Walk on the Wild Side", "Hurts So Good", "Hip to Be Square"],
+      "2-0": ["End of the Century", "Born to Run", "Life's a Riot"],
+      "2-1": ["Built for Speed", "So", "Thriller"],
+      "2-2": ["New York", "Graceland", "Like a Virgin"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 112", desc: "Can you match Ramones, Stray Cats & Lou Reed to their songs and chart history? Play Quiz 112 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=112", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played New York State of Mind on 80sMusicGame.com! Ramones, Stray Cats & Lou Reed — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 112 • New York State of Mind\nRamones, Stray Cats & Lou Reed\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Ramones, Stray Cats & Lou Reed — do you know ALL their hits? Quiz 112 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played New York State of Mind on 80sMusicGame.com 🎸 Ramones, Stray Cats & Lou Reed. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=112" }
+  },
+
+  /* ─── Quiz 113: Grown Up Hits (EASY) ─── */
+  {
+    n: 113, f: "index.html?id=113",
+    t: "Grown Up Hits",
+    sub: "Hall & Oates, Steve Winwood & Stevie Nicks",
+    a: ["Hall & Oates", "Steve Winwood", "Stevie Nicks"],
+    r: ["Signature Song", "Solo or Duo U.S. #1 Hit (Yes or No)", "Home Country"],
+    d: "easy",
+    yn: ["1-0", "1-1", "1-2"],
+    notes: ["Steve Winwood was a teenage star in the Spencer Davis Group before joining Traffic.", "Stevie Nicks' Stop Draggin' My Heart Around was written by Tom Petty and Mike Campbell.", "Hall & Oates are from Philadelphia."],
+    ans: {
+      "0-0": ["maneater", "kiss on my list", "private eyes", "i cant go for that", "out of touch", "you make my dreams", "say it isnt so", "one on one", "method of modern love"],
+      "0-1": ["higher love", "roll with it", "valerie", "while you see a chance", "back in the high life again"],
+      "0-2": ["edge of seventeen", "stand back", "stop draggin my heart around", "talk to me", "i cant wait", "leather and lace", "rooms on fire"],
+      "1-0": ["yes"],
+      "1-1": ["yes"],
+      "1-2": ["no"],
+      "2-0": ["usa", "united states", "united states of america", "america", "us", "american", "philadelphia"],
+      "2-1": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british", "birmingham"],
+      "2-2": ["usa", "united states", "united states of america", "america", "us", "american", "phoenix", "arizona"]
+    },
+    mc: {
+      "0-0": ["Maneater", "Every Breath You Take", "Africa"],
+      "0-1": ["Higher Love", "Walking on Sunshine", "Love Is a Battlefield"],
+      "0-2": ["Edge of Seventeen", "Jessies Girl", "Time After Time"],
+      "1-0": ["Yes", "No"],
+      "1-1": ["Yes", "No"],
+      "1-2": ["Yes", "No"],
+      "2-0": ["USA", "England", "Canada"],
+      "2-1": ["England", "USA", "Ireland"],
+      "2-2": ["USA", "England", "Canada"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 113", desc: "Can you match Hall & Oates, Steve Winwood & Stevie Nicks to their songs and chart history? Play Quiz 113 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=113", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Grown Up Hits on 80sMusicGame.com! Hall & Oates, Steve Winwood & Stevie Nicks — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 113 • Grown Up Hits\nHall & Oates, Steve Winwood & Stevie Nicks\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Hall & Oates, Steve Winwood & Stevie Nicks — do you know ALL their hits? Quiz 113 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Grown Up Hits on 80sMusicGame.com 🎸 Hall & Oates, Steve Winwood & Stevie Nicks. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=113" }
+  },
+
+  /* ─── Quiz 114: Street Level Stories (MEDIUM) ─── */
+  {
+    n: 114, f: "index.html?id=114",
+    t: "Street Level Stories",
+    sub: "Bruce Springsteen, Eddy Grant & Fine Young Cannibals",
+    a: ["Bruce Springsteen", "Eddy Grant", "Fine Young Cannibals"],
+    r: ["Signature Song", "Home Country", "U.S. #1 Hit (Yes or No)"],
+    d: "medium",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Bruce Springsteen has never had a number one single on the U.S. Hot 100.", "Eddy Grant's Electric Avenue is named after a real street in Brixton, South London.", "Fine Young Cannibals hit number one in the U.S. twice in 1989, with She Drives Me Crazy and Good Thing."],
+    ans: {
+      "0-0": ["dancing in the dark", "born in the usa", "glory days", "im on fire", "hungry heart", "cover me", "my hometown", "brilliant disguise", "born to run", "thunder road", "tunnel of love"],
+      "0-1": ["electric avenue", "i dont wanna dance", "gimme hope joanna", "romancing the stone"],
+      "0-2": ["she drives me crazy", "good thing", "johnny come home", "suspicious minds", "ever fallen in love"],
+      "1-0": ["usa", "united states", "united states of america", "america", "us", "american", "new jersey"],
+      "1-1": ["guyana", "british guiana"],
+      "1-2": ["england", "uk", "united kingdom", "britain", "great britain", "english", "british", "birmingham"],
+      "2-0": ["no"],
+      "2-1": ["no"],
+      "2-2": ["yes"]
+    },
+    mc: {
+      "0-0": ["Dancing in the Dark", "Down Under", "Jack & Diane"],
+      "0-1": ["Electric Avenue", "Electric Boogie", "Electric Dreams"],
+      "0-2": ["She Drives Me Crazy", "She Bop", "She Works Hard for the Money"],
+      "1-0": ["USA", "Canada", "Ireland"],
+      "1-1": ["Guyana", "Jamaica", "England"],
+      "1-2": ["England", "Scotland", "Wales"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 114", desc: "Can you match Bruce Springsteen, Eddy Grant & Fine Young Cannibals to their songs and chart history? Play Quiz 114 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=114", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Street Level Stories on 80sMusicGame.com! Bruce Springsteen, Eddy Grant & Fine Young Cannibals — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 114 • Street Level Stories\nBruce Springsteen, Eddy Grant & Fine Young Cannibals\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Bruce Springsteen, Eddy Grant & Fine Young Cannibals — do you know ALL their hits? Quiz 114 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Street Level Stories on 80sMusicGame.com 🎸 Bruce Springsteen, Eddy Grant & Fine Young Cannibals. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=114" }
+  },
+
+  /* ─── Quiz 115: British Chart Giants (EASY) ─── */
+  {
+    n: 115, f: "index.html?id=115",
+    t: "British Chart Giants",
+    sub: "Culture Club, UB40 & Eurythmics",
+    a: ["Culture Club", "UB40", "Eurythmics"],
+    r: ["Lead Singer", "Signature Song", "City They Formed In"],
+    d: "easy",
+    yn: [],
+    notes: ["UB40 took their name from the form used to claim unemployment benefit in Britain.", "Culture Club's Karma Chameleon went to number one in both the UK and the U.S.", "Eurythmics were the duo of Annie Lennox and Dave Stewart."],
+    ans: {
+      "0-0": ["boy george", "george odowd"],
+      "0-1": ["ali campbell"],
+      "0-2": ["annie lennox"],
+      "1-0": ["karma chameleon", "do you really want to hurt me", "time clock of the heart", "church of the poison mind", "victims", "its a miracle", "the war song"],
+      "1-1": ["red red wine", "i got you babe", "cant help falling in love", "one in ten", "cherry oh baby", "food for thought", "king", "rat in mi kitchen", "sing our own song", "kingston town"],
+      "1-2": ["sweet dreams are made of this", "sweet dreams", "here comes the rain again", "would i lie to you", "there must be an angel", "love is a stranger", "whos that girl", "sexcrime", "thorn in my side", "missionary man", "right by your side", "sisters are doin it for themselves"],
+      "2-0": ["london"],
+      "2-1": ["birmingham"],
+      "2-2": ["london"]
+    },
+    mc: {
+      "0-0": ["Boy George", "Marc Almond", "Holly Johnson"],
+      "0-1": ["Ali Campbell", "Robin Campbell", "Duncan Campbell"],
+      "0-2": ["Annie Lennox", "Annie Hall", "Annie Oakley"],
+      "1-0": ["Karma Chameleon", "Pour Some Sugar on Me", "Sledgehammer"],
+      "1-1": ["Red Red Wine", "Burning Down the House", "Blue Monday"],
+      "1-2": ["Sweet Dreams (Are Made of This)", "Hungry Like the Wolf", "I Ran (So Far Away)"],
+      "2-0": ["London", "Manchester", "Liverpool"],
+      "2-1": ["Birmingham", "Leeds", "Sheffield"],
+      "2-2": ["London", "Glasgow", "Sunderland"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 115", desc: "Can you match Culture Club, UB40 & Eurythmics to their songs and chart history? Play Quiz 115 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=115", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played British Chart Giants on 80sMusicGame.com! Culture Club, UB40 & Eurythmics — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 115 • British Chart Giants\nCulture Club, UB40 & Eurythmics\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Culture Club, UB40 & Eurythmics — do you know ALL their hits? Quiz 115 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played British Chart Giants on 80sMusicGame.com 🎸 Culture Club, UB40 & Eurythmics. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=115" }
+  },
+
+  /* ─── Quiz 116: Art School Attitude (HARD) ─── */
+  {
+    n: 116, f: "index.html?id=116",
+    t: "Art School Attitude",
+    sub: "Talk Talk, Public Image Ltd & Heaven 17",
+    a: ["Talk Talk", "Public Image Ltd", "Heaven 17"],
+    r: ["Lead Singer", "Signature Song", "City They Formed In"],
+    d: "hard",
+    yn: [],
+    notes: ["John Lydon fronted the Sex Pistols as Johnny Rotten before forming Public Image Ltd.", "Heaven 17 was formed by former members of The Human League.", "No Doubt covered Talk Talk's It's My Life in 2003."],
+    ans: {
+      "0-0": ["mark hollis"],
+      "0-1": ["john lydon", "johnny rotten"],
+      "0-2": ["glenn gregory"],
+      "1-0": ["its my life", "such a shame", "lifes what you make it", "talk talk", "today", "living in another world", "dum dum girl"],
+      "1-1": ["rise", "this is not a love song", "public image", "death disco", "home", "seattle", "disappointed"],
+      "1-2": ["temptation", "we dont need this fascist groove thang", "come live with me", "crushed by the wheels of industry", "let me go", "play to win"],
+      "2-0": ["london"],
+      "2-1": ["london"],
+      "2-2": ["sheffield"]
+    },
+    mc: {
+      "0-0": ["Mark Hollis", "Mark Knopfler", "Mark Ronson"],
+      "0-1": ["John Lydon", "John Lennon", "John Taylor"],
+      "0-2": ["Glenn Gregory", "Glenn Tilbrook", "Glenn Frey"],
+      "1-0": ["It's My Life", "Under Pressure", "Oliver's Army"],
+      "1-1": ["Rise", "Anarchy in the UK", "Just Like Heaven"],
+      "1-2": ["Temptation", "Girls on Film", "Love Action"],
+      "2-0": ["London", "Manchester", "Liverpool"],
+      "2-1": ["London", "Glasgow", "Bristol"],
+      "2-2": ["Sheffield", "Leeds", "Nottingham"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 116", desc: "Can you match Talk Talk, Public Image Ltd & Heaven 17 to their songs and chart history? Play Quiz 116 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=116", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Art School Attitude on 80sMusicGame.com! Talk Talk, Public Image Ltd & Heaven 17 — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 116 • Art School Attitude\nTalk Talk, Public Image Ltd & Heaven 17\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Talk Talk, Public Image Ltd & Heaven 17 — do you know ALL their hits? Quiz 116 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Art School Attitude on 80sMusicGame.com 🎸 Talk Talk, Public Image Ltd & Heaven 17. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=116" }
+  },
+
+  /* ─── Quiz 117: Solo Flights (MEDIUM) ─── */
+  {
+    n: 117, f: "index.html?id=117",
+    t: "Solo Flights",
+    sub: "Peter Cetera, Midge Ure & Neil Young",
+    a: ["Peter Cetera", "Midge Ure", "Neil Young"],
+    r: ["Signature Song", "Home Country", "Band They Are Best Known With"],
+    d: "medium",
+    yn: [],
+    notes: ["Peter Cetera sang lead on Chicago hits like Hard to Say I'm Sorry before leaving the band in 1985.", "Midge Ure co-wrote Band Aid's Do They Know It's Christmas? with Bob Geldof.", "MTV first banned Neil Young's This Note's for You video, then gave it Video of the Year in 1989."],
+    ans: {
+      "0-0": ["glory of love", "the next time i fall", "one good woman", "after all", "hard to say im sorry", "youre the inspiration", "hard habit to break"],
+      "0-1": ["if i was", "vienna", "dancing with tears in my eyes", "reap the wild wind", "hymn", "loves great adventure"],
+      "0-2": ["rockin in the free world", "harvest moon", "heart of gold", "this notes for you", "old man", "like a hurricane", "cinnamon girl"],
+      "1-0": ["usa", "united states", "united states of america", "america", "us", "american", "chicago"],
+      "1-1": ["scotland", "scottish", "glasgow", "cambuslang"],
+      "1-2": ["canada", "canadian", "toronto"],
+      "2-0": ["chicago"],
+      "2-1": ["ultravox"],
+      "2-2": ["crazy horse", "buffalo springfield", "crosby stills nash and young", "crosby stills nash young", "csny"]
+    },
+    mc: {
+      "0-0": ["Glory of Love", "Roxanne", "Message in a Bottle"],
+      "0-1": ["If I Was", "Don't You Want Me", "China Girl"],
+      "0-2": ["Rockin' in the Free World", "Love My Way", "Photograph"],
+      "1-0": ["USA", "Canada", "England"],
+      "1-1": ["Scotland", "England", "Ireland"],
+      "1-2": ["Canada", "USA", "England"],
+      "2-0": ["Chicago", "Toto", "Journey"],
+      "2-1": ["Ultravox", "Duran Duran", "Spandau Ballet"],
+      "2-2": ["Crazy Horse", "The Band", "The Eagles"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 117", desc: "Can you match Peter Cetera, Midge Ure & Neil Young to their songs and chart history? Play Quiz 117 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=117", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Solo Flights on 80sMusicGame.com! Peter Cetera, Midge Ure & Neil Young — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 117 • Solo Flights\nPeter Cetera, Midge Ure & Neil Young\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Peter Cetera, Midge Ure & Neil Young — do you know ALL their hits? Quiz 117 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Solo Flights on 80sMusicGame.com 🎸 Peter Cetera, Midge Ure & Neil Young. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=117" }
+  },
+
+  /* ─── Quiz 118: Beyond the Anglo Charts (HARD) ─── */
+  {
+    n: 118, f: "index.html?id=118",
+    t: "Beyond the Anglo Charts",
+    sub: "Yellow Magic Orchestra, Ofra Haza & Peter Schilling",
+    a: ["Yellow Magic Orchestra", "Ofra Haza", "Peter Schilling"],
+    r: ["Home Country", "Signature Song", "U.S. Top 40 Hit (Yes or No)"],
+    d: "hard",
+    yn: ["2-0", "2-1", "2-2"],
+    notes: ["Yellow Magic Orchestra's Ryuichi Sakamoto later won an Oscar for scoring The Last Emperor.", "Ofra Haza's Im Nin' Alu was sampled in the Coldcut remix of Eric B. & Rakim's Paid in Full.", "Peter Schilling's Major Tom was inspired by David Bowie's Space Oddity."],
+    ans: {
+      "0-0": ["japan", "japanese", "tokyo"],
+      "0-1": ["israel", "israeli", "tel aviv"],
+      "0-2": ["germany", "west germany", "german", "stuttgart"],
+      "1-0": ["rydeen", "behind the mask", "firecracker", "tong poo", "computer games", "technopolis", "absolute ego dance"],
+      "1-1": ["im nin alu", "galbi"],
+      "1-2": ["major tom", "major tom coming home", "terra titanic"],
+      "2-0": ["no"],
+      "2-1": ["no"],
+      "2-2": ["yes"]
+    },
+    mc: {
+      "0-0": ["Japan", "China", "South Korea"],
+      "0-1": ["Israel", "Egypt", "Turkey"],
+      "0-2": ["Germany", "Austria", "Switzerland"],
+      "1-0": ["Rydeen", "Take My Breath Away", "99 Luftballons"],
+      "1-1": ["Im Nin' Alu", "99 Luftballons", "Nikita"],
+      "1-2": ["Major Tom (Coming Home)", "99 Luftballons", "Rock Me Amadeus"],
+      "2-0": ["Yes", "No"],
+      "2-1": ["Yes", "No"],
+      "2-2": ["Yes", "No"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 118", desc: "Can you match Yellow Magic Orchestra, Ofra Haza & Peter Schilling to their songs and chart history? Play Quiz 118 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=118", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Beyond the Anglo Charts on 80sMusicGame.com! Yellow Magic Orchestra, Ofra Haza & Peter Schilling — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 118 • Beyond the Anglo Charts\nYellow Magic Orchestra, Ofra Haza & Peter Schilling\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Yellow Magic Orchestra, Ofra Haza & Peter Schilling — do you know ALL their hits? Quiz 118 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Beyond the Anglo Charts on 80sMusicGame.com 🎸 Yellow Magic Orchestra, Ofra Haza & Peter Schilling. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=118" }
+  },
+
+  /* ─── Quiz 119: Screamer Superstars (MEDIUM) ─── */
+  {
+    n: 119, f: "index.html?id=119",
+    t: "Screamer Superstars",
+    sub: "Depeche Mode, The Smiths & Erasure",
+    a: ["Depeche Mode", "The Smiths", "Erasure"],
+    r: ["Home Town", "Main Music Writer", "Year Formed"],
+    d: "medium",
+    yn: [],
+    ch: {"2-0": ["1980", "1983", "1986"], "2-1": ["1979", "1982", "1985"], "2-2": ["1979", "1982", "1985"]},
+    notes: ["Martin Gore writes most of Depeche Mode's songs.", "The Smiths' songwriting partnership was Morrissey on words and Johnny Marr on music.", "Erasure scored their first big UK hit with Sometimes in 1986."],
+    ans: {
+      "0-0": ["basildon", "essex"],
+      "0-1": ["manchester"],
+      "0-2": ["london"],
+      "1-0": ["martin gore"],
+      "1-1": ["johnny marr"],
+      "1-2": ["vince clarke"],
+      "2-0": ["1980"],
+      "2-1": ["1982"],
+      "2-2": ["1985"]
+    },
+    mc: {
+      "0-0": ["Basildon", "Manchester", "Sheffield"],
+      "0-1": ["Manchester", "Liverpool", "Leeds"],
+      "0-2": ["London", "Glasgow", "Bristol"],
+      "1-0": ["Martin Gore", "Andy Fletcher", "Alan Wilder"],
+      "1-1": ["Johnny Marr", "Andy Rourke", "Mike Joyce"],
+      "1-2": ["Vince Clarke", "Vince Neil", "Vince Vaughn"],
+      "2-0": ["1980", "1983", "1986"],
+      "2-1": ["1982", "1979", "1985"],
+      "2-2": ["1985", "1979", "1982"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 119", desc: "Can you match Depeche Mode, The Smiths & Erasure to their songs and chart history? Play Quiz 119 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=119", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Screamer Superstars on 80sMusicGame.com! Depeche Mode, The Smiths & Erasure — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 119 • Screamer Superstars\nDepeche Mode, The Smiths & Erasure\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "Depeche Mode, The Smiths & Erasure — do you know ALL their hits? Quiz 119 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Screamer Superstars on 80sMusicGame.com 🎸 Depeche Mode, The Smiths & Erasure. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=119" }
+  },
+
+  /* ─── Quiz 120: Cult Favorites (HARD) ─── */
+  {
+    n: 120, f: "index.html?id=120",
+    t: "Cult Favorites",
+    sub: "The Church, Split Enz & The Waitresses",
+    a: ["The Church", "Split Enz", "The Waitresses"],
+    r: ["Home Country", "Signature Song", "Lead Singer"],
+    d: "hard",
+    yn: [],
+    notes: ["Split Enz's Neil Finn went on to front Crowded House.", "The Waitresses' Christmas Wrapping became a holiday staple.", "The Church's Under the Milky Way was their biggest U.S. hit, in 1988."],
+    ans: {
+      "0-0": ["australia", "australian", "sydney", "canberra"],
+      "0-1": ["new zealand", "nz", "auckland", "kiwi"],
+      "0-2": ["usa", "united states", "united states of america", "america", "us", "american", "akron", "ohio"],
+      "1-0": ["under the milky way", "the unguarded moment", "almost with you", "reptile"],
+      "1-1": ["i got you", "i see red", "six months in a leaky boat", "history never repeats", "message to my girl", "dirty creature"],
+      "1-2": ["i know what boys like", "christmas wrapping", "square pegs"],
+      "2-0": ["steve kilbey", "steven kilbey"],
+      "2-1": ["tim finn", "neil finn"],
+      "2-2": ["patty donahue"]
+    },
+    mc: {
+      "0-0": ["Australia", "New Zealand", "England"],
+      "0-1": ["New Zealand", "Australia", "Canada"],
+      "0-2": ["USA", "Canada", "England"],
+      "1-0": ["Under the Milky Way", "Livin' on a Prayer", "Video Killed the Radio Star"],
+      "1-1": ["I Got You", "Once in a Lifetime", "Jump"],
+      "1-2": ["I Know What Boys Like", "Shout", "Don't Stop Believin'"],
+      "2-0": ["Steve Kilbey", "Steve Winwood", "Steve Perry"],
+      "2-1": ["Tim Finn", "Tim Curry", "Tim Burgess"],
+      "2-2": ["Patty Donahue", "Patti Smith", "Patty Loveless"]
+    },
+    og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 120", desc: "Can you match The Church, Split Enz & The Waitresses to their songs and chart history? Play Quiz 120 on 80sMusicGame.com!", url: "https://80smusicgame.com/index.html?id=120", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
+    social: { fb: "I just played Cult Favorites on 80sMusicGame.com! The Church, Split Enz & The Waitresses — can you beat my score? 🎸 #80sMusicGame #80sMusic", ig: "Quiz 120 • Cult Favorites\nThe Church, Split Enz & The Waitresses\n\n🎸 Free daily 80s trivia at 80sMusicGame.com\n\n#80sMusicGame #80sMusic #MusicTrivia", tt: "The Church, Split Enz & The Waitresses — do you know ALL their hits? Quiz 120 on 80sMusicGame.com 🎶 #80sMusicGame #80sMusic", tw: "Just played Cult Favorites on 80sMusicGame.com 🎸 The Church, Split Enz & The Waitresses. Can you beat me? #80sMusicGame #80sMusic", url: "https://80smusicgame.com/index.html?id=120" }
   }
 
 ];
