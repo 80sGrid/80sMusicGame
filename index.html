@@ -510,7 +510,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div class="stats-sub">PLAYER PROFILE</div>
 <div class="stat-row"><span class="stat-label">QUIZZES TODAY</span><span class="stat-value" id="statToday">0</span></div>
 <div class="stat-row"><span class="stat-label">TOTAL PLAYED</span><span class="stat-value" id="statTotal">0</span></div>
-<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0%</span></div>
+<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0/810</span></div>
 <div class="stat-row"><span class="stat-label">BEST QUIZ SCORE</span><span class="stat-value" id="statBest">0/9</span></div>
 <div class="stat-row"><span class="stat-label">&#128293; DAY STREAK</span><span class="stat-value" id="statStreak">0</span></div>
 <button class="stats-close" onclick="toggleStats()">CLOSE</button>
@@ -1045,12 +1045,12 @@ function hasNewPlaysLeft(){return getUnlockType()==='unlimited'||getQuizzesPlaye
 function loadStats(){
   const today=getQuizzesPlayedToday();const limit=getEffectiveDailyLimit();
   const total=parseInt(localStorage.getItem('totalQuizzesPlayed')||'0');
-  let cum=0;for(let i=1;i<=40;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
+  let cum=0;for(let i=1;i<=90;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
   const best=parseInt(localStorage.getItem('bestQuizScore')||'0');
   const streak=parseInt(localStorage.getItem('playStreak')||'0');
   document.getElementById('statToday').textContent=today+' / '+(limit>900?'∞':limit);
   document.getElementById('statTotal').textContent=total;
-  document.getElementById('statCumulative').textContent=cum+'/324';
+  document.getElementById('statCumulative').textContent=cum+'/810';
   document.getElementById('statBest').textContent=best+'/9';
   document.getElementById('statStreak').textContent=streak+' days';
 }
