@@ -896,8 +896,8 @@ window.QUIZ_DATA = [
       "1-0": ["no"],
       "1-1": ["yes"],
       "1-2": ["yes"],
-      "2-0": ["turn me loose"],
-      "2-1": ["take my breath away"],
+      "2-0": ["lovin' every minute of it", "loving every minute of it"],
+      "2-1": ["footloose"],
       "2-2": ["take my breath away"]
     },
     mc: {
@@ -907,8 +907,8 @@ window.QUIZ_DATA = [
       "1-0": ["No", "Yes", "Not Sure"],
       "1-1": ["Yes", "No", "Not Sure"],
       "1-2": ["Yes", "No", "Not Sure"],
-      "2-0": ["Turn Me Loose", "Working for the Weekend", "Hot Girls in Love"],
-      "2-1": ["Take My Breath Away", "Danger Zone", "Footloose"],
+      "2-0": ["Lovin' Every Minute of It", "Working for the Weekend", "Hot Girls in Love"],
+      "2-1": ["Footloose", "Danger Zone", "Take My Breath Away"],
       "2-2": ["Take My Breath Away", "No More Words", "Metro"]
     },
     og: { title: "Len's 80sMusicGame.com Music Edition - Quiz 27", desc: "Can you match Loverboy, Kenny Loggins, and Berlin to their songs, hits, and chart history? Play Quiz 27 on 80sMusicGame.com!", url: "https://80smusicgame.com/quiz27.html", img: "https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg" },
