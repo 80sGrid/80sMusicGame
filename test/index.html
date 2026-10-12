@@ -634,6 +634,15 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <div id="diff-stars" style="font-size:1.1em; color:var(--badge-color); letter-spacing:1px;">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
     <div id="diff-label" style="font-size:0.9em; font-weight:900; color:var(--badge-color); letter-spacing:1px;">Medium</div>
   </div>
+  <!-- Coffee card replaces difficulty badge after Check Answers -->
+  <a id="coffeeCard" href="https://buymeacoffee.com/80smusicgame" target="_blank" rel="noopener noreferrer"
+     onclick="try{gtag('event','coffee_click',{location:'results',quiz_number:window.QUIZ_NUM});}catch(e){}"
+     style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px 14px; border-radius:10px; border:2px solid #FFDD00; background:linear-gradient(135deg,#fffbe0,#fff3b0); box-shadow:0 0 12px rgba(255,221,0,0.5); text-decoration:none; text-align:center;">
+    <div style="font-size:1.6em; line-height:1;">&#9749;</div>
+    <div style="font-size:0.95em; font-weight:900; color:#000; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">Enjoyed today's grid?</div>
+    <div style="display:inline-block; padding:8px 16px; background:#FFDD00; color:#000; font-weight:700; font-size:0.85em; border-radius:8px;">Buy Len a coffee</div>
+    <div style="font-size:0.68em; color:#777;">Free forever. Coffees fund new quizzes.</div>
+  </a>
   <!-- Lifeline pill -->
   <div class="lifeline-bar" id="lifelineBar" style="flex:1; margin:0; flex-direction:column; gap:4px; padding:8px 14px;">
     <div style="font-size:0.68em; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:#555; margin-bottom:3px;">Use a Lifeline if you're stuck?</div>
@@ -818,16 +827,6 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   <button onclick="shareQuizEmoji()" style="width:100%; background:linear-gradient(135deg,#FF1493,#8B00FF); color:white; border:none; padding:14px 16px; border-radius:10px; cursor:pointer; font-size:1em; font-weight:900; box-shadow:0 4px 15px rgba(255,20,147,0.3); letter-spacing:1px;">
     &#128242; Share Your Score<br><span style="font-size:0.75em; font-weight:400; opacity:0.9;">Copies emoji grid — paste anywhere!</span>
   </button>
-</div>
-
-<!-- SUPPORT: Buy Me a Coffee (results screen) -->
-<div style="margin:0 0 14px; text-align:center;">
-  <a href="https://buymeacoffee.com/80smusicgame" target="_blank" rel="noopener noreferrer"
-     onclick="try{gtag('event','coffee_click',{location:'results',quiz_number:window.QUIZ_NUM});}catch(e){}"
-     style="display:inline-block; padding:11px 20px; background:#FFDD00; color:#000; font-weight:700; font-size:0.9em; border-radius:10px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12);">
-    &#9749; Enjoyed today's grid? Buy Len a coffee
-  </a>
-  <div style="font-size:0.72em; color:#999; margin-top:6px;">The game is free and always will be. Coffees fund new quizzes.</div>
 </div>
 </div>
 <div style="background:#e3f2fd; border:1px solid #2196f3; padding:12px; border-radius:8px; margin-bottom:20px; text-align:center; font-size:.9em;">
@@ -1886,15 +1885,16 @@ function checkAnswers(){
   // Swap lifeline bar for survey pill (hide if already subscribed)
   const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
   if(_lb)_lb.style.display='none';
+  try{const _db=document.getElementById('diff-badge'),_cc=document.getElementById('coffeeCard');if(_db)_db.style.display='none';if(_cc)_cc.style.display='flex';}catch(e){}
   if(_sp){
-    if(localStorage.getItem('eoSubscribed')==='true'){
+    if(localStorage.getItem('eoSubscribedV2')==='true'){
       _sp.style.display='none';
     } else {
       _sp.style.display='flex';
       // Detect EmailOctopus form submission via message event
       window.addEventListener('message',function _eoListener(e){
         if(e.data&&(e.data.type==='eo-form-submitted'||e.data==='eo-form-submitted')){
-          localStorage.setItem('eoSubscribed','true');
+          localStorage.setItem('eoSubscribedV2','true');
           document.getElementById('eoFormWrap').style.display='none';
           document.getElementById('eoThankYou').style.display='block';
           window.removeEventListener('message',_eoListener);
@@ -1903,9 +1903,9 @@ function checkAnswers(){
       // Fallback: watch for EO success message appearing in DOM
       setTimeout(function(){
         const observer=new MutationObserver(function(){
-          const successEl=_sp.querySelector('.email-octopus-success,.eo-success,[class*="success"]');
-          if(successEl){
-            localStorage.setItem('eoSubscribed','true');
+          const successEl=_sp.querySelector('.emailoctopus-success-message');
+          if(successEl && successEl.textContent.trim().length>0){
+            localStorage.setItem('eoSubscribedV2','true');
             document.getElementById('eoFormWrap').style.display='none';
             document.getElementById('eoThankYou').style.display='block';
             observer.disconnect();
@@ -2529,7 +2529,8 @@ function quizInit(){
         // Swap lifeline bar for survey pill (already completed)
         const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
         if(_lb)_lb.style.display='none';
-        if(_sp)_sp.style.display=(localStorage.getItem('eoSubscribed')==='true')?'none':'flex';
+        try{const _db=document.getElementById('diff-badge'),_cc=document.getElementById('coffeeCard');if(_db)_db.style.display='none';if(_cc)_cc.style.display='flex';}catch(e){}
+        if(_sp)_sp.style.display=(localStorage.getItem('eoSubscribedV2')==='true')?'none':'flex';
         // Restore score message
         const _msgs={1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
         const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[_correct]||'';_msgEl.style.display='block';}
