@@ -29,12 +29,13 @@
 #eoThankYou button{max-width:100%; white-space:normal;}
 #coffeeCard{overflow-wrap:anywhere;}
 
+html { overflow-x: hidden; overflow-x: clip; width: 100%; max-width: 100%; }
 body {
 font-family: Arial, sans-serif;
-display: flex;
-justify-content: center;
-align-items: flex-start;
+display: block;
 min-height: 100vh;
+max-width: 100%;
+overflow-x: clip;
 margin: 0;
 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 padding: 20px;
@@ -48,12 +49,14 @@ border-radius: 15px;
 box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 max-width: 700px;
 width: 100%;
+margin: 0 auto;
+min-width: 0;
 box-sizing: border-box;
 }
 .logo-img { display:block; width:100%; height:auto; object-fit:cover; object-position:center top; }
 @media (max-width: 540px) {
   body { min-height: unset; height: auto; align-items: flex-start; }
-  .container { overflow: hidden; }
+  .container { overflow: hidden; overflow-x: clip; }
   .logo-img { max-height:130px; object-fit:cover; object-position:center center; width:100%; }
   picture { display:block; margin:-15px -15px 10px -15px; width:calc(100% + 30px); overflow:hidden; text-align:center; }
 }
@@ -2698,5 +2701,24 @@ function drawGridOnCassette(ctx, W, H) {
 
 </script>
 <script src="quiz-data.js"></script>
+
+<script>
+/* Layout debug overlay: open the page with ?debug=1 to see what is wider than the screen */
+(function(){
+  if(!/[?&]debug=1/.test(location.search)) return;
+  window.addEventListener('load',function(){ setTimeout(function(){
+    try{
+      var de=document.documentElement, vv=window.visualViewport||{}, c=document.querySelector('.container'), cr=c?c.getBoundingClientRect():{left:0,right:0};
+      var vw=window.innerWidth;
+      var bad=[].slice.call(document.querySelectorAll('body *')).filter(function(e){var r=e.getBoundingClientRect();return r.width>0&&(r.right>vw+1||r.left<-1);}).slice(0,8).map(function(e){var r=e.getBoundingClientRect();return (e.id?'#'+e.id:(e.className&&e.className.baseVal===undefined?'.'+String(e.className).split(' ')[0]:e.tagName))+' L'+Math.round(r.left)+' R'+Math.round(r.right);});
+      var d=document.createElement('div');
+      d.style.cssText='position:fixed;left:6px;right:6px;bottom:6px;z-index:99999;background:#000;color:#0f0;font:11px/1.35 monospace;padding:8px;border-radius:8px;white-space:pre-wrap;word-break:break-all;';
+      d.textContent='inner '+vw+' | client '+de.clientWidth+' | scrollW '+de.scrollWidth+' | bodyScrollW '+document.body.scrollWidth+'\nvisual '+Math.round(vv.width||0)+' scale '+(vv.scale||1)+' offX '+Math.round(vv.offsetLeft||0)+' scrollX '+Math.round(window.scrollX)+'\ncontainer L'+Math.round(cr.left)+' R'+Math.round(cr.right)+'\nwide: '+(bad.join(', ')||'none')+'\n(tap to close)';
+      d.onclick=function(){d.remove();};
+      document.body.appendChild(d);
+    }catch(e){}
+  },2500);});
+})();
+</script>
 </body>
 </html>
