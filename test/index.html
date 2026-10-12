@@ -21,6 +21,14 @@
 <meta property="twitter:image" content="https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&display=swap" rel="stylesheet">
 <style>
+/* Keep the status row (difficulty / coffee / lifeline / signup) inside the screen on every phone */
+#statusRow > *{min-width:0; max-width:100%; box-sizing:border-box;}
+#surveyPill, #eoFormWrap, #eoThankYou, #coffeeCard{min-width:0; max-width:100%; box-sizing:border-box;}
+#eoFormWrap{width:100%; overflow:hidden;}
+#eoFormWrap *{max-width:100% !important; box-sizing:border-box;}
+#eoThankYou button{max-width:100%; white-space:normal;}
+#coffeeCard{overflow-wrap:anywhere;}
+
 body {
 font-family: Arial, sans-serif;
 display: flex;
@@ -628,7 +636,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div id="scoreMessage" style="display:none; text-align:center; margin:8px 0 10px; padding:10px 16px; border-radius:10px; background:linear-gradient(135deg,#f8f0ff,#fff0f8); border:2px solid rgba(139,0,255,0.2); font-family:'Oxanium',Arial,sans-serif; font-size:0.95em; font-weight:900; color:#8B00FF; letter-spacing:0.5px;"></div>
 
 <!-- DIFFICULTY + LIFELINE ROW -->
-<div style="display:flex; gap:10px; margin:10px 0 16px; align-items:stretch;">
+<div id="statusRow" style="display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:10px; margin:10px 0 16px; align-items:stretch;">
   <!-- Difficulty pill -->
   <div id="diff-badge" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:10px 14px; border-radius:10px; border:2px solid var(--badge-color); background:color-mix(in srgb,var(--badge-color) 10%,white); box-shadow:0 0 12px var(--badge-glow); --badge-color:#fd7e14; --badge-glow:rgba(253,126,20,0.4);">
     <div style="font-size:0.68em; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--badge-color); margin-bottom:2px;">Difficulty Rating</div>
