@@ -8,17 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FE9N3JWSGN"></script>
 <script src="/analytics.js"></script>
-<title>Len's 80sGrid.com — Daily Music Trivia</title>
+<title>Len's 80sMusicGame.com — Daily Music Trivia</title>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://80sgrid.com/">
-<meta property="og:title" content="Len's 80sGrid.com — Daily Music Trivia">
+<meta property="og:url" content="https://80smusicgame.com/">
+<meta property="og:title" content="Len's 80sMusicGame.com — Daily Music Trivia">
 <meta property="og:description" content="The daily 80s music trivia game. Match artists to categories. Free to play, no sign-up required.">
-<meta property="og:image" content="https://raw.githubusercontent.com/80sGrid/80sgrid.github.io/main/images/header26.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://80sgrid.com/">
-<meta property="twitter:title" content="Len's 80sGrid.com — Daily Music Trivia">
+<meta property="twitter:url" content="https://80smusicgame.com/">
+<meta property="twitter:title" content="Len's 80sMusicGame.com — Daily Music Trivia">
 <meta property="twitter:description" content="The daily 80s music trivia game. Match artists to categories. Free to play, no sign-up required.">
-<meta property="twitter:image" content="https://raw.githubusercontent.com/80sGrid/80sgrid.github.io/main/images/header26.jpg">
+<meta property="twitter:image" content="https://raw.githubusercontent.com/80sGrid/80sMusicGame/main/images/header26.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&display=swap" rel="stylesheet">
 <style>
 body {
@@ -489,6 +489,11 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 </div>
 <button onclick="closeModal()" style="width:100%;margin-top:12px;background:#6c757d;padding:10px;font-size:0.9em;border:none;border-radius:8px;color:white;cursor:pointer;">Cancel</button>
 </div>
+<div class="yn-section" id="chSection" style="display:none;">
+<div style="text-align:center;margin-bottom:10px;font-size:0.85em;color:#888;font-style:italic;">Pick the right one!</div>
+<div id="chButtons" style="display:flex;flex-direction:column;gap:10px;"></div>
+<button onclick="closeModal()" style="width:100%;margin-top:12px;background:#6c757d;padding:10px;font-size:0.9em;border:none;border-radius:8px;color:white;cursor:pointer;">Cancel</button>
+</div>
 <div class="text-section" id="textSection">
 <input type="text" id="modalInput" placeholder="Type your answer..." />
 <div class="input-modal-buttons">
@@ -510,7 +515,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div class="stats-sub">PLAYER PROFILE</div>
 <div class="stat-row"><span class="stat-label">QUIZZES TODAY</span><span class="stat-value" id="statToday">0</span></div>
 <div class="stat-row"><span class="stat-label">TOTAL PLAYED</span><span class="stat-value" id="statTotal">0</span></div>
-<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0%</span></div>
+<div class="stat-row"><span class="stat-label">CUMULATIVE SCORE</span><span class="stat-value" id="statCumulative">0/855</span></div>
 <div class="stat-row"><span class="stat-label">BEST QUIZ SCORE</span><span class="stat-value" id="statBest">0/9</span></div>
 <div class="stat-row"><span class="stat-label">&#128293; DAY STREAK</span><span class="stat-value" id="statStreak">0</span></div>
 <button class="stats-close" onclick="toggleStats()">CLOSE</button>
@@ -554,16 +559,19 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div class="container">
 <picture style="display:block; width:100%; margin-bottom:10px;">
   <source media="(max-width: 540px)" srcset="/images/mobile-header.jpg">
-  <img src="/images/header26.jpg" alt="80s Grid Header" class="logo-img" style="width:100%; display:block; margin:0; object-fit:cover; object-position:center center;">
+  <img src="/images/header26.jpg" alt="80s Music Game Header" class="logo-img" style="width:100%; display:block; margin:0; object-fit:cover; object-position:center center;">
 </picture>
 
+<div style="text-align:center; font-size:1.05em; font-family:Arial, Helvetica, sans-serif; color:#8B00FF; letter-spacing:1px; margin:10px 0 4px; font-weight:bold;">
+  A Grid-Style 80s Music Trivia Game
+</div>
 <div style="text-align:center; font-size:1em; font-family:Georgia, serif; font-style:italic; color:#667eea; letter-spacing:1px; margin:6px 0 14px; font-weight:bold;">
   Free to play &nbsp;&middot;&nbsp; No Sign-Up
 </div>
 <hr style="border:none; border-top:1px solid; border-image:linear-gradient(to right,transparent,#c084fc 20%,#c084fc 80%,transparent) 1; margin:8px 0 4px; opacity:0.5;">
 <div class="how-to-play">
 <button class="htp-toggle-btn" id="htpBtn" onclick="(function(){var b=document.getElementById('htpBody');var a=document.getElementById('htpArrow');var open=b.classList.contains('open');b.classList.toggle('open');a.textContent=open?'▾':'▴';})()"><span>How to Play</span><span id="htpArrow">▾</span></button>
-<div class="htp-body" id="htpBody">Click any box to type your answer and match each artist (column) to the right category (row). Often more than one that works! (Put on your raspberry beret and start typing!)</div>
+<div class="htp-body" id="htpBody">Click any box to type your answer and match each artist (column) to the right category (row). Often more than one works! Stuck? Tap the Lifeline button to reveal multiple-choice options &mdash; you get 3 per game, so use them wisely! (Put on your raspberry beret and start typing!)</div>
 </div>
 
 <!-- nav status bar removed -->
@@ -588,7 +596,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   </div>
 <div class="nav-replay-note">&#10003; Completed quizzes can be replayed anytime &mdash; they won&rsquo;t use a play.</div>
   <div class="welcome-banner-body">
-    You're playing <strong>1 of 70 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
+    You're playing <strong>1 of 95 quizzes</strong> — with more on the way. Each quiz is a 3×3 grid where you match artists to categories.
     <div class="welcome-banner-pills">
       <span class="welcome-pill">🎯 2 free plays per day</span>
       <span class="welcome-pill">🔓 Unlock more with a code or email</span>
@@ -603,7 +611,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   <div class="cb-emoji">🎯</div>
   <div class="cb-title">YOU'VE BEEN CHALLENGED!</div>
   <div class="cb-body">A friend shared their bonus quiz with you. Give it a shot — then play <strong>today's daily quiz</strong> to get on the leaderboard!</div>
-  <a id="challengeDailyLink" href="https://80sgrid.com/" class="cb-btn">▶ Play Today's Quiz →</a>
+  <a id="challengeDailyLink" href="https://80smusicgame.com/" class="cb-btn">▶ Play Today's Quiz →</a>
 </div>
 <div id="today-label" style="text-align:center;font-size:0.95em;color:#8B00FF;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:Georgia,serif;font-weight:bold;">Today's Grid</div>
 <div class="subtitle" id="today-title">Loading...</div>
@@ -616,29 +624,15 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 </div>
 
 <!-- SCORE MESSAGE -->
-<div id="scoreMessage" style="display:none; text-align:center; margin:8px 0 4px; padding:10px 16px; border-radius:10px; background:linear-gradient(135deg,#f8f0ff,#fff0f8); border:2px solid rgba(139,0,255,0.2); font-family:'Oxanium',Arial,sans-serif; font-size:0.95em; font-weight:900; color:#8B00FF; letter-spacing:0.5px;"></div>
-
-<!-- SURVEY LINK ROW: mobile + low-score desktop fallback -->
-<div id="surveyLinkRow" style="display:none; text-align:center; margin:0 0 10px;">
-  <a id="surveyLinkBtn" href="#" onclick="openInlineSurvey(); return false;" style="font-size:1.05em; color:#0066FF; font-weight:900; text-decoration:underline; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">&#187; Take a 3 second fun survey please! &#171;</a>
-  <span id="surveyInsiderBadge" style="display:none; font-size:0.8em; color:#8B00FF; font-weight:700; font-family:'Oxanium',Arial,sans-serif;">&#127928; Certified 80s Insider &#8212; all surveys complete!</span>
-</div>
+<div id="scoreMessage" style="display:none; text-align:center; margin:8px 0 10px; padding:10px 16px; border-radius:10px; background:linear-gradient(135deg,#f8f0ff,#fff0f8); border:2px solid rgba(139,0,255,0.2); font-family:'Oxanium',Arial,sans-serif; font-size:0.95em; font-weight:900; color:#8B00FF; letter-spacing:0.5px;"></div>
 
 <!-- DIFFICULTY + LIFELINE ROW -->
 <div style="display:flex; gap:10px; margin:10px 0 16px; align-items:stretch;">
   <!-- Difficulty pill -->
   <div id="diff-badge" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:10px 14px; border-radius:10px; border:2px solid var(--badge-color); background:color-mix(in srgb,var(--badge-color) 10%,white); box-shadow:0 0 12px var(--badge-glow); --badge-color:#fd7e14; --badge-glow:rgba(253,126,20,0.4);">
-    <div id="diff-inner" style="text-align:center; width:100%;">
-      <div style="font-size:0.68em; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--badge-color); margin-bottom:2px;">Difficulty Rating</div>
-      <div id="diff-stars" style="font-size:1.1em; color:var(--badge-color); letter-spacing:1px;">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
-      <div id="diff-label" style="font-size:0.9em; font-weight:900; color:var(--badge-color); letter-spacing:1px;">Medium</div>
-    </div>
-    <div id="diffSurveyWrap" style="display:none; width:100%; margin-top:8px; border-top:1px solid rgba(0,0,0,0.1); padding-top:8px;">
-      <div id="diffSurveyTitle" style="font-size:0.72em; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; color:#8B00FF; text-align:center; margin-bottom:6px;">Quick 80s Survey!</div>
-      <div id="diffSurveyQuestion" style="font-size:0.74em; font-weight:700; color:#333; text-align:center; margin-bottom:7px; line-height:1.3;"></div>
-      <div id="diffSurveyOptions" style="display:flex; flex-direction:column; gap:5px;"></div>
-      <div id="diffSurveyInsider" style="display:none; text-align:center; padding:6px 0; font-size:0.75em; font-weight:900; color:#8B00FF; font-family:Oxanium,Arial,sans-serif;">&#127928; Certified 80s Insider!</div>
-    </div>
+    <div style="font-size:0.68em; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--badge-color); margin-bottom:2px;">Difficulty Rating</div>
+    <div id="diff-stars" style="font-size:1.1em; color:var(--badge-color); letter-spacing:1px;">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+    <div id="diff-label" style="font-size:0.9em; font-weight:900; color:var(--badge-color); letter-spacing:1px;">Medium</div>
   </div>
   <!-- Lifeline pill -->
   <div class="lifeline-bar" id="lifelineBar" style="flex:1; margin:0; flex-direction:column; gap:4px; padding:8px 14px;">
@@ -825,6 +819,16 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     &#128242; Share Your Score<br><span style="font-size:0.75em; font-weight:400; opacity:0.9;">Copies emoji grid — paste anywhere!</span>
   </button>
 </div>
+
+<!-- SUPPORT: Buy Me a Coffee (results screen) -->
+<div style="margin:0 0 14px; text-align:center;">
+  <a href="https://buymeacoffee.com/80smusicgame" target="_blank" rel="noopener noreferrer"
+     onclick="try{gtag('event','coffee_click',{location:'results',quiz_number:window.QUIZ_NUM});}catch(e){}"
+     style="display:inline-block; padding:11px 20px; background:#FFDD00; color:#000; font-weight:700; font-size:0.9em; border-radius:10px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+    &#9749; Enjoyed today's grid? Buy Len a coffee
+  </a>
+  <div style="font-size:0.72em; color:#999; margin-top:6px;">The game is free and always will be. Coffees fund new quizzes.</div>
+</div>
 </div>
 <div style="background:#e3f2fd; border:1px solid #2196f3; padding:12px; border-radius:8px; margin-bottom:20px; text-align:center; font-size:.9em;">
 <strong>&#128679; Beta Version</strong> — This game is still in testing. Please forgive any mistakes or inconsistencies. Your feedback is appreciated!
@@ -869,6 +873,8 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <a href="privacy.html">Privacy Policy</a>
     <span>|</span>
     <a href="#" onclick="openFeedback(); return false;">Feedback</a>
+    <span>|</span>
+    <a href="https://buymeacoffee.com/80smusicgame" target="_blank" rel="noopener noreferrer" onclick="try{gtag('event','coffee_click',{location:'footer'});}catch(e){}">&#9749; Support the game</a>
   </div>
 
   <!-- Social Icons (compact) -->
@@ -879,7 +885,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <a href="https://www.facebook.com/profile.php?id=61586466117052" target="_blank" rel="noopener" title="Facebook" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#1877F2;color:white;text-decoration:none;flex-shrink:0;">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
     </a>
-    <a href="https://www.instagram.com/80sgrid" target="_blank" rel="noopener" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:white;text-decoration:none;flex-shrink:0;">
+    <a href="https://www.instagram.com/80smusicgame" target="_blank" rel="noopener" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);color:white;text-decoration:none;flex-shrink:0;">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
     </a>
     <a href="https://www.reddit.com/r/80smusic/" target="_blank" rel="noopener" title="Reddit" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#FF4500;color:white;text-decoration:none;flex-shrink:0;">
@@ -889,8 +895,8 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 
   <!-- Copyright -->
   <div class="footer-copy">
-    &copy; 2025&ndash;2026 Len's 80sGrid.com &mdash; All Rights Reserved.<br>
-    <span style="font-size:0.9em;">80sGrid is an independent fan project celebrating the music of the 1980s. Not affiliated with any artist or record label.</span>
+    &copy; 2025&ndash;2026 Len's 80sMusicGame.com &mdash; All Rights Reserved.<br>
+    <span style="font-size:0.9em;">80sMusicGame is an independent fan project celebrating the music of the 1980s. Not affiliated with any artist or record label.</span>
   </div>
 
 </div><!-- end .site-footer -->
@@ -900,7 +906,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <!-- PERSISTENT SHARE CHOICE MODAL -->
 <div id="persistentShareModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:7500; align-items:center; justify-content:center; padding:20px; box-sizing:border-box;">
   <div style="background:white; border-radius:16px; padding:24px 20px; max-width:340px; width:100%; box-shadow:0 0 40px rgba(139,0,255,0.3); border:2px solid #8B00FF; text-align:center;">
-    <div style="font-family:Arial,sans-serif; font-size:1em; font-weight:900; color:#8B00FF; letter-spacing:1px; margin-bottom:6px;" id="persistentShareTitle">📤 SHARE 80SGRID</div>
+    <div style="font-family:Arial,sans-serif; font-size:1em; font-weight:900; color:#8B00FF; letter-spacing:1px; margin-bottom:6px;" id="persistentShareTitle">📤 SHARE 80SMUSICGAME</div>
     <div style="font-size:0.8em; color:#888; margin-bottom:20px;" id="persistentShareSubtitle">What would you like to share?</div>
     <div style="display:flex; flex-direction:column; gap:10px;">
       <button onclick="doShareLink(); closePersistentShareModal();" style="padding:13px; background:linear-gradient(135deg,#667eea,#764ba2); color:white; border:none; border-radius:10px; font-size:0.9em; font-weight:900; cursor:pointer; letter-spacing:0.5px;">&#128242; Share the Quiz<br><span style="font-size:0.72em; font-weight:400; opacity:0.9;">Send the link — challenge a friend!</span></button>
@@ -1005,7 +1011,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <div class="feedback-success" id="feedbackSuccess">
       <span class="big">&#127775;</span>
       <p>Thanks for the feedback!<br><br>
-      <span style="color:#FFD700;">Your input helps make 80sGrid better for everyone.</span><br><br>
+      <span style="color:#FFD700;">Your input helps make 80sMusicGame better for everyone.</span><br><br>
       <span style="color:#aaa;font-size:0.85em;">— Len</span></p>
     </div>
   </div>
@@ -1034,6 +1040,7 @@ const FAKE_SCORES = [
 ];
 const PLAYS_START = 1986;
 let yesNoKeys = []; // Set by hub
+let chOptions = {}; // Multiple choice button cells (e.g. years): key -> [options]
 let rfKeys = []; // Real/Fake cells — set by hub
 let answers = {}; // Set by hub
 let mcOptions = {}; // Set by hub
@@ -1056,12 +1063,12 @@ function hasNewPlaysLeft(){return getUnlockType()==='unlimited'||getQuizzesPlaye
 function loadStats(){
   const today=getQuizzesPlayedToday();const limit=getEffectiveDailyLimit();
   const total=parseInt(localStorage.getItem('totalQuizzesPlayed')||'0');
-  let cum=0;for(let i=1;i<=40;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
+  let cum=0;for(let i=1;i<=95;i++)cum+=parseInt(localStorage.getItem('quiz'+i+'Score')||0);
   const best=parseInt(localStorage.getItem('bestQuizScore')||'0');
   const streak=parseInt(localStorage.getItem('playStreak')||'0');
   document.getElementById('statToday').textContent=today+' / '+(limit>900?'∞':limit);
   document.getElementById('statTotal').textContent=total;
-  document.getElementById('statCumulative').textContent=cum+'/324';
+  document.getElementById('statCumulative').textContent=cum+'/855';
   document.getElementById('statBest').textContent=best+'/9';
   document.getElementById('statStreak').textContent=streak+' days';
 }
@@ -1181,7 +1188,7 @@ function submitUnlockEmail(){
 function initializeCells(){
   document.querySelectorAll('.cell').forEach(cell=>{
     const key=cell.dataset.row+'-'+cell.dataset.col;
-    cell.querySelector('input').placeholder=rfKeys.includes(key)?'R/F':yesNoKeys.includes(key)?'Y/N':'Answer';
+    cell.querySelector('input').placeholder=rfKeys.includes(key)?'R/F':yesNoKeys.includes(key)?'Y/N':chOptions[key]?'Pick':'Answer';
     cell.addEventListener('click',()=>openModal(cell));
   });
 }
@@ -1199,6 +1206,8 @@ function openModal(cell){
     showRealFakeEntry();
   } else if(isYN){
     showYesNoEntry();
+  } else if(chOptions[key]){
+    showChoiceEntry(key);
   } else {
     document.getElementById('modalInput').value=cell.querySelector('input').value;
     showTextEntry();
@@ -1209,7 +1218,7 @@ function openModal(cell){
   document.getElementById('inputOverlay').classList.add('active');
   if(!isYN&&!isRF) setTimeout(()=>document.getElementById('modalInput').focus(),100);
 }
-function closeModal(){document.getElementById('inputModal').classList.remove('active');document.getElementById('inputOverlay').classList.remove('active');currentCell=null;document.getElementById('modalTitle').textContent='';document.getElementById('modalInput').value='';const mc=document.getElementById('mcOptions');if(mc)mc.innerHTML='';document.getElementById('textSection').classList.remove('hidden');document.getElementById('mcSection').classList.remove('visible');const yn=document.getElementById('ynSection');if(yn)yn.style.display='none';const rf=document.getElementById('rfSection');if(rf)rf.style.display='none';setTimeout(updateLifelineUI,80);}
+function closeModal(){document.getElementById('inputModal').classList.remove('active');document.getElementById('inputOverlay').classList.remove('active');currentCell=null;document.getElementById('modalTitle').textContent='';document.getElementById('modalInput').value='';const mc=document.getElementById('mcOptions');if(mc)mc.innerHTML='';document.getElementById('textSection').classList.remove('hidden');document.getElementById('mcSection').classList.remove('visible');const yn=document.getElementById('ynSection');if(yn)yn.style.display='none';const rf=document.getElementById('rfSection');if(rf)rf.style.display='none';const _ch=document.getElementById('chSection');if(_ch)_ch.style.display='none';setTimeout(updateLifelineUI,80);}
 function saveModalAnswer(){
   if(currentCell){
     const val=document.getElementById('modalInput').value;
@@ -1273,7 +1282,7 @@ function updateLifelineUI(){
 function showMultipleChoice(){
   if(lifelinesRemaining<=0)return;
   const key=currentCell.dataset.row+'-'+currentCell.dataset.col;
-  if(yesNoKeys.includes(key)||rfKeys.includes(key)){const toast=document.getElementById('ynToast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2000);return;}
+  if(yesNoKeys.includes(key)||rfKeys.includes(key)||chOptions[key]){const toast=document.getElementById('ynToast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2000);return;}
   if(!mcOptions[key]||mcOptions[key].length===0)return;
   // Charge lifeline — unless day pass is active
   if(!window.hasDayPass||!window.hasDayPass()){lifelinesRemaining=Math.max(0,lifelinesRemaining-1);}
@@ -1284,11 +1293,31 @@ function showMultipleChoice(){
   opts.forEach(opt=>{const btn=document.createElement('button');btn.className='mc-option';btn.textContent=opt;btn.onclick=()=>selectMCOption(opt);container.appendChild(btn);});
   document.getElementById('textSection').classList.add('hidden');document.getElementById('mcSection').classList.add('visible');
 }
-function showTextEntry(){document.getElementById('textSection').classList.remove('hidden');document.getElementById('mcSection').classList.remove('visible');const yn=document.getElementById('ynSection');if(yn)yn.style.display='none';const rf=document.getElementById('rfSection');if(rf)rf.style.display='none';setTimeout(()=>document.getElementById('modalInput').focus(),60);}
+function showTextEntry(){document.getElementById('textSection').classList.remove('hidden');document.getElementById('mcSection').classList.remove('visible');const yn=document.getElementById('ynSection');if(yn)yn.style.display='none';const rf=document.getElementById('rfSection');if(rf)rf.style.display='none';const _ch=document.getElementById('chSection');if(_ch)_ch.style.display='none';setTimeout(()=>document.getElementById('modalInput').focus(),60);}
 function showYesNoEntry(){const yn=document.getElementById('ynSection');if(yn)yn.style.display='block';document.getElementById('textSection').classList.add('hidden');document.getElementById('mcSection').classList.remove('visible');}
 function selectYesNo(value){if(currentCell){currentCell.querySelector('input').value=value;try{gtag('event','yesno_selected',{quiz_number:QUIZ_NUM,answer:value});}catch(e){}closeModal();}}
 function showRealFakeEntry(){const rf=document.getElementById('rfSection');if(rf)rf.style.display='block';document.getElementById('textSection').classList.add('hidden');document.getElementById('mcSection').classList.remove('visible');}
 function selectRealFake(value){if(currentCell){currentCell.querySelector('input').value=value;try{gtag('event','realfake_selected',{quiz_number:QUIZ_NUM,answer:value});}catch(e){}closeModal();}}
+function showChoiceEntry(key){
+  const opts=(chOptions&&chOptions[key])||[];
+  const box=document.getElementById('chButtons');
+  if(box){
+    box.innerHTML='';
+    opts.forEach(function(o){
+      const b=document.createElement('button');
+      b.type='button'; b.textContent=o;
+      b.style.cssText='padding:16px 10px;font-size:1.25em;font-weight:900;background:linear-gradient(135deg,#8B00FF,#FF1493);color:white;border:none;border-radius:12px;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 12px rgba(139,0,255,0.35);';
+      b.addEventListener('click',function(){selectChoice(o);});
+      box.appendChild(b);
+    });
+  }
+  const ch=document.getElementById('chSection');if(ch)ch.style.display='block';
+  const yn=document.getElementById('ynSection');if(yn)yn.style.display='none';
+  const rf=document.getElementById('rfSection');if(rf)rf.style.display='none';
+  document.getElementById('textSection').classList.add('hidden');
+  document.getElementById('mcSection').classList.remove('visible');
+}
+function selectChoice(value){if(currentCell){currentCell.querySelector('input').value=value;try{gtag('event','choice_selected',{quiz_number:QUIZ_NUM,answer:value});}catch(e){}closeModal();}}
 function selectMCOption(value){if(currentCell){currentCell.querySelector('input').value=value;try{gtag('event','lifeline_selected',{quiz_number:QUIZ_NUM,lifelines_left:lifelinesRemaining});}catch(e){}closeModal();}}
 
 /* ===== BONUS LIFELINE MODAL ===== */
@@ -1401,12 +1430,12 @@ function getStarRating(score){
 function shareQuizEmoji(){
   const score=parseInt(localStorage.getItem(QUIZ_KEY)||'0')||0;
   const titleEl=document.getElementById('today-title');
-  const quizTitle=titleEl?titleEl.textContent.trim():'80sGrid';
+  const quizTitle=titleEl?titleEl.textContent.trim():'80sMusicGame';
   const grid=buildEmojiGrid();
   const hasPlayed=document.querySelectorAll('.cell.correct, .cell.incorrect').length>0;
 
   let text;
-  const challengeUrl='https://80sgrid.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
+  const challengeUrl='https://80smusicgame.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
   if(hasPlayed){
     text='I got '+score+'/9 on \''+quizTitle+'\' 🎸\n'
       +getStarRating(score)+'\n\n'
@@ -1414,13 +1443,13 @@ function shareQuizEmoji(){
       +'Can you beat me? 👉 '+challengeUrl;
   } else {
     text='🎸 Think you know your 80s music?\n'
-      +'Try \''+quizTitle+'\' on Len\'s 80sGrid — play free!\n\n'
+      +'Try \''+quizTitle+'\' on Len\'s 80sMusicGame — play free!\n\n'
       +'👉 '+challengeUrl;
   }
 
   const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if(isMobile&&navigator.share){
-    navigator.share({title:"Len's 80sGrid",text:text}).catch(()=>{});
+    navigator.share({title:"Len's 80sMusicGame",text:text}).catch(()=>{});
   } else {
     navigator.clipboard.writeText(text).then(()=>{
       showShareToast(hasPlayed?'Copied! Paste it anywhere 🎸':'Link copied! 🎸');
@@ -1461,8 +1490,8 @@ function buildShareCard(score,text){
   const box=document.createElement('div');
   box.style.cssText='background:#fff;border:3px solid #FF1493;border-radius:18px;padding:22px 20px 18px;max-width:460px;width:100%;text-align:center;box-shadow:0 0 60px rgba(255,20,147,0.45);box-sizing:border-box;';
   box.innerHTML=`
-    <div style="font-weight:900;color:#111;font-size:1.05em;letter-spacing:2px;margin-bottom:2px;">${(document.getElementById('today-title')||{}).textContent||'80sGrid'}</div>
-    <div style="font-size:0.7em;font-weight:700;color:#FF1493;letter-spacing:2px;margin-bottom:14px;">LEN'S 80sGRID.COM</div>
+    <div style="font-weight:900;color:#111;font-size:1.05em;letter-spacing:2px;margin-bottom:2px;">${(document.getElementById('today-title')||{}).textContent||'80sMusicGame'}</div>
+    <div style="font-size:0.7em;font-weight:700;color:#FF1493;letter-spacing:2px;margin-bottom:14px;">LEN'S 80sMUSICGAME.COM</div>
     <canvas id="shareCassette" width="420" height="290" style="display:block;margin:0 auto 14px;border-radius:10px;max-width:100%;box-shadow:0 4px 24px rgba(0,0,0,0.35);"></canvas>
     <div style="font-size:0.8em;color:#555;margin-bottom:12px;line-height:1.5;padding:0 4px;">
       Show off your score! <strong>Save the image</strong> to post on Instagram or TikTok, or <strong>copy the text</strong> to share on Facebook or in a text message.
@@ -1567,7 +1596,7 @@ function drawCassetteCard(score){
   drawStar4Card(c,starX,starY2,11,'#FF1493');
   c.textAlign='left';c.font='bold 20px Arial';c.fillStyle='#fff';
   c.fillText('LEN.',starX+17,bsy+bsh-7);
-  c.font='6px Arial';c.fillStyle='rgba(255,20,147,0.8)';c.fillText('80sGRID.COM',starX+17,bsy+9);
+  c.font='6px Arial';c.fillStyle='rgba(255,20,147,0.8)';c.fillText('80sMUSICGAME.COM',starX+17,bsy+9);
   // Quiz-N bottom left
   c.textAlign='left';c.font='bold 15px Arial';c.fillStyle='#fff';
   c.fillText('Quiz-',lx+8,bsy+bsh-7);c.fillStyle='#8B00FF';
@@ -1644,19 +1673,19 @@ function drawWhiteReelCard(c,cx,cy,r){
 function downloadShareCard(){
   const canvas=document.getElementById('shareCassette');if(!canvas)return;
   const link=document.createElement('a');
-  link.download='80sgrid-quiz'+QUIZ_NUM+'-score.png';
+  link.download='80smusicgame-quiz'+QUIZ_NUM+'-score.png';
   link.href=canvas.toDataURL('image/png');link.click();
 }
 
 function shareToFacebook(){
-  const challengeUrl='https://80sgrid.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
+  const challengeUrl='https://80smusicgame.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
   const fbUrl='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(challengeUrl);
   window.open(fbUrl,'_blank','width=600,height=460,scrollbars=yes');
   try{gtag('event','share_facebook',{quiz_number:window.QUIZ_NUM});}catch(e){}
 }
 
 function copyChallengeLink(){
-  const challengeUrl='https://80sgrid.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
+  const challengeUrl='https://80smusicgame.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
   navigator.clipboard.writeText(challengeUrl).then(()=>{
     showShareToast('Challenge link copied! 🔗 Dare someone to beat you!');
   }).catch(()=>alert(challengeUrl));
@@ -1666,13 +1695,13 @@ function copyChallengeLink(){
 function copyShareText(){
   const score=parseInt(localStorage.getItem(QUIZ_KEY)||'0')||0;
   const titleEl=document.getElementById('today-title');
-  const quizTitle=titleEl?titleEl.textContent.trim():'80sGrid';
+  const quizTitle=titleEl?titleEl.textContent.trim():'80sMusicGame';
   const grid=buildEmojiGrid();
   const hasPlayed=document.querySelectorAll('.cell.correct, .cell.incorrect').length>0;
-  const challengeUrl='https://80sgrid.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
+  const challengeUrl='https://80smusicgame.com/index.html?id='+(window.QUIZ_NUM||'')+'&ref=challenge';
   const text=hasPlayed
     ?'I got '+score+'/9 on \''+quizTitle+'\' 🎸\n'+getStarRating(score)+'\n\n'+grid+'\n\nCan you beat me? 👉 '+challengeUrl
-    :'🎸 Try \''+quizTitle+'\' on Len\'s 80sGrid — free!\n👉 '+challengeUrl;
+    :'🎸 Try \''+quizTitle+'\' on Len\'s 80sMusicGame — free!\n👉 '+challengeUrl;
   navigator.clipboard.writeText(text).then(()=>{
     try{const btn=event.target.closest('button');const orig=btn.innerHTML;
     btn.innerHTML='✅ Copied!';setTimeout(()=>btn.innerHTML=orig,2000);}catch(e){}
@@ -1701,6 +1730,7 @@ function closePersistentShareModal(){document.getElementById('persistentShareMod
 /* ===== MAIN GAME LOGIC ===== */
 function normalizeString(str){
   return str.toLowerCase()
+    .replace(/\b(?:[a-z0-9]\.){2,}/g,m=>m.replace(/\./g,''))
     .replace(/['''`]/g,'')
     .replace(/&/g,' and ')
     .replace(/\bw\//g,'with ')
@@ -1733,6 +1763,40 @@ function wordOverlap(user, answer){
   const matches=aWords.filter(wordMatch).length;
   return matches/aWords.length>=0.65;
 }
+/* ===== STRICT ANSWER MATCHING (typed answers only; Yes/No and Real/Fake buttons keep the original check) ===== */
+const PART_STOP_WORDS=new Set(['the','and','of','in','to','is','it','my','me','you','your','we','our','for','on','at','by','with','be','do','so','up','out','all','are','was','not','but','can']);
+function editDistanceStrict(a,b){
+  const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 99;
+  const r=Array.from({length:m+1},(_,i)=>Array.from({length:n+1},(_,j)=>i===0?j:j===0?i:0));
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){
+    r[i][j]=a[i-1]===b[j-1]?r[i-1][j-1]:1+Math.min(r[i-1][j],r[i][j-1],r[i-1][j-1]);
+    if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])r[i][j]=Math.min(r[i][j],r[i-2][j-2]+1);
+  }
+  return r[m][n];
+}
+function wordOverlapStrict(user, answer){
+  const stopWords=new Set(['the','and','a','an','of','in','to','is','it','my','me','you','your','we','our','i']);
+  const uWords=new Set(user.split(' ').filter(w=>w.length>1&&!stopWords.has(w)));
+  const uArr=[...uWords];
+  const aWords=answer.split(' ').filter(w=>w.length>1&&!stopWords.has(w));
+  if(aWords.length===0)return false;
+  // whole words match exactly; a typed word may also contain a longer answer word (5+ letters); 4+ letter words forgive one typo (numbers such as years must match exactly)
+  const wordMatch=aw=>uWords.has(aw)||(aw.length>=5&&user.includes(aw))||(aw.length>=4&&!/\d/.test(aw)&&uArr.some(uw=>editDistanceStrict(uw,aw)<=1));
+  if(aWords.length<=2)return aWords.every(wordMatch);
+  const matches=aWords.filter(wordMatch).length;
+  return matches/aWords.length>=0.65;
+}
+function answerMatchesStrict(u, a){
+  if(!u||!a)return false;
+  if(u===a)return true;
+  if(u.replace(/ /g,'')===a.replace(/ /g,''))return true;
+  const pad=s=>' '+s+' ';
+  // the full answer, with extra words around it
+  if(pad(u).includes(pad(a)))return true;
+  // a real piece of the answer: whole words only, 3+ letters, not just filler words (so "Collins" works, "e" or "thr" do not)
+  if(u.length>=3&&pad(a).includes(pad(u))&&u.split(' ').some(w=>w.length>=3&&!PART_STOP_WORDS.has(w)))return true;
+  return wordOverlapStrict(u,a);
+}
 function checkAnswers(){
   let _isFirstPlayToday=false;
   const previousScore=parseInt(localStorage.getItem(QUIZ_KEY)||'0');const isThisAReplay=previousScore>0;
@@ -1741,7 +1805,7 @@ function checkAnswers(){
   cells.forEach(cell=>{
     const input=cell.querySelector('input');const userAnswer=normalizeString(input.value);const key=cell.dataset.row+'-'+cell.dataset.col;
     const old=cell.querySelector('.answer-reveal');if(old)old.remove();
-    if(userAnswer){total++;const valid=answers[key].map(a=>normalizeString(a));const isCorrect=valid.some(a=>userAnswer===a||userAnswer.includes(a)||a.includes(userAnswer)||wordOverlap(userAnswer,a)||userAnswer.replace(/ /g,'')===a.replace(/ /g,''));if(isCorrect){cell.classList.add('correct');cell.classList.remove('incorrect');correct++;cellResults.push(true);
+    if(userAnswer){total++;const valid=answers[key].map(a=>normalizeString(a));const _btnCell=yesNoKeys.includes(key)||rfKeys.includes(key);const _chCell=!!chOptions[key];const isCorrect=valid.some(a=>_chCell?(userAnswer===a):_btnCell?(userAnswer===a||userAnswer.includes(a)||a.includes(userAnswer)||wordOverlap(userAnswer,a)||userAnswer.replace(/ /g,'')===a.replace(/ /g,'')):answerMatchesStrict(userAnswer,a));if(isCorrect){cell.classList.add('correct');cell.classList.remove('incorrect');correct++;cellResults.push(true);
       input.style.display='none';
       const reveal=document.createElement('div');reveal.className='answer-reveal';reveal.style.cssText='text-align:center;line-height:1.3;padding:2px 0;';
       reveal.innerHTML='<div style="font-size:1.5em;color:#28a745;font-weight:900;">\u2713</div><div style="font-size:0.6em;color:#155724;font-weight:700;margin-top:2px;word-break:break-word;">'+input.value+'</div>';
@@ -1750,7 +1814,7 @@ function checkAnswers(){
       const bestAnswer=answers[key][0];
       input.style.display='none';
       const reveal=document.createElement('div');reveal.className='answer-reveal';reveal.style.cssText='text-align:center;line-height:1.3;padding:2px 0;';
-      const _isYNCell=yesNoKeys.includes(key)||rfKeys.includes(key);
+      const _isYNCell=yesNoKeys.includes(key)||rfKeys.includes(key)||!!chOptions[key];
       if(_isYNCell){
         reveal.innerHTML='<div style="font-size:1.5em;color:#dc3545;font-weight:900;">\u2715</div><div style="font-size:0.6em;color:#721c24;font-weight:700;margin-top:1px;word-break:break-word;">You said: '+input.value+'</div><div style="font-size:0.6em;color:#155724;font-weight:900;margin-top:3px;word-break:break-word;">Answer: '+(bestAnswer.charAt(0).toUpperCase()+bestAnswer.slice(1))+'</div>';
       }else{
@@ -1819,24 +1883,6 @@ function checkAnswers(){
   // Funny score message
   const _msgs={1:'1/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 — Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 — That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 — Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 — Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
   const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[correct]||'';_msgEl.style.display='block';}
-  // Survey link row + diff-box survey
-  (function(){
-    const row=document.getElementById('surveyLinkRow');
-    const link=document.getElementById('surveyLinkBtn');
-    const badge=document.getElementById('surveyInsiderBadge');
-    const isMobile=window.innerWidth<=600;
-    if(row)row.style.display='block';
-    const nextId=getNextSurvey();
-    if(isMobile){
-      // Mobile: always show link row, never diff box
-      if(nextId){if(link)link.style.display='';if(badge)badge.style.display='none';}
-      else{if(link)link.style.display='none';if(badge)badge.style.display='';}
-    } else {
-      // Desktop: show diff box survey; hide link row (survey is in the box)
-      if(row)row.style.display='none';
-      renderDiffBoxSurvey(correct);
-    }
-  })();
   // Swap lifeline bar for survey pill (hide if already subscribed)
   const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
   if(_lb)_lb.style.display='none';
@@ -1952,10 +1998,10 @@ document.getElementById('initial2').addEventListener('input',function(){if(this.
 document.getElementById('initial3').addEventListener('keypress',function(e){if(e.key==='Enter')saveHighScore();});
 
 /* ===== NAV ===== */
-const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'}];
-const NAV_GROUPS=[ALL_NAV_QUIZZES.slice(0,10),ALL_NAV_QUIZZES.slice(10,20),ALL_NAV_QUIZZES.slice(20,30),ALL_NAV_QUIZZES.slice(30,40),ALL_NAV_QUIZZES.slice(40,50),ALL_NAV_QUIZZES.slice(50,60),ALL_NAV_QUIZZES.slice(60)];
-const GROUP_LABELS=['1 – 10','11 – 20','21 – 30','31 – 40','41 – 50','51 – 60','61 – 70'];
-let navActiveGroup=QUIZ_NUM<=10?0:QUIZ_NUM<=20?1:QUIZ_NUM<=30?2:QUIZ_NUM<=40?3:QUIZ_NUM<=50?4:QUIZ_NUM<=60?5:6;
+const ALL_NAV_QUIZZES=[{n:1,f:'index.html',c:'easy'},{n:2,f:'index.html?id=2',c:'medium'},{n:3,f:'index.html?id=3',c:'medium'},{n:4,f:'index.html?id=4',c:'hard'},{n:5,f:'index.html?id=5',c:'medium'},{n:6,f:'index.html?id=6',c:'medium'},{n:7,f:'index.html?id=7',c:'easy'},{n:8,f:'index.html?id=8',c:'medium'},{n:9,f:'index.html?id=9',c:'medium'},{n:10,f:'index.html?id=10',c:'medium'},{n:11,f:'index.html?id=11',c:'hard'},{n:12,f:'index.html?id=12',c:'medium'},{n:13,f:'index.html?id=13',c:'hard'},{n:14,f:'index.html?id=14',c:'hard'},{n:15,f:'index.html?id=15',c:'medium'},{n:16,f:'index.html?id=16',c:'easy'},{n:17,f:'index.html?id=17',c:'hard'},{n:18,f:'index.html?id=18',c:'easy'},{n:19,f:'index.html?id=19',c:'medium'},{n:20,f:'index.html?id=20',c:'hard'},{n:21,f:'index.html?id=21',c:'medium'},{n:22,f:'index.html?id=22',c:'medium'},{n:23,f:'index.html?id=23',c:'medium'},{n:24,f:'index.html?id=24',c:'hard'},{n:25,f:'index.html?id=25',c:'hard'},{n:26,f:'index.html?id=26',c:'hard'},{n:27,f:'index.html?id=27',c:'medium'},{n:28,f:'index.html?id=28',c:'hard'},{n:29,f:'index.html?id=29',c:'hard'},{n:30,f:'index.html?id=30',c:'medium'},{n:31,f:'index.html?id=31',c:'easy'},{n:32,f:'index.html?id=32',c:'medium'},{n:33,f:'index.html?id=33',c:'easy'},{n:34,f:'index.html?id=34',c:'medium'},{n:35,f:'index.html?id=35',c:'medium'},{n:36,f:'index.html?id=36',c:'hard'},{n:37,f:'index.html?id=37',c:'medium'},{n:38,f:'index.html?id=38',c:'hard'},{n:39,f:'index.html?id=39',c:'hard'},{n:40,f:'index.html?id=40',c:'hard'},{n:41,f:'index.html?id=41',c:'easy'},{n:42,f:'index.html?id=42',c:'medium'},{n:43,f:'index.html?id=43',c:'easy'},{n:44,f:'index.html?id=44',c:'easy'},{n:45,f:'index.html?id=45',c:'easy'},{n:46,f:'index.html?id=46',c:'medium'},{n:47,f:'index.html?id=47',c:'easy'},{n:48,f:'index.html?id=48',c:'medium'},{n:49,f:'index.html?id=49',c:'easy'},{n:50,f:'index.html?id=50',c:'easy'},{n:51,f:'index.html?id=51',c:'easy'},{n:52,f:'index.html?id=52',c:'medium'},{n:53,f:'index.html?id=53',c:'medium'},{n:54,f:'index.html?id=54',c:'medium'},{n:55,f:'index.html?id=55',c:'medium'},{n:56,f:'index.html?id=56',c:'easy'},{n:57,f:'index.html?id=57',c:'medium'},{n:58,f:'index.html?id=58',c:'easy'},{n:59,f:'index.html?id=59',c:'medium'},{n:60,f:'index.html?id=60',c:'medium'},{n:61,f:'index.html?id=61',c:'medium'},{n:62,f:'index.html?id=62',c:'easy'},{n:63,f:'index.html?id=63',c:'medium'},{n:64,f:'index.html?id=64',c:'easy'},{n:65,f:'index.html?id=65',c:'medium'},{n:66,f:'index.html?id=66',c:'easy'},{n:67,f:'index.html?id=67',c:'medium'},{n:68,f:'index.html?id=68',c:'easy'},{n:69,f:'index.html?id=69',c:'easy'},{n:70,f:'index.html?id=70',c:'easy'},{n:71,f:'index.html?id=71',c:'easy'},{n:72,f:'index.html?id=72',c:'medium'},{n:73,f:'index.html?id=73',c:'hard'},{n:74,f:'index.html?id=74',c:'easy'},{n:75,f:'index.html?id=75',c:'medium'},{n:76,f:'index.html?id=76',c:'hard'},{n:77,f:'index.html?id=77',c:'easy'},{n:78,f:'index.html?id=78',c:'medium'},{n:79,f:'index.html?id=79',c:'hard'},{n:80,f:'index.html?id=80',c:'easy'},{n:81,f:'index.html?id=81',c:'medium'},{n:82,f:'index.html?id=82',c:'hard'},{n:83,f:'index.html?id=83',c:'easy'},{n:84,f:'index.html?id=84',c:'medium'},{n:85,f:'index.html?id=85',c:'hard'},{n:86,f:'index.html?id=86',c:'easy'},{n:87,f:'index.html?id=87',c:'medium'},{n:88,f:'index.html?id=88',c:'hard'},{n:89,f:'index.html?id=89',c:'easy'},{n:90,f:'index.html?id=90',c:'medium'},{n:91,f:'index.html?id=91',c:'medium'},{n:92,f:'index.html?id=92',c:'medium'},{n:93,f:'index.html?id=93',c:'easy'},{n:94,f:'index.html?id=94',c:'medium'},{n:95,f:'index.html?id=95',c:'medium'}];
+const NAV_GROUPS=[];for(let _gi=0;_gi<ALL_NAV_QUIZZES.length;_gi+=10)NAV_GROUPS.push(ALL_NAV_QUIZZES.slice(_gi,_gi+10));
+const GROUP_LABELS=NAV_GROUPS.map(g=>g[0].n+' – '+g[g.length-1].n);
+let navActiveGroup=Math.min(Math.floor((QUIZ_NUM-1)/10),NAV_GROUPS.length-1);
 function hasPlayedQuiz(n){const key=n===1?'quiz1Score':'quiz'+n+'Score';return parseInt(localStorage.getItem(key)||'0')>0;}
 function showNavGroup(idx){navActiveGroup=idx;document.querySelectorAll('.group-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);});renderNavGrid();}
 function renderNavGrid(){
@@ -1990,7 +2036,7 @@ function getSurveysCompleted(){try{return JSON.parse(localStorage.getItem(SURVEY
 function markSurveyCompleted(id){const done=getSurveysCompleted();if(!done.includes(id)){done.push(id);localStorage.setItem(SURVEY_DONE_KEY,JSON.stringify(done));}}
 function getSurveysShownToday(){const today=getLocalDateStr();const val=localStorage.getItem(SURVEY_SHOWN_TODAY_KEY)||'';if(!val.startsWith(today))return 0;return parseInt(val.split(':')[1]||'0');}
 function markSurveyShownToday(){const today=getLocalDateStr();const n=getSurveysShownToday()+1;localStorage.setItem(SURVEY_SHOWN_TODAY_KEY,today+':'+n);}
-function getNextSurvey(){const done=getSurveysCompleted();const rem=SURVEY_ORDER.filter(id=>!done.includes(id));if(rem.length===0)return null;return rem[Math.floor(Math.random()*rem.length)];}
+function getNextSurvey(){const done=getSurveysCompleted();const rem=SURVEY_ORDER.filter(id=>!done.includes(id));if(rem.length===0)return null;return rem[0];}
 function renderSurvey(surveyId){
   const survey=SURVEYS[surveyId];if(!survey)return;
   const el=document.getElementById('surveyQuestion');const titleEl=document.getElementById('surveyTitle');const optionsEl=document.getElementById('surveyOptions');
@@ -2046,95 +2092,18 @@ function closeSurveyModal(){
   if(m){m.classList.remove('show');m.style.display='none';}
 }
 function showSurveyModal(){
-  // Modal kept for bonus lifeline flow only
   const nextId=getNextSurvey();
-  if(!nextId)return;
+  if(!nextId)return; // no surveys left
+  if(getSurveysShownToday()>=2)return; // max 2 per day
   const m=document.getElementById('surveyModal');
   if(m){
-    m.style.display='';
+    m.style.display=''; // clear any inline style
     m.classList.add('show');
+    // Prevent click-bleed from initials entry — disable buttons briefly
     const btns=m.querySelectorAll('button');
     btns.forEach(b=>{b.style.pointerEvents='none';});
-    setTimeout(()=>{btns.forEach(b=>{b.style.pointerEvents='';});},600);
+    setTimeout(()=>{btns.forEach(b=>{b.style.pointerEvents='';});}, 600);
   }
-}
-function openInlineSurvey(){
-  const nextId=getNextSurvey();
-  if(!nextId)return;
-  markSurveyShownToday();
-  renderSurvey(nextId);
-  setTimeout(()=>{
-    const sq=document.getElementById('surveyQuestion');
-    if(sq)sq.scrollIntoView({behavior:'smooth',block:'center'});
-  },150);
-}
-function renderDiffBoxSurvey(score){
-  if(window.innerWidth<=600)return;
-  const wrap=document.getElementById('diffSurveyWrap');
-  if(!wrap)return;
-  const nextId=getNextSurvey();
-  const diffInner=document.getElementById('diff-inner');
-  // Score 6 and under: hide difficulty, survey takes full box
-  if(score<=6&&diffInner)diffInner.style.display='none';
-  wrap.style.display='block';
-  const insider=document.getElementById('diffSurveyInsider');
-  if(!nextId){
-    document.getElementById('diffSurveyTitle').style.display='none';
-    document.getElementById('diffSurveyQuestion').style.display='none';
-    document.getElementById('diffSurveyOptions').style.display='none';
-    if(insider)insider.style.display='block';
-    return;
-  }
-  const survey=SURVEYS[nextId];
-  if(!survey)return;
-  const qEl=document.getElementById('diffSurveyQuestion');
-  if(qEl)qEl.innerHTML=survey.title;
-  const optWrap=document.getElementById('diffSurveyOptions');
-  if(!optWrap)return;
-  optWrap.innerHTML='';
-  survey.options.forEach(function(opt){
-    const btn=document.createElement('button');
-    btn.textContent=opt.label;
-    btn.style.cssText='width:100%;padding:5px 8px;border-radius:7px;border:1.5px solid '+opt.border+';background:'+opt.bg+';color:#fff;font-size:0.68em;font-weight:900;cursor:pointer;text-align:left;letter-spacing:0.5px;margin:0;';
-    btn.dataset.pct=opt.pct;
-    btn.dataset.color=opt.color;
-    btn.onclick=function(){
-      if(optWrap.dataset.voted)return;
-      optWrap.dataset.voted='1';
-      localStorage.setItem('80sGrid_surveyAnswer_'+nextId,opt.value);
-      markSurveyCompleted(nextId);
-      try{sbClient.from('survey_responses').insert({survey_id:nextId,answer:opt.value,quiz_num:String(QUIZ_NUM)});}catch(e){}
-      optWrap.querySelectorAll('button').forEach(function(b){
-        b.style.cursor='default';
-        const bPct=parseInt(b.dataset.pct)||0;
-        const bColor=b.dataset.color||'#fff';
-        const isChosen=(b===btn);
-        const bar=document.createElement('div');
-        bar.style.cssText='margin-top:4px;height:5px;border-radius:3px;background:rgba(0,0,0,0.2);overflow:hidden;';
-        const fill=document.createElement('div');
-        fill.style.cssText='height:100%;width:0%;border-radius:3px;transition:width 0.7s ease;background:'+(isChosen?'#00ff00':bColor)+';';
-        bar.appendChild(fill);
-        b.appendChild(bar);
-        const pctLabel=document.createElement('span');
-        pctLabel.style.cssText='float:right;font-size:0.85em;opacity:0.9;';
-        pctLabel.textContent=bPct+'%';
-        b.appendChild(pctLabel);
-        if(isChosen){b.style.boxShadow='0 0 8px rgba(0,255,0,0.6)';b.style.borderColor='#00ff00';}
-        else{b.style.opacity='0.6';}
-        setTimeout(function(){fill.style.width=bPct+'%';},50);
-      });
-      setTimeout(function(){
-        const tEl=document.getElementById('diffSurveyTitle');
-        if(tEl)tEl.textContent='Thanks! 🎶';
-        const nxt=getNextSurvey();
-        const link=document.getElementById('surveyLinkBtn');
-        const badge=document.getElementById('surveyInsiderBadge');
-        if(nxt){if(link)link.style.display='';if(badge)badge.style.display='none';}
-        else{if(link)link.style.display='none';if(badge)badge.style.display='';}
-      },900);
-    };
-    optWrap.appendChild(btn);
-  });
 }
 function restoreSurveyOnLoad(){if(getSurveysShownToday()===0)return;for(const id of SURVEY_ORDER){const saved=localStorage.getItem('80sGrid_surveyAnswer_'+id);if(saved){renderSurvey(id);break;}}}
 
@@ -2289,12 +2258,23 @@ const QUIZ_NAMES = {
   62:'Pop, R&B & Hip-Hop Royalty',63:'Imagine The Hair Spray These Bands used!',
   64:'Three Continents, One Era',65:'Songs With a Color in the Title',
   66:'Three people would never have coffee together',67:'MTV Video of the Year Winners',
-  68:'Born and Raised in New York',69:'Born in LA',70:'80s Legends Who Never Quit'
+  68:'Born and Raised in New York',69:'Born in LA',70:'80s Legends Who Never Quit',
+  71:'Massive 80s Rock Frontmen',72:'Transatlantic Chart-Toppers',
+  73:'College Radio Legends',74:'New Wave & Synth-Pop Icons',
+  75:'Pioneers of Alternative Rock',76:'Sophisticated New Wave',
+  77:'NYC Icons & British Royalty',78:'Post-Punk Masters of Rhythm',
+  79:'Left of the Dial Indie',80:'Alt-Rock and New Wave Giants',
+  81:'New Wave and Alternative Duos',82:'Alternative Divas & Crooners',
+  83:'Icons of the MTV Screen',84:'Political Edge and Power Pop',
+  85:'Indie Rock Legends',86:'Electronic Beats and Bars',
+  87:'Gothic Romance and Pop Soul',88:'Legends of the Left Dial',
+  89:'High Art and Street Beats',90:'Alternative British Landscapes',
+  91:'Liverpool Calling',92:'Jangle and Gloom',93:'Synth Pop Sunrise',94:'Ants, Bows and Haircuts',95:'The British Wit Parade'
 };
 function getQuizUrl(n){ return 'index.html?id='+n; }
 function initMcq(){
   var completed=[];
-  for(var i=1;i<=70;i++){
+  for(var i=1;i<=95;i++){
     var score=parseInt(localStorage.getItem('quiz'+i+'Score')||'0');
     if(score>0) completed.push({num:i,score:score});
   }
@@ -2417,16 +2397,22 @@ function getLocalDateStr(d){
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 function getDailyQuizId(){
-  // Soft launch starts March 30 2026 = Quiz 1, rolls forward daily at local midnight
-  // Use local date strings to avoid UTC/timezone offset issues (EST vs EDT, etc.)
-  var launchStr='2026-03-30';
+  // Rotation anchor: on 2026-07-26 the daily quiz is #71 (first of the new 71–90 batch).
+  // From there it rolls forward one quiz per day and wraps through all 90 continuously
+  // (…90 → 1 → 2…). Local date strings avoid UTC/timezone offset issues (EST vs EDT, etc.)
+  var anchorStr='2026-07-26';
+  var anchorQuiz=71;
+  var totalQuizzes=90;
   var now=new Date();
   var todayStr=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var launch=new Date(launchStr+'T00:00:00');
+  var anchor=new Date(anchorStr+'T00:00:00');
   var today=new Date(todayStr+'T00:00:00');
-  var daysSince=Math.round((today-launch)/86400000);
-  if(daysSince<0) daysSince=0;
-  return (daysSince % 70)+1;
+  var daysSince=Math.round((today-anchor)/86400000);
+  var idx=(((anchorQuiz-1+daysSince)%totalQuizzes)+totalQuizzes)%totalQuizzes;
+  var n=idx+1;
+  // Quizzes 41-44 and 46 were exact copies of 35-38 and 40, so those days serve fresh quizzes 91-95 instead.
+  var swap={41:91,42:92,43:93,44:94,46:95};
+  return swap[n]||n;
 }
 function quizInit(){
   const params=new URLSearchParams(window.location.search);
@@ -2434,16 +2420,16 @@ function quizInit(){
   const QDATA=window.QUIZ_DATA||[];
   const q=QDATA.find(x=>x.n===n);
   if(!q){
-    document.title='Quiz Not Found \u2014 80sGrid.com';
+    document.title='Quiz Not Found \u2014 80sMusicGame.com';
     const c=document.querySelector('.container');
-    if(c)c.innerHTML='<div style="text-align:center;padding:60px;font-family:Arial;"><h2>Quiz '+n+' not found</h2><p><a href="/">Back to 80sGrid</a></p></div>';
+    if(c)c.innerHTML='<div style="text-align:center;padding:60px;font-family:Arial;"><h2>Quiz '+n+' not found</h2><p><a href="/">Back to 80sMusicGame</a></p></div>';
     return;
   }
-  answers=q.ans; mcOptions=q.mc||{}; yesNoKeys=q.yn||[]; rfKeys=q.rf||[];
+  answers=q.ans; mcOptions=q.mc||{}; yesNoKeys=q.yn||[]; rfKeys=q.rf||[]; chOptions=q.ch||{};
   document.querySelectorAll('.cell').forEach(cell=>{
     const key=cell.dataset.row+'-'+cell.dataset.col;
     const inp=cell.querySelector('input');
-    if(inp) inp.placeholder=rfKeys.includes(key)?'R/F':yesNoKeys.includes(key)?'Y/N':'Answer';
+    if(inp) inp.placeholder=rfKeys.includes(key)?'R/F':yesNoKeys.includes(key)?'Y/N':chOptions[key]?'Pick':'Answer';
   });
   const dl=document.getElementById('today-label');
   if(dl) dl.textContent='Today\'s Grid \u00b7 '+new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
@@ -2489,7 +2475,7 @@ function quizInit(){
   const ib=document.getElementById('istat-best');if(ib)ib.textContent=best;
   function tick(){const now=new Date(),mid=new Date(now);mid.setHours(24,0,0,0);const diff=mid-now;const h=String(Math.floor(diff/3600000)).padStart(2,'0');const m=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');const s=String(Math.floor((diff%60000)/1000)).padStart(2,'0');const el=document.getElementById('countdown');if(el)el.textContent=h+':'+m+':'+s;}
   tick(); setInterval(tick,1000);
-  document.title=q.og.title||"Len's 80sGrid.com \u2014 "+q.t;
+  document.title=q.og.title||"Len's 80sMusicGame.com \u2014 "+q.t;
   document.querySelectorAll('meta[property="og:title"],meta[property="twitter:title"]').forEach(m=>m.setAttribute('content',q.og.title||document.title));
   document.querySelectorAll('meta[property="og:description"],meta[property="twitter:description"]').forEach(m=>m.setAttribute('content',q.og.desc||''));
   document.querySelectorAll('meta[property="og:url"],meta[property="twitter:url"]').forEach(m=>m.setAttribute('content',q.og.url||window.location.href));
@@ -2547,21 +2533,6 @@ function quizInit(){
         // Restore score message
         const _msgs={1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
         const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[_correct]||'';_msgEl.style.display='block';}
-        (function(){
-          const row=document.getElementById('surveyLinkRow');
-          const link=document.getElementById('surveyLinkBtn');
-          const badge=document.getElementById('surveyInsiderBadge');
-          const isMobile=window.innerWidth<=600;
-          if(row)row.style.display='block';
-          const nextId=getNextSurvey();
-          if(isMobile){
-            if(nextId){if(link)link.style.display='';if(badge)badge.style.display='none';}
-            else{if(link)link.style.display='none';if(badge)badge.style.display='';}
-          } else {
-            if(row)row.style.display='none';
-            renderDiffBoxSurvey(_correct);
-          }
-        })();
         // Re-mark session so play limit isn't double-counted
         sessionStorage.setItem(SESSION_KEY,'true');
       }
@@ -2707,7 +2678,7 @@ function drawGridOnCassette(ctx, W, H) {
   ctx.font = 'bold 12px Arial';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
-  ctx.fillText(correct + '/' + total + ' \u00b7 80sGrid.com', W/2, startY + gridH + 5);
+  ctx.fillText(correct + '/' + total + ' \u00b7 80sMusicGame.com', W/2, startY + gridH + 5);
 }
 
 </script>
