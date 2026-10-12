@@ -28,6 +28,9 @@
 #eoFormWrap *{max-width:100% !important; box-sizing:border-box;}
 #eoThankYou button{max-width:100%; white-space:normal;}
 #coffeeCard{overflow-wrap:anywhere;}
+/* iPhone zooms the page in (and slides it sideways) when you tap any text box smaller than 16px. Keep every typing box at 16px so that never happens. */
+#eoFormWrap input, #eoFormWrap select, #eoFormWrap textarea, #eoFormWrap button,
+#modalInput, #secretCodeInput, #unlockCodeInput, #unlockEmailInput, #bonusEarnEmail, .bonus-input, .code-input, .email-expand input{font-size:16px !important;}
 
 html { overflow-x: hidden; overflow-x: clip; width: 100%; max-width: 100%; }
 body {
