@@ -5,7 +5,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FE9N3JWSGN"></script>
 <script src="/analytics.js"></script>
 <title>Len's 80sMusicGame.com — Daily Music Trivia</title>
@@ -28,6 +28,11 @@
 #eoFormWrap *{max-width:100% !important; box-sizing:border-box;}
 #eoThankYou button{max-width:100%; white-space:normal;}
 #coffeeCard{overflow-wrap:anywhere;}
+/* On phones, stack the status row so the email signup gets the full width (it is too cramped side by side) */
+@media (max-width:540px){
+  #statusRow{grid-auto-flow:row !important; grid-template-columns:1fr !important; grid-auto-columns:auto !important;}
+  #statusRow > *{width:100%;}
+}
 /* iPhone zooms the page in (and slides it sideways) when you tap any text box smaller than 16px. Keep every typing box at 16px so that never happens. */
 #eoFormWrap input, #eoFormWrap select, #eoFormWrap textarea, #eoFormWrap button,
 #modalInput, #secretCodeInput, #unlockCodeInput, #unlockEmailInput, #bonusEarnEmail, .bonus-input, .code-input, .email-expand input{font-size:16px !important;}
