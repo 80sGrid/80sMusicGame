@@ -804,17 +804,6 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   <div id="bonusEarnMsg" style="display:none; margin-top:8px; font-size:0.8em; font-weight:700;"></div>
 </div>
 
-<div id="remindMeBox" style="margin:14px 0; padding:20px 18px; background:linear-gradient(135deg,#f0f8ff,#f8f0ff); border:2px solid rgba(102,126,234,0.3); border-radius:14px; text-align:center;">
-  <div style="font-size:1.3em; margin-bottom:4px;">⏰</div>
-  <div style="font-family:'Oxanium',Arial,sans-serif; font-size:0.95em; font-weight:900; color:#667eea; letter-spacing:1px; margin-bottom:4px;">REMIND ME TOMORROW</div>
-  <div style="font-size:0.78em; color:#666; margin-bottom:12px; line-height:1.5;">Get a nudge when tomorrow's daily quiz drops.<br><em style="color:#aaa; font-size:0.9em;">✋ Right hand on a George Michael album — we will never spam, sell or rent your email.</em></div>
-  <div style="display:flex; gap:8px; align-items:center;">
-    <input type="email" id="remindEmail" placeholder="your@email.com" style="flex:1; padding:10px 12px; border:2px solid #c084fc; border-radius:8px; font-size:0.88em; outline:none;">
-    <button onclick="submitRemindEmail()" id="remindBtn" style="padding:10px 16px; background:linear-gradient(135deg,#667eea,#764ba2); color:white; border:none; border-radius:8px; font-size:0.88em; font-weight:900; cursor:pointer; white-space:nowrap;">Remind Me 🎵</button>
-  </div>
-  <div id="remindMsg" style="display:none; margin-top:8px; font-size:0.8em; font-weight:700;"></div>
-</div>
-
 <!-- SURVEY - shown immediately after score -->
 <div id="surveyQuestion" class="survey-question" style="display:none;">
 <h3 id="surveyTitle" style="font-family:Arial,sans-serif; letter-spacing:3px; font-size:1.1em; text-shadow:0 0 20px rgba(255,20,147,0.5); margin-bottom:14px;"></h3>
@@ -893,6 +882,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 
   <!-- Copyright -->
   <div class="footer-copy">
+    <div id="realPlaysLine" style="display:none; margin-bottom:6px; color:#8B00FF; font-weight:700;">&#127918; <span id="realPlaysNum">0</span> grids played since the new version</div>
     &copy; 2025&ndash;2026 Len's 80sMusicGame.com &mdash; All Rights Reserved.<br>
     <span style="font-size:0.9em;">80sMusicGame is an independent fan project celebrating the music of the 1980s. Not affiliated with any artist or record label.</span>
   </div>
@@ -1922,6 +1912,16 @@ function updatePlaysCounter(){
   if(el) el.innerHTML='&#127918; '+plays.toLocaleString()+' plays &nbsp;&middot;&nbsp;';
 }
 function showLeaderboard(){displayLeaderboard();document.getElementById('leaderboard').scrollIntoView({behavior:'smooth'});}
+async function loadRealPlays(){
+  try{
+    const {data,error}=await sbClient.rpc('get_play_count');
+    if(error||data===null||data===undefined)return;
+    const n=Number(data);
+    if(!isFinite(n)||n<=0)return;
+    const el=document.getElementById('realPlaysNum'),line=document.getElementById('realPlaysLine');
+    if(el&&line){el.textContent=n.toLocaleString();line.style.display='block';}
+  }catch(e){}
+}
 function showCoffeeCard(){
   try{
     const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard');
@@ -2215,6 +2215,7 @@ document.addEventListener('DOMContentLoaded', () => {
   closeModal();
   initializeCells();
   updatePlaysCounter();
+  loadRealPlays();
   initNav();
   restoreSurveyOnLoad();
   if(typeof renderClassicQuizzes==='function') renderClassicQuizzes();
