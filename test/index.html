@@ -638,7 +638,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   <a id="coffeeCard" href="https://buymeacoffee.com/80smusicgame" target="_blank" rel="noopener noreferrer"
      onclick="try{gtag('event','coffee_click',{location:'results',quiz_number:window.QUIZ_NUM});}catch(e){}"
      style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px 14px; border-radius:10px; border:2px solid #FFDD00; background:linear-gradient(135deg,#fffbe0,#fff3b0); box-shadow:0 0 12px rgba(255,221,0,0.5); text-decoration:none; text-align:center;">
-    <img src="images/coffee-duo.jpg" alt="Two 80s characters offering you a cup of coffee" width="400" height="400" loading="lazy" style="width:100%; max-width:170px; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:10px; border:2px solid #000; display:block;">
+    <img src="/images/coffee-duo.jpg" alt="Two 80s characters offering you a cup of coffee" width="400" height="400" loading="lazy" style="width:100%; max-width:170px; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:10px; border:2px solid #000; display:block;">
     <div style="font-size:0.95em; font-weight:900; color:#000; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">Enjoyed today's grid?</div>
     <div style="display:inline-block; padding:8px 16px; background:#FFDD00; color:#000; font-weight:700; font-size:0.85em; border-radius:8px;">Buy Len a coffee</div>
     <div style="font-size:0.68em; color:#777;">Free forever. Coffees fund new quizzes.</div>
@@ -662,7 +662,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 
     </div>
     <div id="eoThankYou" style="display:none; text-align:center; padding:10px;">
-      <p style="font-size:1em;font-weight:900;color:#8B00FF;margin:0 0 6px;font-family:'Oxanium',Arial,sans-serif;">You're in!</p>
+      <p style="font-size:1em;font-weight:900;color:#8B00FF;margin:0 0 6px;font-family:'Oxanium',Arial,sans-serif;">Thank you! You're in.</p>
       <p style="font-size:0.85em;color:#555;margin:0 0 12px;">Want more 80s? Try one of this week's themed quizzes.</p>
       <button onclick="document.getElementById('classicQuizzesGrid').scrollIntoView({behavior:'smooth',block:'center'});" style="background:linear-gradient(135deg,#8B00FF,#FF1493);color:white;border:none;border-radius:22px;padding:10px 22px;font-size:0.88em;font-weight:900;cursor:pointer;letter-spacing:0.5px;box-shadow:0 3px 14px rgba(139,0,255,0.35);">Play a Themed Quiz</button>
     </div>
@@ -1885,7 +1885,7 @@ function checkAnswers(){
   // Swap lifeline bar for survey pill (hide if already subscribed)
   const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
   if(_lb)_lb.style.display='none';
-  try{const _db=document.getElementById('diff-badge'),_cc=document.getElementById('coffeeCard');if(_db)_db.style.display='none';if(_cc)_cc.style.display='flex';}catch(e){}
+  try{if(localStorage.getItem('eoSubscribedV2')==='true')showCoffeeCard();}catch(e){}
   if(_sp){
     if(localStorage.getItem('eoSubscribedV2')==='true'){
       _sp.style.display='none';
@@ -1895,7 +1895,7 @@ function checkAnswers(){
       window.addEventListener('message',function _eoListener(e){
         if(e.data&&(e.data.type==='eo-form-submitted'||e.data==='eo-form-submitted')){
           localStorage.setItem('eoSubscribedV2','true');
-          document.getElementById('eoFormWrap').style.display='none';
+          showCoffeeCard();document.getElementById('eoFormWrap').style.display='none';
           document.getElementById('eoThankYou').style.display='block';
           window.removeEventListener('message',_eoListener);
         }
@@ -1906,7 +1906,7 @@ function checkAnswers(){
           const successEl=_sp.querySelector('.emailoctopus-success-message');
           if(successEl && successEl.textContent.trim().length>0){
             localStorage.setItem('eoSubscribedV2','true');
-            document.getElementById('eoFormWrap').style.display='none';
+            showCoffeeCard();document.getElementById('eoFormWrap').style.display='none';
             document.getElementById('eoThankYou').style.display='block';
             observer.disconnect();
           }
@@ -1923,6 +1923,13 @@ function updatePlaysCounter(){
   if(el) el.innerHTML='&#127918; '+plays.toLocaleString()+' plays &nbsp;&middot;&nbsp;';
 }
 function showLeaderboard(){displayLeaderboard();document.getElementById('leaderboard').scrollIntoView({behavior:'smooth'});}
+function showCoffeeCard(){
+  try{
+    const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard');
+    if(db)db.style.display='none';
+    if(cc)cc.style.display='flex';
+  }catch(e){}
+}
 function resetGrid(){
   document.querySelectorAll('.cell').forEach(cell=>{
     const inp=cell.querySelector('input');
@@ -2529,7 +2536,7 @@ function quizInit(){
         // Swap lifeline bar for survey pill (already completed)
         const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
         if(_lb)_lb.style.display='none';
-        try{const _db=document.getElementById('diff-badge'),_cc=document.getElementById('coffeeCard');if(_db)_db.style.display='none';if(_cc)_cc.style.display='flex';}catch(e){}
+        try{if(localStorage.getItem('eoSubscribedV2')==='true')showCoffeeCard();}catch(e){}
         if(_sp)_sp.style.display=(localStorage.getItem('eoSubscribedV2')==='true')?'none':'flex';
         // Restore score message
         const _msgs={1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
