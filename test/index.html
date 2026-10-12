@@ -1866,8 +1866,8 @@ function checkAnswers(){
   if(correct>=8&&total===9)setTimeout(()=>{document.getElementById('highScoreEntry').style.display='block';document.getElementById('initial1').focus();},1000);
   displayLeaderboard();
   // Funny score message
-  const _msgs={1:'1/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 — Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 — That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 — Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 — Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
-  const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[correct]||'';_msgEl.style.display='block';}
+  const _msgs={0:'0/9 \u2014 Dude, go see Mr. Hand. Twice. \uD83D\uDD90\uFE0F\uD83D\uDD90\uFE0F',1:'1/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 — Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 — Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 — That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 — Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 — Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
+  const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[correct]||'';_msgEl.style.display=_msgEl.textContent?'block':'none';}
   // Swap lifeline bar for survey pill (hide if already subscribed)
   const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
   if(_lb)_lb.style.display='none';
@@ -1877,28 +1877,7 @@ function checkAnswers(){
       _sp.style.display='none';
     } else {
       _sp.style.display='flex';
-      // Detect EmailOctopus form submission via message event
-      window.addEventListener('message',function _eoListener(e){
-        if(e.data&&(e.data.type==='eo-form-submitted'||e.data==='eo-form-submitted')){
-          localStorage.setItem('eoSubscribedV2','true');
-          showCoffeeCard();document.getElementById('eoFormWrap').style.display='none';
-          document.getElementById('eoThankYou').style.display='block';
-          window.removeEventListener('message',_eoListener);
-        }
-      });
-      // Fallback: watch for EO success message appearing in DOM
-      setTimeout(function(){
-        const observer=new MutationObserver(function(){
-          const successEl=_sp.querySelector('.emailoctopus-success-message');
-          if(successEl && successEl.textContent.trim().length>0){
-            localStorage.setItem('eoSubscribedV2','true');
-            showCoffeeCard();document.getElementById('eoFormWrap').style.display='none';
-            document.getElementById('eoThankYou').style.display='block';
-            observer.disconnect();
-          }
-        });
-        observer.observe(_sp,{childList:true,subtree:true,attributes:true});
-      },2000);
+      watchEoSignup();
     }
   }
 }
@@ -1918,6 +1897,28 @@ async function loadRealPlays(){
     const el=document.getElementById('realPlaysNum'),line=document.getElementById('realPlaysLine');
     if(el&&line){el.textContent=n.toLocaleString();line.style.display='block';}
   }catch(e){}
+}
+function eoSignupDone(){
+  try{localStorage.setItem('eoSubscribedV2','true');}catch(e){}
+  showCoffeeCard();
+  const w=document.getElementById('eoFormWrap'),t=document.getElementById('eoThankYou');
+  if(w)w.style.display='none';
+  if(t)t.style.display='block';
+}
+function watchEoSignup(){
+  if(window._eoWatching)return;
+  window._eoWatching=true;
+  // Path 1: EmailOctopus posts a message when the form is submitted
+  window.addEventListener('message',function(e){
+    if(e.data&&(e.data.type==='eo-form-submitted'||e.data==='eo-form-submitted'))eoSignupDone();
+  });
+  // Path 2: poll for the success text (works on every browser, also after a page refresh)
+  const timer=setInterval(function(){
+    const sp=document.getElementById('surveyPill');
+    if(!sp)return;
+    const ok=sp.querySelector('.emailoctopus-success-message');
+    if(ok&&ok.textContent.trim().length>0){clearInterval(timer);eoSignupDone();}
+  },500);
 }
 function showCoffeeCard(){
   try{
@@ -2535,9 +2536,10 @@ function quizInit(){
         if(_lb)_lb.style.display='none';
         try{if(localStorage.getItem('eoSubscribedV2')==='true')showCoffeeCard();}catch(e){}
         if(_sp)_sp.style.display=(localStorage.getItem('eoSubscribedV2')==='true')?'none':'flex';
+        if(_sp&&localStorage.getItem('eoSubscribedV2')!=='true')watchEoSignup();
         // Restore score message
-        const _msgs={1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
-        const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[_correct]||'';_msgEl.style.display='block';}
+        const _msgs={0:'0/9 \u2014 Dude, go see Mr. Hand. Twice. \uD83D\uDD90\uFE0F\uD83D\uDD90\uFE0F',1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
+        const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[_correct]||'';_msgEl.style.display=_msgEl.textContent?'block':'none';}
         // Re-mark session so play limit isn't double-counted
         sessionStorage.setItem(SESSION_KEY,'true');
       }
