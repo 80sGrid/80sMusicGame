@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>How2Play | 80sMusicGame</title>
+<meta name="description" content="How to play 80sMusicGame, the free daily 80s music trivia grid. Match each artist to each category. Nine squares, three lifelines, new grid every night.">
+<meta property="og:title" content="How2Play | 80sMusicGame">
+<meta property="og:description" content="Match each 80s artist to each category. Nine squares, three lifelines, a new grid every night. Free, no sign up.">
+<meta property="og:url" content="https://80smusicgame.com/how.html">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FE9N3JWSGN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FE9N3JWSGN');</script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+  body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px;}
+  .container{background:#fff;padding:30px;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,.3);max-width:640px;width:100%;margin:0 auto;}
+  .back{display:inline-block;font-size:.85em;font-weight:700;color:#667eea;text-decoration:none;margin-bottom:16px;}
+  h1{text-align:center;font-family:'Oxanium',Arial,sans-serif;font-weight:800;font-size:2.3em;color:#8B00FF;letter-spacing:1px;margin-bottom:6px;}
+  .sub{text-align:center;font-family:Georgia,serif;font-style:italic;font-size:1.05em;color:#6a0dad;margin-bottom:22px;}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:440px;margin:0 auto 8px;}
+  .h{border-radius:8px;color:#fff;font-weight:700;font-size:.9em;line-height:1.15;padding:10px 4px;min-height:62px;display:flex;align-items:center;justify-content:center;text-align:center;}
+  .corner{background:transparent;color:#bbb;font-size:.72em;letter-spacing:2px;text-transform:uppercase;}
+  .c1{background:linear-gradient(135deg,#FF1493,#FF69B4);box-shadow:0 0 12px rgba(255,20,147,.4);}
+  .c2{background:linear-gradient(135deg,#00CED1,#1E90FF);box-shadow:0 0 12px rgba(0,206,209,.4);}
+  .r{background:linear-gradient(135deg,#8B00FF,#DA70D6);box-shadow:0 0 12px rgba(139,0,255,.4);}
+  .cell{position:relative;min-height:74px;border-radius:8px;border:2px dashed #c084fc;background:#fff;color:#8B00FF;font-style:italic;font-size:.88em;padding:6px 4px;cursor:pointer;line-height:1.2;font-family:inherit;}
+  .cell:hover{background:#faf5ff;}
+  .cell.revealed{border:2px solid #28a745;background:#d4edda;color:#155724;font-style:normal;font-weight:700;cursor:default;}
+  .cell.revealed::before{content:'\2713';position:absolute;top:3px;right:7px;color:#28a745;}
+  .hint{text-align:center;font-size:.82em;color:#999;margin-bottom:24px;}
+  .card{background:linear-gradient(135deg,#fff8fd,#f3ecff);border:2px solid #c084fc;border-radius:12px;padding:18px 20px;margin-bottom:16px;}
+  .card h2{font-family:'Oxanium',Arial,sans-serif;font-size:1.05em;letter-spacing:2px;text-transform:uppercase;color:#8B00FF;margin-bottom:10px;}
+  ol.steps{list-style:none;counter-reset:s;}
+  ol.steps li{counter-increment:s;position:relative;padding:7px 0 7px 44px;font-size:1em;line-height:1.5;color:#222;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:6px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#8B00FF,#FF1493);color:#fff;font-family:'Oxanium',Arial,sans-serif;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  ul.tips{list-style:none;}
+  ul.tips li{position:relative;padding:6px 0 6px 32px;font-size:.98em;line-height:1.5;color:#222;}
+  ul.tips li span{position:absolute;left:0;top:6px;}
+  b{color:#8B00FF;}
+  .play{display:block;width:100%;max-width:380px;margin:24px auto 8px;padding:16px 20px;text-align:center;background:linear-gradient(135deg,#8B00FF,#FF1493);color:#fff;border-radius:12px;font-family:'Oxanium',Arial,sans-serif;font-weight:800;font-size:1.2em;text-decoration:none;box-shadow:0 4px 18px rgba(255,20,147,.4);}
+  .fine{text-align:center;font-size:.8em;color:#888;}
+  .sig{text-align:center;font-family:Georgia,serif;font-style:italic;color:#6a0dad;margin-top:20px;}
+  footer{text-align:center;font-size:.75em;color:#999;margin-top:22px;}
+  footer a{color:#999;}
+  @media (max-width:540px){.container{padding:20px 16px;} h1{font-size:1.9em;} .h{font-size:.8em;} .cell{font-size:.8em;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="/">&larr; Back to today's grid</a>
+
+  <h1>How2Play</h1>
+  <p class="sub">Nine squares. Three lifelines. All 80s.</p>
+
+  <div class="grid" role="group" aria-label="Sample grid">
+    <div class="h corner">Sample</div>
+    <div class="h c1">Pat Benatar</div>
+    <div class="h c2">Huey Lewis &amp; the News</div>
+    <div class="h r">Biggest Hit Song</div>
+    <button type="button" class="cell" data-answer="Love Is a Battlefield" onclick="reveal(this)">Tap to reveal</button>
+    <button type="button" class="cell" data-answer="The Power of Love" onclick="reveal(this)">Tap to reveal</button>
+  </div>
+  <p class="hint">Every square is where an artist meets a category. Tap one to check.</p>
+
+  <div class="card">
+    <h2>&#127918; The basics</h2>
+    <ol class="steps">
+      <li>Each <b>column</b> is an artist and each <b>row</b> is a category.</li>
+      <li>Tap a square and type the answer that fits <b>both</b>.</li>
+      <li>Fill in as many of the <b>nine squares</b> as you can, then tap <b>Check Answers</b> to see your score.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>&#128161; Good to know</h2>
+    <ul class="tips">
+      <li><span>&#9989;</span>Often more than one answer works.</li>
+      <li><span>&#127919;</span>Stuck? You get <b>3 lifelines</b> per game. Each one turns a square into multiple choice.</li>
+      <li><span>&#11088;</span>Every grid has a difficulty rating: Easy, Medium or Hard.</li>
+      <li><span>&#127381;</span>A <b>brand new grid drops every night</b>. Play daily to build your streak.</li>
+      <li><span>&#127942;</span>Score <b>6 or more</b> to unlock a bonus grid, and see how you rank on the leaderboard.</li>
+      <li><span>&#127926;</span>Want more? There are three themed quizzes every week too.</li>
+    </ul>
+  </div>
+
+  <a class="play" href="/" onclick="try{gtag('event','how_page_play_click');}catch(e){}">&#9654; Play Today's Grid</a>
+  <p class="fine">Free to play &middot; No sign up required</p>
+
+  <p class="sig">Put on your raspberry beret and start typing!</p>
+
+  <footer>&copy; 80sMusicGame.com &nbsp;&middot;&nbsp; <a href="/support.html">Support the game</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy Policy</a></footer>
+</div>
+<script>
+function reveal(el){
+  if(el.classList.contains('revealed'))return;
+  el.textContent=el.getAttribute('data-answer');el.classList.add('revealed');
+  try{gtag('event','how_page_sample_reveal');}catch(e){}
+}
+</script>
+</body>
+</html>
