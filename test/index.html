@@ -59,6 +59,11 @@ body.game-over #bonusLifelineOffer, body.game-over #stuckPrompt, body.game-over 
 #endShareBtn span{display:block;font-family:Arial,sans-serif;font-weight:400;font-size:.62em;opacity:.92;margin-top:5px;}
 #playAnotherCard{display:flex;flex-direction:column;align-items:center;gap:3px;padding:13px 14px;border:2px solid #c084fc;border-radius:14px;background:linear-gradient(135deg,#faf5ff,#f0f4ff);text-decoration:none;text-align:center;}
 #playAnotherCard:hover{background:#f3ebff;}
+#endActions #coffeeCard{flex-direction:row !important;align-items:center !important;justify-content:flex-start !important;gap:14px !important;margin-top:10px;padding:12px 14px !important;text-align:left !important;border-radius:14px !important;}
+#endActions #coffeeCard img{max-width:96px !important;width:96px !important;flex:0 0 96px;}
+#endActions #coffeeCard .cc-text{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;}
+@media (max-width:400px){#endActions #coffeeCard img{width:80px !important;max-width:80px !important;flex-basis:80px;}}
+#coffeeCard .cc-text{display:flex;flex-direction:column;align-items:center;gap:6px;}
 #playAnotherCard .pa-eyebrow{font-size:.7em;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B00FF;}
 #playAnotherCard .pa-title{font-family:'Oxanium',Arial,sans-serif;font-weight:700;font-size:1.1em;color:#222;line-height:1.25;}
 #playAnotherCard .pa-go{font-size:.85em;font-weight:900;color:#FF1493;}
@@ -761,9 +766,11 @@ min-height: 400px; width: 100%; box-sizing: border-box;
      onclick="try{gtag('event','coffee_click',{location:'results',quiz_number:window.QUIZ_NUM});}catch(e){}"
      style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px 14px; border-radius:10px; border:2px solid #FFDD00; background:linear-gradient(135deg,#fffbe0,#fff3b0); box-shadow:0 0 12px rgba(255,221,0,0.5); text-decoration:none; text-align:center;">
     <img src="/images/coffee-trio.jpg" alt="Len and two 80s rocker friends raising a cup of coffee" width="400" height="400" loading="lazy" style="width:100%; max-width:170px; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:10px; border:2px solid #000; display:block;">
-    <div style="font-size:0.95em; font-weight:900; color:#000; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">Enjoyed today's grid?</div>
-    <div style="display:inline-block; padding:8px 16px; background:#FFDD00; color:#000; font-weight:700; font-size:0.85em; border-radius:8px;">Buy Len a coffee</div>
-    <div style="font-size:0.68em; color:#777;">Free forever. Coffees fund new quizzes.</div>
+    <div class="cc-text">
+    <div style="font-size:0.95em; font-weight:900; color:#000; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">Enjoyed today's game?</div>
+    <div class="cc-btn" style="display:inline-block; padding:8px 16px; background:#FFDD00; color:#000; font-weight:700; font-size:0.85em; border-radius:8px; border:2px solid #000;">&#9749; Buy Len a coffee</div>
+    <div style="font-size:0.68em; color:#777;">Free forever. Coffees fund new games.</div>
+    </div>
   </a>
   <div id="shareCard" style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:14px; border-radius:10px; border:2px solid #00CED1; background:linear-gradient(135deg,#eafcff,#e6f0ff); box-shadow:0 0 12px rgba(0,206,209,0.35); text-align:center;">
     <div style="font-size:2em; line-height:1;">&#128242;</div>
@@ -2059,6 +2066,7 @@ function watchEoSignup(){
 function showCoffeeCard(){
   try{
     const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard'),sc=document.getElementById('shareCard');
+    const ea=document.getElementById('endActions');if(ea&&cc&&cc.parentNode!==ea)ea.appendChild(cc);
     if(db)db.style.display='none';
     if(sc)sc.style.display='none';
     if(cc)cc.style.display='flex';
@@ -2080,7 +2088,7 @@ function isSubscribed(){try{return localStorage.getItem('eoSubscribedV2')==='tru
 function coffeeEligible(){
   if(!isSubscribed())return false;
   let on=null;try{on=localStorage.getItem('eoSubscribedOn');}catch(e){}
-  return !on || on<_localDay();   /* no date = joined before this rule existed */
+  return true;   /* coffee now shows right after signup too, placed below Share and Play a Themed Quiz */
 }
 /* Called after a grid is checked (or restored). Decides what the results row shows. */
 function applyResultsCards(){
@@ -3004,7 +3012,9 @@ function finishGame(early){
   }
   revealUnanswered();
   const sc=document.getElementById('score');if(sc)sc.textContent='You got '+c.correct+' out of '+c.total+' correct!';
-  const live=_readLive();live.done=true;live.early=!!early;_writeLive(live);
+  const live=_readLive();live.done=true;live.early=!!early;
+  try{const m=document.getElementById('scoreMessage');if(m&&m.textContent)live.msg=m.textContent;}catch(e){}
+  _writeLive(live);
   const db=document.getElementById('doneBtn');if(db){db.disabled=true;db.textContent='✅ Game Complete';}
   const sp=document.getElementById('stuckPrompt');if(sp)sp.style.display='none';
   updateLiveProgress();
@@ -3059,6 +3069,7 @@ function restoreLiveGrid(){
     const c=liveCounts();
     const r=document.getElementById('results');if(r)r.style.display='block';
     const sc=document.getElementById('score');if(sc)sc.textContent='You got '+c.correct+' out of '+c.total+' correct!';
+    const sm=document.getElementById('scoreMessage');if(sm&&live.msg&&!sm.textContent){sm.textContent=live.msg;sm.style.display='block';}
     const lb=document.getElementById('lifelineBar');if(lb)lb.style.display='none';
     setTimeout(()=>{try{applyResultsCards();}catch(e){}},0);
     const db=document.getElementById('doneBtn');if(db){db.disabled=true;db.textContent='✅ Game Complete';}
