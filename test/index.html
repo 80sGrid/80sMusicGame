@@ -723,10 +723,10 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <!-- DIFFICULTY + LIFELINE ROW -->
 <div id="endActions" style="display:none;">
   <button type="button" id="endShareBtn" onclick="try{gtag('event','end_share_click',{quiz_number:window.QUIZ_NUM});}catch(e){} shareQuizEmoji();">&#128242; Challenge Your Friends<span>Send them your &#129001;&#128997; grid and see who knows their 80s</span></button>
-  <a id="playAnotherCard" href="#classicQuizzesGrid" onclick="try{gtag('event','play_another_click',{quiz_number:window.QUIZ_NUM});}catch(e){}">
-    <span class="pa-eyebrow">&#127925; Play another 80s game</span>
-    <span class="pa-title" id="playAnotherTitle">This week's themed quizzes</span>
-    <span class="pa-go">Play now &rarr;</span>
+  <a id="playAnotherCard" href="#classicQuizzesGrid" onclick="try{gtag('event','play_another_click',{quiz_number:window.QUIZ_NUM});}catch(e){} var g=document.getElementById('classicQuizzesGrid'); if(g){g.scrollIntoView({behavior:'smooth',block:'center'}); return false;}">
+    <span class="pa-eyebrow">&#127925; Want more 80s?</span>
+    <span class="pa-title" id="playAnotherTitle">Play a Themed Quiz</span>
+    <span class="pa-go">See this week's quizzes &rarr;</span>
   </a>
 </div>
 <div id="statusRow" style="display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:10px; margin:10px 0 16px; align-items:stretch;">
@@ -3085,7 +3085,6 @@ function showEndScreen(){
   const pb=document.getElementById('playButtons');if(pb)pb.style.display='none';
   const lp=document.getElementById('liveProgress');if(lp)lp.style.display='none';
   hideDiffBadge();
-  pickPlayAnother();setTimeout(pickPlayAnother,800);
 }
 (function(){
   const _origFinish=window.finishGame;
