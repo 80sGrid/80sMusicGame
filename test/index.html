@@ -2,6 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+/* TEST MODE (only on /test/): every new browser tab is a brand new player.
+   Saved progress lives in this tab only, so refreshing keeps your game, but a new tab starts fresh.
+   The real game at the root address is never touched. Remove this block when moving to root. */
+(function(){
+  if(!/^\/test\//.test(location.pathname))return;
+  try{
+    Object.defineProperty(window,'localStorage',{value:window.sessionStorage,configurable:true});
+    window.__TEST_MODE=true;
+    /* ?coffee=1 previews a returning subscriber (joined on an earlier day), so the coffee card shows after the game */
+    if(/[?&]coffee=1/.test(location.search)){sessionStorage.setItem('eoSubscribedV2','true');sessionStorage.setItem('eoSubscribedOn','2000-01-01');sessionStorage.setItem('80sGridNewbieDoneV1','1');}
+    document.addEventListener('DOMContentLoaded',function(){
+      var b=document.createElement('div');
+      b.textContent='TEST MODE \u00b7 new tab = new player';
+      b.style.cssText='position:fixed;left:8px;bottom:8px;z-index:99998;background:#111;color:#0f0;font:700 11px/1 monospace;padding:6px 9px;border-radius:6px;opacity:.85;pointer-events:none;';
+      document.body.appendChild(b);
+    });
+  }catch(e){}
+})();
+</script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png">
