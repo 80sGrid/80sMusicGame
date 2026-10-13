@@ -642,9 +642,9 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <span style="color:#667eea; font-weight:bold;">In Pat Benatar We Trust</span>
 </div>
 <hr style="border:none; border-top:1px solid; border-image:linear-gradient(to right,transparent,#c084fc 20%,#c084fc 80%,transparent) 1; margin:8px 0 4px; opacity:0.5;">
-<div class="how-to-play">
+<div class="how-to-play" id="howToPlayBar">
 <button class="htp-toggle-btn" id="htpBtn" onclick="(function(){var b=document.getElementById('htpBody');var a=document.getElementById('htpArrow');var open=b.classList.contains('open');b.classList.toggle('open');a.textContent=open?'▾':'▴';})()"><span>How to Play</span><span id="htpArrow">▾</span></button>
-<div class="htp-body" id="htpBody">Click any box to type your answer and match each artist (column) to the right category (row). Often more than one works! Stuck? Tap the Lifeline button to reveal multiple-choice options &mdash; you get 3 per game, so use them wisely! (Put on your raspberry beret and start typing!)</div>
+<div class="htp-body" id="htpBody">Tap any square and type the answer that matches its artist (column) and category (row). Often more than one works! Each square is graded the moment you lock it in, so you get one shot per square. Stuck? Use a Lifeline to turn a square into multiple choice. You get 3 per game, so use them wisely! (Put on your raspberry beret and start typing!)</div>
 </div>
 
 <!-- nav status bar removed -->
@@ -3127,6 +3127,7 @@ function showEndScreen(){
   window.newbieDone=function(how){
     try{localStorage.setItem(DONE_KEY,'1');}catch(e){}
     var c=document.getElementById('newbieCard'); if(c) c.style.display='none';
+    var hb=document.getElementById('howToPlayBar'); if(hb) hb.style.display='';
     try{gtag('event','newbie_card_close',{how:how});}catch(e){}
     if(how==='go'){var g=document.getElementById('today-label');if(g)g.scrollIntoView({behavior:'smooth',block:'start'});}
   };
@@ -3135,6 +3136,7 @@ function showEndScreen(){
     var force=/[?&]new=1/.test(location.search);
     if(force || (!ls(DONE_KEY) && !hasPlayed())){
       c.style.display='block';
+      var hb=document.getElementById('howToPlayBar'); if(hb) hb.style.display='none';
       try{gtag('event','newbie_card_shown',{forced:force});}catch(e){}
     }
   }
