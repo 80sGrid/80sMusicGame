@@ -2180,19 +2180,68 @@ const DEDICATIONS = [
     icon: '✈️', label: 'Hit the Road',
     body: "Whether you're a power-suit professional or a road-trip rebel, this one's for you! Dedicated to the legends at <strong>SheBuysTravel.com</strong>. Their travel tips and money-saving strategies are totally choice — don't leave home without 'em!",
     link: { url: 'https://shebuystravel.com', text: 'Visit SheBuysTravel.com →' }
+  },
+  {
+    bg: 'linear-gradient(135deg,#eef6ff,#e1efff)',
+    border: '#1e88e5', accent: '#1e88e5',
+    geo: 'wch', /* only shown in California and Princeton NJ, see initDedicationBox */
+    icon: '🎸', label: 'New Music Pick',
+    body: "<strong>West Coast Hearts</strong> is the solo project of singer, songwriter and producer Rob McLoughlin, making guitar songs with honesty, melody and heart. Made for long drives, warm summer nights, and the yes you were hoping for.",
+    link: { url: 'https://westcoasthearts.com/', text: 'Visit WestCoastHearts.com →' }
   }
 ];
 
-function initDedicationBox() {
+function renderDedication(d) {
   const anchor = document.getElementById('dedicationAnchor');
-  if (!anchor) return;
-  const d = DEDICATIONS[Math.floor(Math.random() * DEDICATIONS.length)];
+  if (!anchor || !d) return;
   anchor.innerHTML =
     '<div style="background:' + d.bg + '; border:2px solid ' + d.border + '; border-left:5px solid ' + d.accent + '; border-radius:10px; padding:12px 16px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.06);">' +
       '<div style="font-size:0.68em; font-weight:900; letter-spacing:2px; color:' + d.accent + '; text-transform:uppercase; margin-bottom:4px;">' + d.icon + ' &nbsp;' + d.label + '</div>' +
       '<div style="font-size:0.88em; color:#111; line-height:1.6;">' + d.body + '</div>' +
       (d.link ? '<a href="' + d.link.url + '" target="_blank" rel="noopener" style="display:inline-block; margin-top:6px; font-size:0.8em; font-weight:900; color:' + d.accent + '; text-decoration:none;">' + d.link.text + '</a>' : '') +
     '</div>';
+}
+
+/* Geo targeting: West Coast Hearts shows only to visitors in California or Princeton, NJ.
+   Everyone else gets the normal random rotation. Location comes from a free IP lookup,
+   cached for a day. Preview with ?geo=ca or ?geo=princeton (or ?geo=off). */
+const GEO_CACHE_KEY = '80sGridGeoV1';
+const PRINCETON_CITIES = ['princeton','princeton junction','plainsboro','west windsor','lawrenceville','kingston'];
+function geoMatchesWCH(g) {
+  if (!g) return false;
+  const country = String(g.country || '').toUpperCase();
+  const region = String(g.region || '').toUpperCase();
+  const city = String(g.city || '').toLowerCase().trim();
+  if (country !== 'US') return false;
+  if (region === 'CA' || region === 'CALIFORNIA') return true;
+  if ((region === 'NJ' || region === 'NEW JERSEY') && PRINCETON_CITIES.indexOf(city) !== -1) return true;
+  return false;
+}
+function getVisitorGeo() {
+  const q = (new URLSearchParams(location.search).get('geo') || '').toLowerCase();
+  if (q === 'ca') return Promise.resolve({ country: 'US', region: 'CA', city: 'Los Angeles' });
+  if (q === 'princeton') return Promise.resolve({ country: 'US', region: 'NJ', city: 'Princeton' });
+  if (q === 'off') return Promise.resolve({ country: 'US', region: 'NY', city: 'New York' });
+  try {
+    const c = JSON.parse(localStorage.getItem(GEO_CACHE_KEY) || 'null');
+    if (c && c.t && Date.now() - c.t < 24 * 3600 * 1000) return Promise.resolve(c.g);
+  } catch (e) {}
+  const save = g => { try { localStorage.setItem(GEO_CACHE_KEY, JSON.stringify({ t: Date.now(), g: g })); } catch (e) {} return g; };
+  const timeout = ms => new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms));
+  const viaIpapi = () => Promise.race([fetch('https://ipapi.co/json/').then(r => r.json()), timeout(3500)])
+    .then(j => { if (!j || j.error || !j.country_code) throw new Error('ipapi'); return { country: j.country_code, region: j.region_code, city: j.city }; });
+  const viaIpwho = () => Promise.race([fetch('https://ipwho.is/').then(r => r.json()), timeout(3500)])
+    .then(j => { if (!j || j.success === false) throw new Error('ipwho'); return { country: j.country_code, region: j.region_code, city: j.city }; });
+  return viaIpapi().catch(viaIpwho).then(save).catch(() => null);
+}
+
+function initDedicationBox() {
+  const anchor = document.getElementById('dedicationAnchor');
+  if (!anchor) return;
+  const general = DEDICATIONS.filter(d => !d.geo);
+  const wch = DEDICATIONS.find(d => d.geo === 'wch');
+  renderDedication(general[Math.floor(Math.random() * general.length)]);
+  if (wch) getVisitorGeo().then(g => { if (geoMatchesWCH(g)) renderDedication(wch); }).catch(() => {});
 }
 
 /* ===== FEEDBACK ===== */
