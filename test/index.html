@@ -31,6 +31,7 @@
 #results, #bonusGridLabel, #bonus-card{display:none !important;}
 /* End of game cleanup */
 #streak-strip, #statBoxes, #countdownBox, #completedHeader, #completed-grid, #no-completed, #betaNotice{display:none !important;}
+body.game-over #bonusLifelineOffer, body.game-over #stuckPrompt, body.game-over #lifelineBar, body.game-over #liveProgress{display:none !important;}
 #compactStats{text-align:center;font-size:.85em;color:#666;padding:9px 12px;background:#f8f9ff;border:1.5px solid #e4e6f0;border-radius:10px;margin:0 0 14px;line-height:1.5;}
 #compactStats b{color:#8B00FF;font-family:'Oxanium',Arial,sans-serif;}
 #endActions{margin:4px 0 12px;}
@@ -3027,7 +3028,8 @@ function bumpStreakNow(){
 }
 /* restore a game in progress (or a finished one) after a refresh */
 function restoreLiveGrid(){
-  const live=_readLive();if(!live.cells)return;
+  const live=_readLive();if(!live.cells&&!live.done)return;
+  live.cells=live.cells||{};
   document.querySelectorAll('.cell').forEach(cell=>{
     const st=live.cells[_cellKey(cell)];if(st)paintCell(cell,st.val,!!st.correct,false);
   });
@@ -3067,6 +3069,7 @@ function pickPlayAnother(){
   }catch(e){}
 }
 function showEndScreen(){
+  document.body.classList.add('game-over');
   const ea=document.getElementById('endActions');if(ea)ea.style.display='block';
   const pb=document.getElementById('playButtons');if(pb)pb.style.display='none';
   const lp=document.getElementById('liveProgress');if(lp)lp.style.display='none';
