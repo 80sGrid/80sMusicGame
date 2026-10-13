@@ -25,7 +25,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, interactive-widget=resizes-content">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FE9N3JWSGN"></script>
 <script src="/analytics.js"></script>
 <title>Len's 80sMusicGame.com — Daily Music Trivia</title>
@@ -52,6 +52,10 @@
 /* End of game cleanup */
 #streak-strip, #statBoxes, #countdownBox, #completedHeader, #completed-grid, #no-completed, #betaNotice{display:none !important;}
 body.game-over #bonusLifelineOffer, body.game-over #stuckPrompt, body.game-over #lifelineBar, body.game-over #liveProgress{display:none !important;}
+@media (max-width:540px){
+  .input-modal{top:12px !important;transform:translateX(-50%) !important;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto;padding:20px 18px !important;}
+  .input-modal h3{margin-bottom:12px !important;}
+}
 #compactStats{text-align:center;font-size:.85em;color:#666;padding:9px 12px;background:#f8f9ff;border:1.5px solid #e4e6f0;border-radius:10px;margin:0 0 14px;line-height:1.5;}
 #compactStats b{color:#8B00FF;font-family:'Oxanium',Arial,sans-serif;}
 #endActions{margin:4px 0 12px;}
@@ -849,7 +853,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <span style="font-size:0.75em;color:#888;">Next grid drops in</span>
 <span id="countdown" style="font-family:'Oxanium',Arial,sans-serif;font-size:1em;font-weight:700;color:#8B00FF;">—:—:—</span>
 </div>
-<div id="compactStats">&#128293; <b id="csStreak">0</b> day streak &nbsp;&middot;&nbsp; <b id="csPlayed">0</b> played &nbsp;&middot;&nbsp; Next game in <b id="csCountdown">&mdash;</b></div>
+<div id="compactStats">&#128293; <b id="csStreak">0</b> day streak &nbsp;&middot;&nbsp; <b id="csPlayed">0</b> played<span id="csAvgWrap" style="display:none;"> &nbsp;&middot;&nbsp; Avg <b id="csAvg">0</b>/9</span> &nbsp;&middot;&nbsp; Next game in <b id="csCountdown">&mdash;</b></div>
 
 
 
@@ -1356,7 +1360,7 @@ function saveModalAnswer(){
     closeModal();
   }
 }
-document.addEventListener('keypress',(e)=>{if(e.key==='Enter'&&document.getElementById('inputModal').classList.contains('active'))saveModalAnswer();});
+document.addEventListener('keydown',(e)=>{if((e.key==='Enter'||e.keyCode===13)&&document.getElementById('inputModal').classList.contains('active')&&document.activeElement&&document.activeElement.id==='modalInput'){e.preventDefault();saveModalAnswer();}});
 document.getElementById('inputOverlay').addEventListener('click',closeModal);
 
 /* ===== LIFELINES ===== */
@@ -3012,6 +3016,7 @@ function finishGame(early){
   }
   revealUnanswered();
   const sc=document.getElementById('score');if(sc)sc.textContent='You got '+c.correct+' out of '+c.total+' correct!';
+  recordScoreHistory(window.QUIZ_NUM,c.correct);
   const live=_readLive();live.done=true;live.early=!!early;
   try{const m=document.getElementById('scoreMessage');if(m&&m.textContent)live.msg=m.textContent;}catch(e){}
   _writeLive(live);
@@ -3035,6 +3040,24 @@ function openDoneConfirm(){
 function closeDoneConfirm(){const d=document.getElementById('doneConfirm');if(d)d.style.display='none';}
 /* the old "Show Answers" button in the stuck prompt now goes through the same confirm */
 function revealAllAnswers(){openDoneConfirm();}
+/* Score history for the average: one entry per finished game (zeros count too) */
+function _scoreHistory(){
+  let h=null;try{h=JSON.parse(localStorage.getItem('scoreHistoryV1')||'null');}catch(e){}
+  if(!h){ /* first time: seed from older saved scores so returning players get an average right away */
+    h={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i)||'';const m=k.match(/^quiz(\d+)Score$/);if(m){const v=parseInt(localStorage.getItem(k),10);if(!isNaN(v))h[m[1]]=v;}}}catch(e){}
+    try{localStorage.setItem('scoreHistoryV1',JSON.stringify(h));}catch(e){}
+  }
+  return h;
+}
+function recordScoreHistory(n,score){
+  if(!n&&n!==0)return;
+  const h=_scoreHistory();
+  if(h[n]===undefined){h[n]=score;try{localStorage.setItem('scoreHistoryV1',JSON.stringify(h));}catch(e){}}
+}
+function scoreAverage(){
+  const v=Object.values(_scoreHistory()).map(Number).filter(x=>!isNaN(x));
+  return {count:v.length,avg:v.length?v.reduce((a,b)=>a+b,0)/v.length:0};
+}
 /* the streak counts as soon as someone locks in their first square, even if they never finish */
 function bumpStreakNow(){
   try{
@@ -3126,6 +3149,8 @@ function showEndScreen(){
     if(s)s.textContent=g('streak-num')||'0';
     let played='0';try{played=String(parseInt(localStorage.getItem('totalQuizzesPlayed')||'0',10)||0);}catch(e){}
     if(p)p.textContent=played;
+    try{const a=scoreAverage();const w=document.getElementById('csAvgWrap'),av=document.getElementById('csAvg');
+      if(w&&av){if(a.count>=2){av.textContent=(Math.round(a.avg*10)/10).toString();w.style.display='';}else{w.style.display='none';}}}catch(e){}
     if(c)c.textContent=g('countdown')||'';
   }
   setInterval(syncCompact,1000);
