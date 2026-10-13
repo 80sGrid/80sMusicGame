@@ -706,6 +706,12 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <div style="display:inline-block; padding:8px 16px; background:#FFDD00; color:#000; font-weight:700; font-size:0.85em; border-radius:8px;">Buy Len a coffee</div>
     <div style="font-size:0.68em; color:#777;">Free forever. Coffees fund new quizzes.</div>
   </a>
+  <div id="shareCard" style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:14px; border-radius:10px; border:2px solid #00CED1; background:linear-gradient(135deg,#eafcff,#e6f0ff); box-shadow:0 0 12px rgba(0,206,209,0.35); text-align:center;">
+    <div style="font-size:2em; line-height:1;">&#128242;</div>
+    <div style="font-size:0.95em; font-weight:900; color:#0b4f8a; font-family:'Oxanium',Arial,sans-serif; letter-spacing:0.5px;">Know someone who'd love this?</div>
+    <div style="font-size:0.82em; color:#555; line-height:1.4;">Send them today's grid and see who knows their 80s better.</div>
+    <button type="button" onclick="try{gtag('event','share_card_click',{quiz_number:window.QUIZ_NUM});}catch(e){} shareQuizEmoji();" style="background:linear-gradient(135deg,#00CED1,#1E90FF); color:#fff; border:none; border-radius:22px; padding:10px 22px; font-size:0.88em; font-weight:900; cursor:pointer; box-shadow:0 3px 14px rgba(30,144,255,0.35);">Share With Your Friends</button>
+  </div>
   <!-- Lifeline pill -->
   <div class="lifeline-bar" id="lifelineBar" style="flex:1; margin:0; flex-direction:column; gap:4px; padding:8px 14px;">
     <div style="font-size:0.68em; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:#555; margin-bottom:3px;">Use a Lifeline if you're stuck?</div>
@@ -1935,15 +1941,7 @@ function checkAnswers(){
   // Swap lifeline bar for survey pill (hide if already subscribed)
   const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
   if(_lb)_lb.style.display='none';
-  try{if(localStorage.getItem('eoSubscribedV2')==='true')showCoffeeCard();}catch(e){}
-  if(_sp){
-    if(localStorage.getItem('eoSubscribedV2')==='true'){
-      _sp.style.display='none';
-    } else {
-      _sp.style.display='flex';
-      watchEoSignup();
-    }
-  }
+  applyResultsCards();
 }
 /* FIX: use innerHTML not textContent so emoji HTML entity renders */
 function updatePlaysCounter(){
@@ -1963,8 +1961,11 @@ async function loadRealPlays(){
   }catch(e){}
 }
 function eoSignupDone(){
-  try{localStorage.setItem('eoSubscribedV2','true');}catch(e){}
-  showCoffeeCard();
+  try{
+    if(localStorage.getItem('eoSubscribedV2')!=='true'||!localStorage.getItem('eoSubscribedOn'))localStorage.setItem('eoSubscribedOn',_localDay());
+    localStorage.setItem('eoSubscribedV2','true');
+  }catch(e){}
+  if(coffeeEligible())showCoffeeCard(); else showShareCard();
   const w=document.getElementById('eoFormWrap'),t=document.getElementById('eoThankYou');
   if(w)w.style.display='none';
   if(t)t.style.display='block';
@@ -1986,10 +1987,47 @@ function watchEoSignup(){
 }
 function showCoffeeCard(){
   try{
-    const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard');
+    const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard'),sc=document.getElementById('shareCard');
     if(db)db.style.display='none';
+    if(sc)sc.style.display='none';
     if(cc)cc.style.display='flex';
   }catch(e){}
+}
+function showShareCard(){
+  try{
+    const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard'),sc=document.getElementById('shareCard');
+    if(db)db.style.display='none';
+    if(cc)cc.style.display='none';
+    if(sc)sc.style.display='flex';
+  }catch(e){}
+}
+/* Coffee waits until the day AFTER someone joins the email list.
+   On the day they join they get "Share With Your Friends" plus "Play a Themed Quiz" instead. */
+function _localDay(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function isSubscribed(){try{return localStorage.getItem('eoSubscribedV2')==='true';}catch(e){return false;}}
+function coffeeEligible(){
+  if(!isSubscribed())return false;
+  let on=null;try{on=localStorage.getItem('eoSubscribedOn');}catch(e){}
+  return !on || on<_localDay();   /* no date = joined before this rule existed */
+}
+/* Called after a grid is checked (or restored). Decides what the results row shows. */
+function applyResultsCards(){
+  const sp=document.getElementById('surveyPill');
+  if(!isSubscribed()){
+    if(sp)sp.style.display='flex';
+    watchEoSignup();
+    return;
+  }
+  if(coffeeEligible()){
+    showCoffeeCard();
+    if(sp)sp.style.display='none';
+  } else {
+    showShareCard();
+    const w=document.getElementById('eoFormWrap'),t=document.getElementById('eoThankYou');
+    if(w)w.style.display='none';
+    if(t)t.style.display='block';
+    if(sp)sp.style.display='flex';
+  }
 }
 function resetGrid(){
   document.querySelectorAll('.cell').forEach(cell=>{
@@ -2647,9 +2685,7 @@ function quizInit(){
         // Swap lifeline bar for survey pill (already completed)
         const _lb=document.getElementById('lifelineBar');const _sp=document.getElementById('surveyPill');
         if(_lb)_lb.style.display='none';
-        try{if(localStorage.getItem('eoSubscribedV2')==='true')showCoffeeCard();}catch(e){}
-        if(_sp)_sp.style.display=(localStorage.getItem('eoSubscribedV2')==='true')?'none':'flex';
-        if(_sp&&localStorage.getItem('eoSubscribedV2')!=='true')watchEoSignup();
+        applyResultsCards();
         // Restore score message
         const _msgs={0:'0/9 \u2014 Dude, go see Mr. Hand. Twice. \uD83D\uDD90\uFE0F\uD83D\uDD90\uFE0F',1:'1/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',2:'2/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',3:'3/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',4:'4/9 \u2014 Dude, go see Mr. Hand. \uD83D\uDD90\uFE0F',5:"5/9 \u2014 Hey, not bad \u2014 you'll rock out tomorrow! \uD83C\uDFB8",6:"6/9 \u2014 That's a C+ \u2014 we still love you \u2764\uFE0F",7:'7/9 \u2014 Good, you Smooth Operator you! \uD83D\uDE0E',8:'8/9 \u2014 Yes, I will be your Father Figure \uD83C\uDFA4',9:'9/9 \u2014 Wow! George Michael would be proud \uD83D\uDE4F'};
         const _msgEl=document.getElementById('scoreMessage');if(_msgEl){_msgEl.textContent=_msgs[_correct]||'';_msgEl.style.display=_msgEl.textContent?'block':'none';}
