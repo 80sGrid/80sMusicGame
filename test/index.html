@@ -3068,8 +3068,19 @@ function pickPlayAnother(){
     card.href=pick.getAttribute('href')||'#classicQuizzesGrid';
   }catch(e){}
 }
+/* Order after the game: email signup first (if we don't have their email), then share, then play another.
+   Subscribers: share, play another, then the coffee card. */
+function orderEndScreen(){
+  try{
+    const ea=document.getElementById('endActions'),sr=document.getElementById('statusRow');
+    if(!ea||!sr||!ea.parentNode)return;
+    if(!isSubscribed()){ if(sr.nextElementSibling!==ea) ea.parentNode.insertBefore(sr,ea); }
+    else { if(ea.nextElementSibling!==sr) ea.parentNode.insertBefore(ea,sr); }
+  }catch(e){}
+}
 function showEndScreen(){
   document.body.classList.add('game-over');
+  orderEndScreen();
   const ea=document.getElementById('endActions');if(ea)ea.style.display='block';
   const pb=document.getElementById('playButtons');if(pb)pb.style.display='none';
   const lp=document.getElementById('liveProgress');if(lp)lp.style.display='none';
