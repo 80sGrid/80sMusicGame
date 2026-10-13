@@ -28,6 +28,28 @@
 #eoFormWrap *{max-width:100% !important; box-sizing:border-box;}
 #eoThankYou button{max-width:100%; white-space:normal;}
 #coffeeCard{overflow-wrap:anywhere;}
+/* New player how it works card */
+#newbieCard{background:linear-gradient(135deg,#fff8fd,#f3ecff);border:2px solid #c084fc;border-radius:14px;padding:14px 14px 12px;margin:4px 0 16px;box-shadow:0 4px 18px rgba(139,0,255,.12);}
+#newbieCard .nb-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;}
+#newbieCard .nb-title{font-family:'Oxanium',Arial,sans-serif;font-weight:700;font-size:1.05em;color:#8B00FF;line-height:1.25;}
+#newbieCard .nb-x{background:none;border:none;color:#aaa;font-size:1.5em;line-height:1;padding:0 4px;cursor:pointer;}
+#newbieCard .nb-x:hover{background:none;color:#666;}
+#newbieCard .nb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:420px;margin:0 auto 10px;}
+#newbieCard .nb-h{border-radius:8px;color:#fff;font-weight:700;font-size:.8em;line-height:1.15;padding:8px 4px;min-height:52px;display:flex;align-items:center;justify-content:center;text-align:center;}
+#newbieCard .nb-corner{background:transparent;color:#bbb;font-size:.7em;letter-spacing:2px;text-transform:uppercase;}
+#newbieCard .nb-c1{background:linear-gradient(135deg,#FF1493,#FF69B4);}
+#newbieCard .nb-c2{background:linear-gradient(135deg,#00CED1,#1E90FF);}
+#newbieCard .nb-r{background:linear-gradient(135deg,#8B00FF,#DA70D6);}
+#newbieCard .nb-cell{position:relative;min-height:60px;border-radius:8px;border:2px dashed #c084fc;background:#fff;color:#8B00FF;font-style:italic;font-size:.8em;padding:6px 4px;cursor:pointer;line-height:1.2;}
+#newbieCard .nb-cell:hover{background:#faf5ff;}
+#newbieCard .nb-cell.revealed{border:2px solid #28a745;background:#d4edda;color:#155724;font-style:normal;font-weight:700;cursor:default;}
+#newbieCard .nb-cell.revealed::before{content:'\2713';position:absolute;top:2px;right:6px;color:#28a745;font-size:.95em;}
+#newbieCard .nb-steps{margin:0 auto 10px;padding-left:22px;max-width:420px;font-size:.88em;line-height:1.5;color:#333;}
+#newbieCard .nb-steps li{margin:2px 0;}
+#newbieCard .nb-steps b{color:#8B00FF;}
+#newbieCard .nb-go{display:block;width:100%;max-width:420px;margin:0 auto;padding:11px;background:linear-gradient(135deg,#8B00FF,#FF1493);color:#fff;border:none;border-radius:10px;font-weight:900;font-size:.95em;cursor:pointer;}
+#newbieCard .nb-go:hover{background:linear-gradient(135deg,#7a00e0,#e0127f);}
+
 /* On phones, stack the status row so the email signup gets the full width (it is too cramped side by side) */
 @media (max-width:540px){
   #statusRow{grid-auto-flow:row !important; grid-template-columns:1fr !important; grid-auto-columns:auto !important;}
@@ -632,6 +654,27 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   <div class="cb-title">YOU'VE BEEN CHALLENGED!</div>
   <div class="cb-body">A friend shared their bonus quiz with you. Give it a shot — then play <strong>today's daily quiz</strong> to get on the leaderboard!</div>
   <a id="challengeDailyLink" href="https://80smusicgame.com/" class="cb-btn">▶ Play Today's Quiz →</a>
+</div>
+<!-- ===== NEW PLAYER HOW IT WORKS (first visit only; preview with ?new=1) ===== -->
+<div id="newbieCard" style="display:none;">
+  <div class="nb-top">
+    <div class="nb-title">&#128075; New here? Here's how it works</div>
+    <button type="button" class="nb-x" aria-label="Close" onclick="newbieDone('x')">&times;</button>
+  </div>
+  <div class="nb-grid" role="group" aria-label="Sample grid">
+    <div class="nb-h nb-corner">Sample</div>
+    <div class="nb-h nb-c1">Pat Benatar</div>
+    <div class="nb-h nb-c2">Huey Lewis &amp; the News</div>
+    <div class="nb-h nb-r">Biggest Hit Song</div>
+    <button type="button" class="nb-cell" data-answer="Love Is a Battlefield" onclick="newbieReveal(this)">Tap to reveal</button>
+    <button type="button" class="nb-cell" data-answer="The Power of Love" onclick="newbieReveal(this)">Tap to reveal</button>
+  </div>
+  <ol class="nb-steps">
+    <li>Each <b>column</b> is an artist, each <b>row</b> is a category.</li>
+    <li>Tap a square and type the answer that fits <b>both</b>.</li>
+    <li>Stuck? You get <b>3 lifelines</b>. New grid every night.</li>
+  </ol>
+  <button type="button" class="nb-go" onclick="newbieDone('go')">Got it, let's play! &#11015;&#65039;</button>
 </div>
 <div id="today-label" style="text-align:center;font-size:0.95em;color:#8B00FF;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:Georgia,serif;font-weight:bold;">Today's Grid</div>
 <div class="subtitle" id="today-title">Loading...</div>
@@ -2759,6 +2802,40 @@ function drawGridOnCassette(ctx, W, H) {
 </script>
 <script src="quiz-data.js"></script>
 
+
+<script>
+/* New player how it works card: shows only to people who have never played (or with ?new=1) */
+(function(){
+  var DONE_KEY='80sGridNewbieDoneV1';
+  function ls(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+  function hasPlayed(){
+    if(parseInt(ls('totalQuizzesPlayed')||'0',10)>0) return true;
+    if(ls('80sg_last_played')||ls('lastPlayedDate')||ls('bestQuizScore')) return true;
+    try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i)||'';if(k.indexOf('gridState_quiz')===0||/^quiz\d+Score$/.test(k))return true;}}catch(e){}
+    return false;
+  }
+  window.newbieReveal=function(el){
+    if(el.classList.contains('revealed'))return;
+    el.textContent=el.getAttribute('data-answer');el.classList.add('revealed');
+    try{gtag('event','newbie_sample_reveal');}catch(e){}
+  };
+  window.newbieDone=function(how){
+    try{localStorage.setItem(DONE_KEY,'1');}catch(e){}
+    var c=document.getElementById('newbieCard'); if(c) c.style.display='none';
+    try{gtag('event','newbie_card_close',{how:how});}catch(e){}
+    if(how==='go'){var g=document.getElementById('today-label');if(g)g.scrollIntoView({behavior:'smooth',block:'start'});}
+  };
+  function init(){
+    var c=document.getElementById('newbieCard'); if(!c) return;
+    var force=/[?&]new=1/.test(location.search);
+    if(force || (!ls(DONE_KEY) && !hasPlayed())){
+      c.style.display='block';
+      try{gtag('event','newbie_card_shown',{forced:force});}catch(e){}
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 <script>
 /* Layout debug overlay: open the page with ?debug=1 to see what is wider than the screen */
 (function(){
