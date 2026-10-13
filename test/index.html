@@ -28,6 +28,20 @@
 #eoFormWrap *{max-width:100% !important; box-sizing:border-box;}
 #eoThankYou button{max-width:100%; white-space:normal;}
 #coffeeCard{overflow-wrap:anywhere;}
+#results, #bonusGridLabel, #bonus-card{display:none !important;}
+/* End of game cleanup */
+#streak-strip, #statBoxes, #countdownBox, #completedHeader, #completed-grid, #no-completed, #betaNotice{display:none !important;}
+#compactStats{text-align:center;font-size:.85em;color:#666;padding:9px 12px;background:#f8f9ff;border:1.5px solid #e4e6f0;border-radius:10px;margin:0 0 14px;line-height:1.5;}
+#compactStats b{color:#8B00FF;font-family:'Oxanium',Arial,sans-serif;}
+#endActions{margin:4px 0 12px;}
+#endShareBtn{display:block;width:100%;padding:16px 14px 13px;background:linear-gradient(135deg,#FF1493,#8B00FF);color:#fff;border:none;border-radius:14px;font-family:'Oxanium',Arial,sans-serif;font-weight:700;font-size:1.25em;cursor:pointer;box-shadow:0 6px 22px rgba(255,20,147,.38);margin-bottom:10px;line-height:1.2;}
+#endShareBtn span{display:block;font-family:Arial,sans-serif;font-weight:400;font-size:.62em;opacity:.92;margin-top:5px;}
+#playAnotherCard{display:flex;flex-direction:column;align-items:center;gap:3px;padding:13px 14px;border:2px solid #c084fc;border-radius:14px;background:linear-gradient(135deg,#faf5ff,#f0f4ff);text-decoration:none;text-align:center;}
+#playAnotherCard:hover{background:#f3ebff;}
+#playAnotherCard .pa-eyebrow{font-size:.7em;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#8B00FF;}
+#playAnotherCard .pa-title{font-family:'Oxanium',Arial,sans-serif;font-weight:700;font-size:1.1em;color:#222;line-height:1.25;}
+#playAnotherCard .pa-go{font-size:.85em;font-weight:900;color:#FF1493;}
+
 /* Instant grading */
 #doneBtn{background:#fff !important;color:#8B00FF !important;border:2px solid #c084fc !important;font-weight:700;}
 #doneBtn:hover{background:#faf5ff !important;}
@@ -706,6 +720,14 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div id="scoreMessage" style="display:none; text-align:center; margin:8px 0 10px; padding:10px 16px; border-radius:10px; background:linear-gradient(135deg,#f8f0ff,#fff0f8); border:2px solid rgba(139,0,255,0.2); font-family:'Oxanium',Arial,sans-serif; font-size:0.95em; font-weight:900; color:#8B00FF; letter-spacing:0.5px;"></div>
 
 <!-- DIFFICULTY + LIFELINE ROW -->
+<div id="endActions" style="display:none;">
+  <button type="button" id="endShareBtn" onclick="try{gtag('event','end_share_click',{quiz_number:window.QUIZ_NUM});}catch(e){} shareQuizEmoji();">&#128242; Challenge Your Friends<span>Send them your &#129001;&#128997; grid and see who knows their 80s</span></button>
+  <a id="playAnotherCard" href="#classicQuizzesGrid" onclick="try{gtag('event','play_another_click',{quiz_number:window.QUIZ_NUM});}catch(e){}">
+    <span class="pa-eyebrow">&#127925; Play another 80s game</span>
+    <span class="pa-title" id="playAnotherTitle">This week's themed quizzes</span>
+    <span class="pa-go">Play now &rarr;</span>
+  </a>
+</div>
 <div id="statusRow" style="display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:10px; margin:10px 0 16px; align-items:stretch;">
   <!-- Difficulty pill -->
   <div id="diff-badge" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:10px 14px; border-radius:10px; border:2px solid var(--badge-color); background:color-mix(in srgb,var(--badge-color) 10%,white); box-shadow:0 0 12px var(--badge-glow); --badge-color:#fd7e14; --badge-glow:rgba(253,126,20,0.4);">
@@ -748,8 +770,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     </div>
     <div id="eoThankYou" style="display:none; text-align:center; padding:10px;">
       <p style="font-size:1em;font-weight:900;color:#8B00FF;margin:0 0 6px;font-family:'Oxanium',Arial,sans-serif;">Thank you! You're in.</p>
-      <p style="font-size:0.85em;color:#555;margin:0 0 12px;">Want more 80s? Try one of this week's themed quizzes.</p>
-      <button onclick="document.getElementById('classicQuizzesGrid').scrollIntoView({behavior:'smooth',block:'center'});" style="background:linear-gradient(135deg,#8B00FF,#FF1493);color:white;border:none;border-radius:22px;padding:10px 22px;font-size:0.88em;font-weight:900;cursor:pointer;letter-spacing:0.5px;box-shadow:0 3px 14px rgba(139,0,255,0.35);">Play a Themed Quiz</button>
+      <p style="font-size:0.85em;color:#555;margin:0;">Tomorrow's game will be waiting for you. &#127928;</p>
     </div>
   </div>
 </div>
@@ -760,7 +781,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 <div class="no-lifeline-badge" id="noLifelineBadge">&#127942; No Lifelines Used — Pure 80s Knowledge!</div>
 
 <div id="liveProgress" style="display:none;"></div>
-<div class="button-container">
+<div class="button-container" id="playButtons">
 <button id="doneBtn" onclick="openDoneConfirm()">&#127937; I'm Done, Grade Me</button>
 <button onclick="shareQuizEmoji()" style="background:linear-gradient(135deg,#FF1493,#8B00FF);">&#128242; Share</button>
 </div>
@@ -789,17 +810,18 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 </div>
 </div>
 <!-- ===== STAT BOXES ===== -->
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
+<div id="statBoxes" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
 <div style="background:#f8f9ff;border:1.5px solid #dee2e6;border-radius:10px;padding:10px 6px;text-align:center;"><div id="istat-streak" style="font-family:'Oxanium',Arial,sans-serif;font-size:1.3em;font-weight:700;color:#FF1493;">0</div><div style="font-size:0.62em;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">&#128293; Streak</div></div>
 <div style="background:#f8f9ff;border:1.5px solid #dee2e6;border-radius:10px;padding:10px 6px;text-align:center;"><div id="istat-played" style="font-family:'Oxanium',Arial,sans-serif;font-size:1.3em;font-weight:700;color:#8B00FF;">0</div><div style="font-size:0.62em;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">Played</div></div>
 <div style="background:#f8f9ff;border:1.5px solid #dee2e6;border-radius:10px;padding:10px 6px;text-align:center;"><div id="istat-avg" style="font-family:'Oxanium',Arial,sans-serif;font-size:1.3em;font-weight:700;color:#8B00FF;">—</div><div style="font-size:0.62em;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">Avg Score</div></div>
 <div style="background:#f8f9ff;border:1.5px solid #dee2e6;border-radius:10px;padding:10px 6px;text-align:center;"><div id="istat-best" style="font-family:'Oxanium',Arial,sans-serif;font-size:1.3em;font-weight:700;color:#FFA500;">—</div><div style="font-size:0.62em;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">Best</div></div>
 </div>
 <!-- ===== COUNTDOWN ===== -->
-<div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;background:#f8f9ff;border-radius:8px;border:1.5px solid #dee2e6;margin-bottom:14px;">
+<div id="countdownBox" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;background:#f8f9ff;border-radius:8px;border:1.5px solid #dee2e6;margin-bottom:14px;">
 <span style="font-size:0.75em;color:#888;">Next grid drops in</span>
 <span id="countdown" style="font-family:'Oxanium',Arial,sans-serif;font-size:1em;font-weight:700;color:#8B00FF;">—:—:—</span>
 </div>
+<div id="compactStats">&#128293; <b id="csStreak">0</b> day streak &nbsp;&middot;&nbsp; <b id="csPlayed">0</b> played &nbsp;&middot;&nbsp; Next game in <b id="csCountdown">&mdash;</b></div>
 
 
 
@@ -811,7 +833,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 
 
 <!-- ===== BONUS GRID ===== -->
-<div style="text-align:center;font-size:0.68em;color:#8B00FF;letter-spacing:2px;text-transform:uppercase;margin:0 0 8px;font-weight:900;">Bonus Grid</div>
+<div id="bonusGridLabel" style="text-align:center;font-size:0.68em;color:#8B00FF;letter-spacing:2px;text-transform:uppercase;margin:0 0 8px;font-weight:900;">Bonus Grid</div>
 <div id="bonus-card" style="border:2px solid #dee2e6;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:14px;">
 <div id="bonus-icon" style="font-size:1.8em;">&#128274;</div>
 <div style="flex:1;">
@@ -821,7 +843,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
 </div>
 </div>
 <!-- ===== ARCHIVE ===== -->
-<div style="text-align:center;font-size:0.68em;color:#8B00FF;letter-spacing:2px;text-transform:uppercase;margin:0 0 8px;font-weight:900;">&#9989; Your Completed Quizzes</div>
+<div id="completedHeader" style="text-align:center;font-size:0.68em;color:#8B00FF;letter-spacing:2px;text-transform:uppercase;margin:0 0 8px;font-weight:900;">&#9989; Your Completed Quizzes</div>
 <div id="completed-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px;"></div>
 <div id="no-completed" style="text-align:center;font-size:0.8em;color:#aaa;margin-bottom:10px;">No completed quizzes yet — play one to see it here!</div>
 <div style="text-align:center;font-size:0.68em;color:#8B00FF;letter-spacing:2px;text-transform:uppercase;margin:10px 0 8px;font-weight:900;">&#127926; Three Weekly Themed Quizzes</div>
@@ -837,9 +859,6 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <button type="button" class="dc-end" onclick="closeDoneConfirm(); finishGame(true);">Yes, show me the answers</button>
   </div>
 </div>
-<div id="results" style="display:none;">
-<div id="score" style="font-size:1.3em; font-weight:bold; color:#333; margin-bottom:10px;"></div>
-
 <!-- SURVEY MODAL — triggered after quiz completion -->
 <div id="surveyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9999; align-items:center; justify-content:center; padding:20px;">
   <div style="background:white; border-radius:18px; max-width:380px; width:100%; padding:28px 24px; text-align:center; box-shadow:0 8px 40px rgba(139,0,255,0.4); position:relative; animation:modalPop 0.35s cubic-bezier(0.34,1.56,0.64,1);">
@@ -851,6 +870,10 @@ min-height: 400px; width: 100%; box-sizing: border-box;
     <button onclick="closeSurveyModal()" style="width:100%; padding:10px; background:none; border:none; font-size:0.8em; color:#aaa; cursor:pointer;">Maybe later</button>
   </div>
 </div>
+
+<!-- Results box below is retired: score shows in the message bar, share/bonus/leaderboard live elsewhere on the page -->
+<div id="results" style="display:none;">
+<div id="score" style="font-size:1.3em; font-weight:bold; color:#333; margin-bottom:10px;"></div>
 
 <!-- BONUS QUIZ UNLOCK BANNER — shown when score >= 6 -->
 <div id="bonusUnlockBanner" style="display:none; margin-bottom:14px; padding:16px 18px; background:linear-gradient(135deg,#fff8d6,#fff0f8); border:2px solid #FFD700; border-radius:12px; text-align:center; box-shadow:0 0 18px rgba(255,215,0,0.4);">
@@ -906,7 +929,7 @@ min-height: 400px; width: 100%; box-sizing: border-box;
   </button>
 </div>
 </div>
-<div style="background:#e3f2fd; border:1px solid #2196f3; padding:12px; border-radius:8px; margin-bottom:20px; text-align:center; font-size:.9em;">
+<div id="betaNotice" style="background:#e3f2fd; border:1px solid #2196f3; padding:12px; border-radius:8px; margin-bottom:20px; text-align:center; font-size:.9em;">
 <strong>&#128679; Beta Version</strong> — This game is still in testing. Please forgive any mistakes or inconsistencies. Your feedback is appreciated!
 </div>
 <div id="highScoreEntry" class="high-score-entry" style="display:none;">
@@ -1992,7 +2015,7 @@ function eoSignupDone(){
     if(localStorage.getItem('eoSubscribedV2')!=='true'||!localStorage.getItem('eoSubscribedOn'))localStorage.setItem('eoSubscribedOn',_localDay());
     localStorage.setItem('eoSubscribedV2','true');
   }catch(e){}
-  if(coffeeEligible())showCoffeeCard(); else showShareCard();
+  if(coffeeEligible())showCoffeeCard(); else hideDiffBadge();
   const w=document.getElementById('eoFormWrap'),t=document.getElementById('eoThankYou');
   if(w)w.style.display='none';
   if(t)t.style.display='block';
@@ -2020,6 +2043,7 @@ function showCoffeeCard(){
     if(cc)cc.style.display='flex';
   }catch(e){}
 }
+function hideDiffBadge(){try{const db=document.getElementById('diff-badge');if(db)db.style.display='none';}catch(e){}}
 function showShareCard(){
   try{
     const db=document.getElementById('diff-badge'),cc=document.getElementById('coffeeCard'),sc=document.getElementById('shareCard');
@@ -2041,6 +2065,7 @@ function coffeeEligible(){
 function applyResultsCards(){
   const sp=document.getElementById('surveyPill');
   if(!isSubscribed()){
+    hideDiffBadge();
     if(sp)sp.style.display='flex';
     watchEoSignup();
     return;
@@ -2049,7 +2074,7 @@ function applyResultsCards(){
     showCoffeeCard();
     if(sp)sp.style.display='none';
   } else {
-    showShareCard();
+    hideDiffBadge();
     const w=document.getElementById('eoFormWrap'),t=document.getElementById('eoThankYou');
     if(w)w.style.display='none';
     if(t)t.style.display='block';
@@ -2993,6 +3018,10 @@ function bumpStreakNow(){
       localStorage.setItem('80sg_last_played',today);
       const sn=document.getElementById('streak-num');if(sn)sn.textContent=str;
       const is2=document.getElementById('istat-streak');if(is2)is2.textContent=str;
+      const sf=document.getElementById('streak-flame');if(sf)sf.textContent='\uD83D\uDD25';
+      const ssub=document.getElementById('streak-sub');if(ssub)ssub.textContent='Play daily to keep it alive';
+      const smsg=document.getElementById('streak-msg');if(smsg){smsg.textContent=str===1?'Day 1 done!':'Keep it going!';smsg.style.color='#FF1493';}
+      const stom=document.getElementById('streak-tomorrow');if(stom)stom.textContent='Come back tomorrow for '+(str+1)+' \uD83D\uDD25';
     }
   }catch(e){}
 }
@@ -3021,6 +3050,47 @@ window.addEventListener('load',function(){setTimeout(function(){try{restoreLiveG
   ['saveModalAnswer','selectYesNo','selectRealFake','selectChoice','selectMCOption'].forEach(function(fn){
     const orig=window[fn];if(typeof orig!=='function')return;
     window[fn]=function(){const c=currentCell;if(fn==='selectMCOption')window._answeredViaLifeline=true;const r=orig.apply(this,arguments);if(c)gradeCellNow(c);return r;};
+  });
+})();
+</script>
+
+<script>
+/* End of game screen: score line, big share, play another, then email or coffee */
+function pickPlayAnother(){
+  try{
+    const links=[...document.querySelectorAll('#classicQuizzesGrid a')];
+    const card=document.getElementById('playAnotherCard'),t=document.getElementById('playAnotherTitle');
+    if(!links.length||!card||!t)return;
+    const pick=links[Math.floor(Math.random()*links.length)];
+    t.textContent=(pick.textContent||'').replace(/\s+/g,' ').trim()||"This week's themed quizzes";
+    card.href=pick.getAttribute('href')||'#classicQuizzesGrid';
+  }catch(e){}
+}
+function showEndScreen(){
+  const ea=document.getElementById('endActions');if(ea)ea.style.display='block';
+  const pb=document.getElementById('playButtons');if(pb)pb.style.display='none';
+  const lp=document.getElementById('liveProgress');if(lp)lp.style.display='none';
+  hideDiffBadge();
+  pickPlayAnother();setTimeout(pickPlayAnother,800);
+}
+(function(){
+  const _origFinish=window.finishGame;
+  if(typeof _origFinish==='function'){window.finishGame=function(){const r=_origFinish.apply(this,arguments);showEndScreen();return r;};}
+  function syncCompact(){
+    const g=id=>{const e=document.getElementById(id);return e?e.textContent.trim():'';};
+    const s=document.getElementById('csStreak'),p=document.getElementById('csPlayed'),c=document.getElementById('csCountdown');
+    if(s)s.textContent=g('streak-num')||'0';
+    let played='0';try{played=String(parseInt(localStorage.getItem('totalQuizzesPlayed')||'0',10)||0);}catch(e){}
+    if(p)p.textContent=played;
+    if(c)c.textContent=g('countdown')||'';
+  }
+  setInterval(syncCompact,1000);
+  window.addEventListener('load',function(){
+    syncCompact();
+    setTimeout(function(){
+      const db=document.getElementById('doneBtn');
+      if(window._gameFinished||(db&&db.disabled))showEndScreen();
+    },500);
   });
 })();
 </script>
