@@ -2140,7 +2140,7 @@ window.QUIZ_DATA = [
       "0-2": ["too shy", "ooh to be ah", "big apple"],
       "1-0": ["athens", "georgia", "usa"],
       "1-1": ["akron", "ohio", "usa"],
-      "1-2": ["england", "uk", "leighton buzzard"],
+      "1-2": ["leighton buzzard", "leighton", "leighton buzard"],
       "2-0": ["fred schneider", "kate pierson", "cindy wilson", "fred", "kate", "cindy"],
       "2-1": ["mark mothersbaugh", "mark"],
       "2-2": ["limahl", "christopher hamill"]
@@ -2151,7 +2151,7 @@ window.QUIZ_DATA = [
       "0-2": ["Too Shy", "Don't Stop Believin'", "Jump"],
       "1-0": ["Athens", "New York", "Los Angeles"],
       "1-1": ["Akron", "Cleveland", "Detroit"],
-      "1-2": ["England", "USA", "Germany"],
+      "1-2": ["Leighton Buzzard", "London", "Manchester"],
       "2-0": ["Fred Schneider", "Annie Lennox", "Debbie Harry"],
       "2-1": ["Mark Mothersbaugh", "Gerald Casale", "Bob Mothersbaugh"],
       "2-2": ["Limahl", "Nick Beggs", "Stuart Croxford Neale"]
