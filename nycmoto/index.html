@@ -51,8 +51,8 @@ b, strong { color: var(--text); font-weight: 600; }
 
 /* Hero copy */
 .intro { padding-top: 22px; padding-bottom: 8px; }
-.eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.eyebrow i { width: 11px; height: 11px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 3px rgba(255,159,28,.25); }
+.eyebrow { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #c3cad4; }
+.eyebrow i { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 3px rgba(255,159,28,.25); }
 h1 { margin-top: 16px; font-family: var(--display); font-weight: 400; font-size: clamp(46px, 8.4vw, 84px); line-height: .98; text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
 .lede { margin-top: 20px; max-width: 58ch; color: #aeb6c2; font-size: 17px; }
 .big { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 4px 22px; margin-top: 30px; }
@@ -157,7 +157,17 @@ h1 { margin-top: 16px; font-family: var(--display); font-weight: 400; font-size:
 
 a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
-@media (max-width: 820px) {
+/* Print and PDF: keep the dark background and avoid splitting blocks */
+html, body, .sheet, .sheet * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@page { size: letter; margin: 0.35in; }
+@media print {
+  html, body { background: var(--bg); }
+  .sec, .card, .strip, .legend li, .pie, .always, .foot { break-inside: avoid; }
+  .photo, .big, .pulse { break-inside: avoid; }
+}
+
+
+@media (max-width: 780px) and (min-width: 0px) {
   .pad { padding-left: 24px; padding-right: 24px; }
   .cap { left: 24px; }
   .feed .t { left: 24px; right: 24px; }
@@ -194,7 +204,7 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
     <div class="intro pad">
       <div class="eyebrow"><i aria-hidden="true"></i>New York City · A rider community on Facebook</div>
       <h1>The NYC Motorcycle Meetup <span class="o">never sleeps.</span></h1>
-      <p class="lede">One group. One founder and a small crew of helpers. And a city's worth of riders showing up every single day to plan rides, welcome rookies, and look out for each other.</p>
+      <p class="lede">One group. And a city's worth of riders showing up every single day to plan rides, welcome rookies, and look out for each other.</p>
 
       <div class="big">
         <div class="num">19,000<span class="plus">+</span></div>
@@ -281,7 +291,7 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
         <li><i style="background:#343c47"></i><span class="nm">Everywhere else</span><span class="pc">2.6%</span><span class="ct">290</span></li>
       </ul>
     </div>
-    <p class="reach">Based on the 11,192 members in Facebook's top 100 cities. Members who don't list a location, or live in smaller towns, aren't counted. Riders also join from <b>100+ countries</b>, from Nigeria to the UK.</p>
+    <p class="reach">Based on members in Facebook's top 100 cities.</p>
   </section>
 
   <section class="sec pad">
@@ -328,7 +338,6 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
   <footer class="foot pad">
     <div>
-      <p class="by"><b class="o">Len Bilello</b> is admin and gets help from a great group of volunteer moderators.</p>
       <p class="src">Source: Facebook Group Insights, Jan 1, 2026 to Nov 6, 2026 (export dated Nov 8, 2026). Demographic figures cover members who share that data. Page views are Facebook's own view counts for the group.</p>
     </div>
     <div class="brand">
